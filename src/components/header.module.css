@@ -1,0 +1,143 @@
+.header {
+    width: 100%;
+    height: 70px;
+    line-height: 70px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1111111;
+
+}
+
+.header_shrink {
+    background: #14141f;
+    box-shadow: 2px 2px 4px -2px #e250e5 !important;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.nav_list {
+    display: flex;
+    align-items: center;
+    column-gap: 2.7rem;
+    margin-bottom: 0;
+list-style: none;
+}
+
+.nav_item a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav_item ul {
+    list-style: none;
+}
+
+.nav_item a:hover {
+transition: none;
+}
+
+.active {
+    color: #e250e5 !important;
+}
+.inactive{
+    color: #14141f !important;
+}
+.logo h2 {
+    background: linear-gradient(-45deg, #E250E5, #4B50E6, #E250E5, #4B50E6);
+    background-size: 100% 100%;
+   
+
+    background-clip: text;
+   
+    -webkit-text-stroke: 3px transparent;
+    -webkit-text-fill-color: #14141f;
+    margin-bottom: 0;
+}
+
+.btn {
+    padding: 7px 25px;
+    border: 1px solid #5142FC;
+    border-radius: 50px;
+}
+
+.btn a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.8rem;
+    /* display: inline-block; */
+
+}
+
+.btn span i {
+    color: #fff;
+}
+
+.btn a:hover {
+    color: #fff;
+}
+
+.mobile_menu {
+    color: #fff;
+    font-size: 1.3rem;
+    display: none;
+}
+.nav_right{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+/* d-flex align-items-center gap-5 */
+@media only screen and (max-width:768px) {
+    .nav_menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(#14141f83, #14141f83);
+        z-index: 222222;
+        display: none;
+    }
+
+    .active_menu {
+        display: block;
+    }
+    .inactive{
+        color: #fff !important;
+    }
+    .nav_list {
+        position: absolute;
+        top: -20px;
+        left: 0;
+        width: 250px;
+        height: 100%;
+        background: #343444;
+        z-index: 333333;
+        flex-direction: column;
+        padding-top: 40px;
+    }
+    .nav_item  {
+        padding: 10px !important;
+    }
+
+    .mobile_menu {
+        display: block;
+        color: black;
+    }
+
+    .btn {
+        padding: 4px 25px !important;
+
+    }
+
+    .btn a {
+        font-size: 0.7rem !important;
+    }
+
+}
