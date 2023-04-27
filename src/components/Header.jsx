@@ -56,11 +56,10 @@ const Header = () => {
 
     return (
 
-        <header className='header' ref={headerRef}>
+        <header className={classes.header} ref={headerRef}>
             <Container>
                 <div className={classes.navigation} >
                     <div className={classes.logo}>
-                        <p>s</p>
                     </div>
                     <div className={classes.nav_right}>
                         <div className={classes.nav_menu} ref={menuRef} onClick={toggleMenu}>
@@ -72,7 +71,16 @@ const Header = () => {
                                         </li>
                                     ))
                                 }
+
                             </ul>
+
+                        </div>
+                        <div className={classes.btn}>
+                            <button>
+                                <Link to={'/login'}
+
+                                >  Login</Link>
+                            </button>
                         </div>
                         <span className={classes.mobile_menu}>
                             <FaBars onClick={toggleMenu} />
