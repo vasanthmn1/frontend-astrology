@@ -3,37 +3,28 @@ import { useRef, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { NavLink, Link } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa'
+import { MdOutlineExitToApp } from 'react-icons/md'
+
 import classes from './header.module.css'
+import { useDispatch, useSelector } from "react-redux";
+import { logoutuser } from "../redux/features/AuthSclice";
 const NAV_LINKS = [
     {
         url: "/home",
         display: "Home"
     },
-    {
-        url: "/market",
-        display: "Market"
-    },
 
-    {
-        url: "/create",
-        display: "Create"
-    },
-
-    {
-        url: "/contact",
-        display: "Contact"
-    },
 
 
 ];
 
 
 
-
 const Header = () => {
 
     const headerRef = useRef(null)
-
+    const { user } = useSelector((state) => state.auth)
+    const dispatch = useDispatch()
     useEffect(() => {
         window.addEventListener('scroll', () => {
             if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
@@ -43,11 +34,11 @@ const Header = () => {
                 headerRef.current.classList.remove(classes.header_shrink)
             }
         })
-        return () => {
-            // window.removeEventListener('scroll');
-        }
+        // return () => {
+        //     window.removeEventListener('scroll');
+        // }
 
-    }, []);
+    }, [user]);
 
     const menuRef = useRef(null);
 
@@ -57,9 +48,10 @@ const Header = () => {
     return (
 
         <header className={classes.header} ref={headerRef}>
-            <Container>
+            <div className={classes.conatiner}>
                 <div className={classes.navigation} >
                     <div className={classes.logo}>
+                        s
                     </div>
                     <div className={classes.nav_right}>
                         <div className={classes.nav_menu} ref={menuRef} onClick={toggleMenu}>
@@ -76,18 +68,36 @@ const Header = () => {
 
                         </div>
                         <div className={classes.btn}>
-                            <button>
-                                <Link to={'/login'}
+                            {
+                                user ?
+                                    <button className={classes.appointmentbtn}>
+                                        <Link to={'/login'}
 
-                                >  Login</Link>
-                            </button>
+                                        >  Appointment </Link>
+                                    </button> :
+                                    <button className={classes.login}>
+                                        <Link to={'/login'}
+
+                                        >  Login</Link>
+                                    </button>
+                            }
+
                         </div>
+                        {
+                            user ?
+                                <MdOutlineExitToApp
+                                    onClick={() => {
+                                        dispatch(logoutuser())
+                                    }}
+                                    title="logout" className={classes.logout} /> : null
+                        }
+
                         <span className={classes.mobile_menu}>
                             <FaBars onClick={toggleMenu} />
                         </span>
                     </div>
                 </div>
-            </Container>
+            </div>
         </header >
     );
 };

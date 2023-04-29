@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import classes from './login.module.css'
-
+import { message } from 'antd'
 import { useFormik } from 'formik'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { isLoading, loginSuccess, loginSuccessToken, stopLoading } from '../../redux/features/AuthSclice'
 // import { loginStart, loginSuccess } from '../../redux/feutures/AuthSlice'
 const Login = () => {
     const { link } = useSelector((state) => state.link)
@@ -17,7 +18,7 @@ const Login = () => {
     const [err, setErr] = useState(false)
     let myFormik = useFormik({
         initialValues: {
-            username: "",
+
             email: "",
             password: "",
         },
@@ -37,20 +38,32 @@ const Login = () => {
 
         onSubmit: async (values) => {
             setErr(false)
-            // dispatch(loginStart())
+            dispatch(isLoading())
             try {
                 const res = await axios.post(`${link}/auth/login`, values)
-                toast.error('Login Success')
+                message.success('Login Success')
+                console.log(res.data.user.token
+                );
                 localStorage.setItem('user', JSON.stringify(res.data.user.user))
                 localStorage.setItem('token', JSON.stringify(res.data.user.token))
 
-                console.log(res.data.user.token
-                );
-                // dispatch(loginSuccess(res.data.user))
-                navigater('/')
+                if (res.data.user.user?.isAdmin === true) {
+                    navigater('/admin')
+                    // navigater('')
+                } else {
+                    navigater('/home')
+                }
+
+
+                dispatch(loginSuccess([res.data.user.user,]))
+                dispatch(loginSuccessToken([
+                    res.data.user.token
+                ]))
+
+                dispatch(stopLoading())
             } catch (error) {
                 console.log(error);
-
+                dispatch(stopLoading())
                 setErr(toast.error('Email or Password wrong'))
             }
         }

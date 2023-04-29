@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
 import { useFormik } from 'formik'
 import axios from 'axios'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import classes from './register.module.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { isLoading, stopLoading } from '../../redux/features/AuthSclice'
+import { message } from 'antd'
 
 const Register = () => {
 
     const { link } = useSelector((state) => state.link)
-    console.log(link);
+    const dispatch = useDispatch()
     const [err, setErr] = useState(false)
     const navigater = useNavigate()
     let myFormik = useFormik({
@@ -35,16 +37,17 @@ const Register = () => {
             return err
         },
         onSubmit: async (values) => {
-            console.log(values);
+            dispatch(isLoading())
             setErr(false)
             try {
                 const res = await axios.post(`${link}/auth/register`, values)
                 if (res.data) {
                     navigater('/login');
-                    toast.success('Register success');
+                    message.success('Register Success')
                 }
-                console.log(res);
+                dispatch(stopLoading())
             } catch (error) {
+                dispatch(stopLoading())
                 setErr(true)
                 toast.error(error.response.data.massage)
             }

@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import Banner from '../../components/banner/Banner'
+import Spiner from '../../components/spiner/Spiner'
+
 
 const Home = () => {
+
+
     return (
-        <div>Home</div>
+        <>
+            <Banner />
+            {/* <Spiner /> */}
+        </>
+
     )
 }
 

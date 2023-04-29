@@ -2,16 +2,16 @@
     width: 100%;
     height: 70px;
     line-height: 35px;
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     z-index: 99;
 background-color: #B71375;
+
 }
 
-.header_shrink {
-    background: #14141f;
-    box-shadow: 2px 2px 4px -2px #e250e5 !important;
+.conatiner{
+    margin: 0 20px;
 }
 
 .navigation {
@@ -24,9 +24,10 @@ background-color: #B71375;
 .nav_list {
     display: flex;
     align-items: center;
-    column-gap: 2.7rem;
     margin-bottom: 0;
 list-style: none;
+margin-top: 10px !important;
+margin-right: 30px;
 }
 
 .nav_item a {
@@ -37,14 +38,16 @@ list-style: none;
 
 .nav_item ul {
     list-style: none;
+   
 }
 
 .nav_item a:hover {
 transition: none;
+
 }
 
 .active {
-    color: #e250e5 !important;
+    color: #fff;
 }
 .inactive{
     color: #14141f !important;
@@ -61,16 +64,13 @@ transition: none;
     color: #fff;
     font-size: 0.8rem;
 }
-.btn button {
-    cursor: pointer;
-    
-    background-color: #F79540;
-    text-decoration: none;
-    padding: 10px 20px;
-  
-    border-radius: 50px;
-}
 
+.appointmentbtn{
+    background-color: #8B1874 !important;
+    border-radius: 3px !important;
+    border: 3px solid #FC4F00;
+ padding: 0px 20px !important;
+}
 .btn span i {
     color: #fff;
 }
@@ -87,9 +87,126 @@ transition: none;
 .nav_right{
     display: flex;
     align-items: center;
-    gap: 50px;
+    
 }
-/* d-flex align-items-center gap-5 */
+.logout{
+    background-color: #FC4F00;
+    color: #fff;
+    /* margin-top: 15px !important; */
+    margin-right: 50px;
+    padding: 2px;
+    font-size: 2.3rem;
+    margin-top: 6px;
+    transition: 0.8s all ease;
+    cursor: pointer;
+}
+.logout:hover{
+    background-color: red;
+    color: #fff;
+}
+
+.nav_list {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+list-style: none;
+margin-top: 10px !important;
+margin-right: 30px;
+}
+
+.nav_item a {
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: #fff;
+}
+
+.nav_item ul {
+    list-style: none;
+   
+}
+
+.nav_item a:hover {
+transition: none;
+
+}
+
+.active {
+    color: #fff;
+}
+.inactive{
+    color: #14141f !important;
+}
+
+
+.btn {
+    padding: 7px 25px;
+  
+  margin-top: 5px;
+}
+.btn a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 0.8rem;
+}
+.login {
+
+        cursor: pointer;
+        
+        background-color: #F79540;
+        text-decoration: none;
+        padding: 5px 30px;
+      border-radius: 35px;
+   
+}
+.appointmentbtn{
+    background-color: #8B1874 !important;
+    border-radius: 3px !important;
+    border: 3px solid #060047;
+ padding: 0px 20px !important;
+}
+.btn span i {
+    color: #fff;
+}
+
+.btn a:hover {
+    color: #fff;
+}
+
+.mobile_menu {
+    color: #fff;
+    font-size: 1.3rem;
+    display: none;
+}
+.nav_right{
+    display: flex;
+    align-items: center;
+    
+}
+.logout{
+    background-color: #060047;
+    color: #fff;
+    margin-right: 50px;
+    padding: 2px;
+    font-size: 2.3rem;
+    margin-top: 3px;
+    transition: 0.8s all ease;
+    cursor: pointer;
+}
+.logout:hover{
+    background-color: red;
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
 @media only screen and (max-width:768px) {
     .nav_menu {
         position: fixed;
@@ -137,16 +254,21 @@ transition: none;
       margin-top: 15px;
     }
     
-    .btn button {
+    .login {
         color: #fff;
-        background-color: red;
+        background-color: rgb(255, 166, 0);
         text-decoration: none;
-        padding: 10px 20px;
+        padding: 0px 20px;
         font-size: 0.8rem;
-        border-radius: 50px;
-       
-        /* display: inline-block; */
-    
+        border-radius: 10px;
+    margin-top: 5px;
     }
+    .logout{
+      
+        margin-right: 20px;
+        
+        
+    }
+    
 
 }
