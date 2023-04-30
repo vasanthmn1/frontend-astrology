@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import classes from './appointment.module.css'
-import { message } from 'antd'
+import { TimePicker, message } from 'antd'
 import { useFormik } from 'formik'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
@@ -20,20 +20,45 @@ const Appointment = () => {
     let myFormik = useFormik({
         initialValues: {
 
+            name: "",
             email: "",
-            password: "",
+            phone: "",
+            address: "",
+            times: "",
+            date: ""
         },
         validate: (values) => {
             let err = {}
+
+
+            if (!values.name) {
+                err.name = "Enter Full name"
+            }
+
+            if (!values.phone) {
+                err.phone = "Enter Moblie Number"
+            }
+            if (!values.address) {
+                err.address = "Fill your adderess"
+            }
+
+
+            if (!values.times) {
+                err.times = "required "
+            }
+            if (!values.date) {
+                err.date = "required "
+            }
+            if (values.times === "00:00") {
+                err.times = "required "
+            }
 
             if (!values.email) {
                 err.email = "Enter full email"
             } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
                 err.email = 'Invalid email address !!';
             }
-            if (!values.password) {
-                err.password = "Enter password"
-            }
+
             return err
         },
 
@@ -41,31 +66,33 @@ const Appointment = () => {
             setErr(false)
             dispatch(isLoading())
             try {
-                const res = await axios.post(`${link}/auth/login`, values)
-                message.success('Login Success')
-                console.log(res.data.user.token
-                );
-                localStorage.setItem('user', JSON.stringify(res.data.user.user))
-                localStorage.setItem('token', JSON.stringify(res.data.user.token))
+                console.log(values);
+                const res = await axios.post(`${link}/user/apply`, values)
+                console.log(res);
+                // message.success('Login Success')
+                // console.log(res.data.user.token
+                // );
+                // localStorage.setItem('user', JSON.stringify(res.data.user.user))
+                // localStorage.setItem('token', JSON.stringify(res.data.user.token))
 
-                if (res.data.user.user?.isAdmin === true) {
-                    navigater('/admin')
-                    // navigater('')
-                } else {
-                    navigater('/home')
-                }
+                // if (res.data.user.user?.isAdmin === true) {
+                //     navigater('/admin')
+                //     // navigater('')
+                // } else {
+                //     navigater('/home')
+                // }
 
 
-                dispatch(loginSuccess([res.data.user.user,]))
-                dispatch(loginSuccessToken([
-                    res.data.user.token
-                ]))
+                // dispatch(loginSuccess([res.data.user.user,]))
+                // dispatch(loginSuccessToken([
+                //     res.data.user.token
+                // ]))
 
                 dispatch(stopLoading())
             } catch (error) {
-                console.log(error);
-                dispatch(stopLoading())
-                setErr(toast.error('Email or Password wrong'))
+                // console.log(error);
+                // dispatch(stopLoading())
+                // setErr(toast.error('Email or Password wrong'))
             }
         }
     })
@@ -83,16 +110,16 @@ const Appointment = () => {
                             <label >Name:</label>
                             <input
                                 className={
-                                    myFormik.errors.email && myFormik.touched.email ? classes.warinng : classes.success}
+                                    myFormik.errors.name && myFormik.touched.name ? classes.warinng : classes.success}
                                 onBlur={myFormik.handleBlur}
                                 onChange={myFormik.handleChange}
                                 type='text'
-                                placeholder={myFormik.errors.email && myFormik.touched.email ? myFormik.errors.email : "Enter Full Email.."}
+                                placeholder={myFormik.errors.name && myFormik.touched.name ? myFormik.errors.name : "Enter Full Email.."}
 
-                                value={myFormik.values.email}
-                                name='email'
+                                value={myFormik.values.name}
+                                name='name'
                             />
-                            <div className={classes.emailSpan}>  {myFormik.errors.email && myFormik.touched.email ? myFormik.errors.email : null} </div>
+                            <div className={classes.emailSpan}>  {myFormik.errors.name && myFormik.touched.name ? myFormik.errors.name : null} </div>
 
                         </Col>
                         <Col lg='4'>
@@ -115,35 +142,63 @@ const Appointment = () => {
                             <label >Phone:</label>
                             <input
                                 className={
-                                    myFormik.errors.email && myFormik.touched.email ? classes.warinng : classes.success}
+                                    myFormik.errors.phone && myFormik.touched.phone ? classes.warinng : classes.success}
                                 onBlur={myFormik.handleBlur}
                                 onChange={myFormik.handleChange}
                                 type='number'
-                                placeholder={myFormik.errors.email && myFormik.touched.email ? myFormik.errors.email : "Enter Full Email.."}
+                                placeholder={myFormik.errors.phone && myFormik.touched.phone ? myFormik.errors.phone : "Enter Full Email.."}
 
-                                value={myFormik.values.email}
-                                name='email'
+                                value={myFormik.values.phone}
+                                name='phone'
                             />
-                            <div className={classes.emailSpan}>  {myFormik.errors.email && myFormik.touched.email ? myFormik.errors.email : null} </div>
-
-                        </Col>
-                        <Col lg='6'>
-                            <label >Adderess:</label>
-                            <textarea
-                                className={
-                                    myFormik.errors.email && myFormik.touched.email ? classes.warinng : classes.success}
-                                onBlur={myFormik.handleBlur}
-                                onChange={myFormik.handleChange}
-                                type='number'
-                                placeholder={myFormik.errors.email && myFormik.touched.email ? myFormik.errors.email : "Enter Full Email.."}
-
-                                value={myFormik.values.email}
-                                name='email'
-                            />
-                            <div className={classes.emailSpan}>  {myFormik.errors.email && myFormik.touched.email ? myFormik.errors.email : null} </div>
+                            <div className={classes.emailSpan}>  {myFormik.errors.phone && myFormik.touched.phone ? myFormik.errors.phone : null} </div>
 
                         </Col>
                         <Col lg='8'>
+                            <label >Address:</label>
+                            <textarea
+                                className={
+                                    myFormik.errors.address && myFormik.touched.address ? classes.warinng : classes.success}
+                                onBlur={myFormik.handleBlur}
+                                onChange={myFormik.handleChange}
+                                type='naddress'
+                                placeholder={myFormik.errors.address && myFormik.touched.address ? myFormik.errors.address : "Enter Full Email.."}
+
+                                value={myFormik.values.address}
+                                name='address'
+                            />
+                            <div className={classes.emailSpan}>  {myFormik.errors.address && myFormik.touched.address ? myFormik.errors.address : null} </div>
+
+                        </Col>
+                        <Col lg='2' className={classes.timer}>
+                            <input
+                                type='date'
+                                onBlur={myFormik.handleBlur}
+                                onChange={myFormik.handleChange}
+                                value={myFormik.values.date}
+
+                                name='date'
+                                className={
+                                    myFormik.errors.date && myFormik.touched.date ? classes.warinng : classes.success}
+
+                            />
+                            <div className={classes.emailSpan}>  {myFormik.errors.date && myFormik.touched.date ? myFormik.errors.date : null} </div>
+                        </Col>
+                        <Col lg='2' className={classes.timer}>
+                            <input
+                                type='time'
+                                onBlur={myFormik.handleBlur}
+                                onChange={myFormik.handleChange}
+                                value={myFormik.values.times}
+
+                                name='times'
+                                className={
+                                    myFormik.errors.times && myFormik.touched.times ? classes.warinng : classes.success}
+
+                            />
+                            <div className={classes.emailSpan}>  {myFormik.errors.times && myFormik.touched.times ? myFormik.errors.times : null} </div>
+                        </Col>
+                        {/* <Col lg='8'>
                             <label >Adderess:</label>
                             <input
                                 className={
@@ -157,8 +212,8 @@ const Appointment = () => {
                                 name='email'
                             />
                             <div className={classes.emailSpan}>  {myFormik.errors.email && myFormik.touched.email ? myFormik.errors.email : null} </div>
-
-                        </Col>
+                            <TimePicker.RangePicker />
+                        </Col> */}
                     </Row>
                     <div className={classes.btn}>
                         <button type='submit' >

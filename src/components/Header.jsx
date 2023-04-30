@@ -1,9 +1,11 @@
 import { useRef, useEffect } from "react";
 // import "./header.css";
-import { Container } from "react-bootstrap";
+import { Badge, Container } from "react-bootstrap";
 import { NavLink, Link } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa'
 import { MdOutlineExitToApp } from 'react-icons/md'
+import { AiOutlineBell } from 'react-icons/ai'
+
 
 import classes from './header.module.css'
 import { useDispatch, useSelector } from "react-redux";
@@ -85,11 +87,18 @@ const Header = () => {
                         </div>
                         {
                             user ?
-                                <MdOutlineExitToApp
-                                    onClick={() => {
-                                        dispatch(logoutuser())
-                                    }}
-                                    title="logout" className={classes.logout} /> : null
+                                <>
+
+                                    <div className={classes.notification}>
+                                        <AiOutlineBell className={classes.logout} />
+                                        <Badge bg="danger" className={classes.badge}>9</Badge>
+                                    </div>
+                                    <MdOutlineExitToApp
+                                        onClick={() => {
+                                            dispatch(logoutuser())
+                                        }}
+                                        title="logout" className={classes.logout} />
+                                </> : null
                         }
 
                         <span className={classes.mobile_menu}>
