@@ -1,14 +1,17 @@
 import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Home from '../pages/home/Home'
+
 import Portal from '../pages/portal/Portal'
 import Login from '../pages/login/Login'
 import Register from '../pages/register/Register'
 import { useSelector } from 'react-redux'
 import Spiner from '../components/spiner/Spiner'
 import AdminHome from '../admin/pages/AdminHome'
+
 import AdminPortal from '../admin/pages/adminPortal/AdminPortal'
 import AdminAppoinmentpage from '../admin/pages/adminAppoinmentpage/AdminAppoinmentpage'
+import Appointment from '../pages/appointment/Appointment'
 
 const ClientRoutes = () => {
     const { user, token, isLoading } = useSelector((state) => state.auth)
@@ -34,6 +37,8 @@ const ClientRoutes = () => {
                         <Route path='/' element={<Portal />}>
                             <Route path='/' element={<Navigate to='/home' />} />
                             <Route path='home' element={<Home />} />
+                            {/* <Route path='appointment' element={<Appoi />} /> */}
+                            <Route path='/appointment' element={<Appointment />} />
 
                         </Route>
 

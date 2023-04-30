@@ -71,7 +71,7 @@ const Header = () => {
                             {
                                 user ?
                                     <button className={classes.appointmentbtn}>
-                                        <Link to={'/login'}
+                                        <Link to={'/appointment'}
 
                                         >  Appointment </Link>
                                     </button> :
