@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux'
 import Spiner from '../components/spiner/Spiner'
 import AdminHome from '../admin/pages/AdminHome'
 import AdminPortal from '../admin/pages/adminPortal/AdminPortal'
+import AdminAppoinmentpage from '../admin/pages/adminAppoinmentpage/AdminAppoinmentpage'
 
 const ClientRoutes = () => {
     const { user, token, isLoading } = useSelector((state) => state.auth)
@@ -26,11 +27,14 @@ const ClientRoutes = () => {
                         <Route path='/' element={<AdminPortal />}>
                             <Route path='/home' element={<Navigate to='/admin' />} />
                             <Route path='admin' element={<AdminHome />} />
+                            <Route path='appoinment' element={<AdminAppoinmentpage />} />
+
                         </Route>
                         :
                         <Route path='/' element={<Portal />}>
                             <Route path='/' element={<Navigate to='/home' />} />
                             <Route path='home' element={<Home />} />
+
                         </Route>
 
                 }
