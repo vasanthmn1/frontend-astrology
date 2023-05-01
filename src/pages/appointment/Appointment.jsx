@@ -12,7 +12,7 @@ import { Col, Row } from 'react-bootstrap'
 const Appointment = () => {
 
     const { link } = useSelector((state) => state.link)
-    // const { user } = useSelector((state) => state.auth)
+    const { user } = useSelector((state) => state.auth)
 
     const navigater = useNavigate()
     const dispatch = useDispatch()
@@ -67,7 +67,9 @@ const Appointment = () => {
             dispatch(isLoading())
             try {
                 console.log(values);
-                const res = await axios.post(`${link}/user/apply`, values)
+                const res = await axios.post(`${link}/user/apply`, values, {
+                    userId: user._id
+                })
                 console.log(res);
                 // message.success('Login Success')
                 // console.log(res.data.user.token

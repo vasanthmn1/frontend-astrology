@@ -12,6 +12,7 @@ import AdminHome from '../admin/pages/AdminHome'
 import AdminPortal from '../admin/pages/adminPortal/AdminPortal'
 import AdminAppoinmentpage from '../admin/pages/adminAppoinmentpage/AdminAppoinmentpage'
 import Appointment from '../pages/appointment/Appointment'
+import Notification from '../admin/pages/notification/Notification'
 
 const ClientRoutes = () => {
     const { user, token, isLoading } = useSelector((state) => state.auth)
@@ -31,7 +32,7 @@ const ClientRoutes = () => {
                             <Route path='/home' element={<Navigate to='/admin' />} />
                             <Route path='admin' element={<AdminHome />} />
                             <Route path='appoinment' element={<AdminAppoinmentpage />} />
-
+                            <Route path='/notification' element={<Notification />} />
                         </Route>
                         :
                         <Route path='/' element={<Portal />}>
@@ -39,6 +40,7 @@ const ClientRoutes = () => {
                             <Route path='home' element={<Home />} />
                             {/* <Route path='appointment' element={<Appoi />} /> */}
                             <Route path='/appointment' element={<Appointment />} />
+
 
                         </Route>
 

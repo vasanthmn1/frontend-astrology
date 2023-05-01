@@ -1,0 +1,23 @@
+.activebtn{
+    background-color: red;
+}
+.btn{
+    /* color: green; */
+    background-color: gray;
+}
+.btns{
+    padding: 10px 20px;
+    margin: 10px 10px;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 500;
+    /* outline: none; */
+    border: none;
+}
+.warper{
+    margin-top: 20px;
+}
+.active{
+    background-color: rgb(233, 212, 212);
+    border-radius: 15px;
+}

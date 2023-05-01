@@ -34,7 +34,7 @@ const AdminSidbar = () => {
             {
                 list.map((val, idx) => {
                     return (
-                        <ul>
+                        <ul key={idx}>
                             <li>
                                 <NavLink to={val.path}
                                     className={navClass => navClass.isActive ? classes.active : classes.unactive}
