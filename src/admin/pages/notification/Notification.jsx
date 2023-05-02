@@ -16,14 +16,13 @@ const Notification = () => {
     const { link } = useSelector((state) => state.link)
     const [notifaction, setNotifaction] = useState([])
     useEffect(() => {
-        const getadmin = async () => {
-            const admin = await axios.get(`${link}/auth/getadmin`)
-            setNotifaction(admin.data.user.notifaction
-            )
-        }
+
         getadmin()
     }, [])
-
+    const getadmin = async () => {
+        const admin = await axios.get(`${link}/auth/getadmin`)
+        setNotifaction(admin.data.user?.notifaction)
+    }
 
     const handelRead = async () => {
         try {
@@ -34,35 +33,22 @@ const Notification = () => {
 
         }
     }
-    // console.log(notifaction)
+    // console.log("Ss", notifaction)
     // console.log(notifaction.notifaction.data.onclickPath);
 
     let [categories] = useState({
         Read: [
             {
-                id: 1,
-                title: 'Does drinking coffee make you smarter?',
-                noti: notifaction,
-                commentCount: 5,
-                shareCount: 2,
+                id: "s",
+                notifactions: notifaction,
+
             },
 
         ],
         Popular: [
             {
-                id: 1,
-                title: 'Is tech making coffee better or worse?',
-                date: 'Jan 7',
-                commentCount: 29,
-                shareCount: 16,
-            },
-            {
-                id: 2,
-                title: 'The most innovative things happening in coffee',
-                date: 'Mar 19',
-                commentCount: 24,
-                shareCount: 12,
-            },
+                id: "sas"
+            }
         ],
 
 
@@ -102,42 +88,22 @@ const Notification = () => {
                             <ul>
                                 {posts.map((post) => (
                                     <div>
-                                        <li
-                                            key={post.id}
-                                            className="relative rounded-md p-3 hover:bg-gray-100"
-                                        >
-                                            <h3 className="text-sm font-medium leading-5">
-                                                {post.title}
-                                            </h3>
-
-                                            <ul className="mt-1 flex space-x-1 text-xs font-normal leading-4 text-gray-500">
-                                                <li>{post.date}</li>
-                                                <li>&middot;</li>
-                                                <li>{post.commentCount} comments</li>
-                                                <li>&middot;</li>
-                                                <li>{post.shareCount} shares</li>
-                                            </ul>
-
-                                            <a
-                                                href="#"
-                                                className={classNames(
-                                                    'absolute inset-0 rounded-md',
-                                                    'ring-blue-400 focus:z-10 focus:outline-none focus:ring-2'
-                                                )}
-                                            />
-                                        </li>
+                                        {post.notifactions?.map((val, idx) => {
+                                            return (
+                                                <ul>
+                                                    <li>{val.data.name}</li>
+                                                    {console.log("sss", val)}
+                                                </ul>
+                                            )
+                                        })}
                                         <div>
                                             {/* {post.noti} */}
                                         </div>
-                                        {
-                                            // console.log(post.noti)
-                                            post.noti && post.noti.map((val) => {
-                                                return (
-                                                    console.log(val.type)
-                                                )
-                                            })
+                                        <li>{post.id}</li>
+                                        <li>2</li>
 
-                                        }
+                                        <li>{console.log("S", notifaction)}</li>
+
                                     </div>
                                 ))}
                             </ul>
