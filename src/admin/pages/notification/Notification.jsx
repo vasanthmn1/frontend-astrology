@@ -16,13 +16,13 @@ const Notification = () => {
     const { link } = useSelector((state) => state.link)
     const [notifaction, setNotifaction] = useState([])
     useEffect(() => {
-
+        const getadmin = async () => {
+            const admin = await axios.get(`${link}/auth/getadmin`)
+            setNotifaction(...admin.data.user?.notifaction)
+        }
         getadmin()
     }, [])
-    const getadmin = async () => {
-        const admin = await axios.get(`${link}/auth/getadmin`)
-        setNotifaction(admin.data.user?.notifaction)
-    }
+
 
     const handelRead = async () => {
         try {
@@ -40,12 +40,12 @@ const Notification = () => {
         Read: [
             {
                 id: "s",
-                notifactions: notifaction,
-
+                notifaction: notifaction,
+                // a: console.log(notifaction)
             },
 
         ],
-        Popular: [
+        UnRead: [
             {
                 id: "sas"
             }
@@ -86,23 +86,25 @@ const Notification = () => {
                             }
                         >
                             <ul>
-                                {posts.map((post) => (
+                                {posts && posts.map((post) => (
                                     <div>
-                                        {post.notifactions?.map((val, idx) => {
+                                        {/* {post.notifactions?.map((val, idx) => {
                                             return (
                                                 <ul>
                                                     <li>{val.data.name}</li>
                                                     {console.log("sss", val)}
                                                 </ul>
                                             )
-                                        })}
+                                        })} */}
                                         <div>
-                                            {/* {post.noti} */}
+                                            {/* {post.noti} */}sas
                                         </div>
                                         <li>{post.id}</li>
-                                        <li>2</li>
+                                        <li>{post.notifaction}</li>
 
-                                        <li>{console.log("S", notifaction)}</li>
+                                        <li>{console.log(post)}</li>
+
+                                        <li>{console.log("S", post.notifaction && post.notifaction)}</li>
 
                                     </div>
                                 ))}
