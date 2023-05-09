@@ -12,9 +12,9 @@ const AdminHeader = () => {
     const { link } = useSelector((state) => state.link)
     const navigator = useNavigate()
     const [notifaction, setNotifaction] = useState({})
-    // console.log(notifaction.notifaction);
+
     const dispatch = useDispatch()
-    // console.log(user);
+
 
     useEffect(() => {
         const getadmin = async () => {
