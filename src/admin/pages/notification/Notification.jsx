@@ -1,58 +1,93 @@
-import React, { useEffect, useState } from 'react'
-// import { useState } from 'react'
-import { Tab } from '@headlessui/react'
-import classes from './notification.module.css'
-import axios from 'axios'
-import { useSelector } from 'react-redux'
+import React, { useCallback, useEffect, useState } from 'react';
+import { Tab } from '@headlessui/react';
+import classes from './notification.module.css';
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { isLoading, stopLoading } from '../../../redux/features/AuthSclice';
 
 function classNames(...classe) {
-    return classe.filter(Boolean).join(' ')
+    return classe.filter(Boolean).join(' ');
 }
 
-
 const Notification = () => {
+    const { user } = useSelector((state) => state.auth);
+    const { link } = useSelector((state) => state.link);
+    const dispatch = useDispatch()
+    const [notifaction, setNotifaction] = useState([]);
+    const [seenotifaction, setseeNotifaction] = useState([]);
 
-    const { user } = useSelector((state) => state.auth)
-    const { link } = useSelector((state) => state.link)
-    const [notifaction, setNotifaction] = useState([])
-    useEffect(() => {
-        const getadmin = async () => {
-            const admin = await axios.get(`${link}/auth/getadmin`)
-            setNotifaction(...admin.data.user?.notifaction)
-        }
-        getadmin()
-    }, [])
+    const [categories, setCategories] = useState({});
 
 
     const handelRead = async () => {
+        // dispatch(isLoading())
         try {
             const notifi = await axios.post(`${link}/user/readnoti`, {
-                userId: user._id
-            })
-        } catch (error) {
+                userId: user._id,
+            });
+            console.log("not", notifi);
+            setNotifaction([])
 
-        }
-    }
-    // console.log("Ss", notifaction)
-    // console.log(notifaction.notifaction.data.onclickPath);
+            // dispatch(stopLoading())
+        } catch (error) { }
+    };
 
-    let [categories] = useState({
-        Read: [
-            {
-                id: "s",
-                notifaction: notifaction,
-                // a: console.log(notifaction)
-            },
+    const handelAllReadRead = async () => {
+        try {
+            const dellAllnotifi = await axios.post(`${link}/user/deleteallnoti`, {
+                userId: user._id,
+            });
+            setseeNotifaction([])
+            console.log(dellAllnotifi);
+        } catch (error) { }
+    };
 
-        ],
-        UnRead: [
-            {
-                id: "sas"
+    useEffect(() => {
+        dispatch(isLoading())
+        const getadmin = async () => {
+
+            try {
+                const admin = await axios.get(`${link}/auth/getadmin`);
+                const notifi = admin.data.user;
+                setNotifaction(notifi?.notifaction || []);
+                setseeNotifaction(notifi?.seenotnotifaction)
+                dispatch(stopLoading())
+            } catch (error) {
+                console.error(error);
             }
-        ],
+        };
+
+        getadmin();
+    }, []);
+    console.log(seenotifaction);
 
 
-    })
+    useEffect(() => {
+        setCategories({
+            UnRead: [
+                {
+                    id: 's',
+                    notifaction: notifaction,
+                },
+            ],
+            Read: [
+                {
+                    notifaction: seenotifaction,
+                    delnoti: "Delete All Notification"
+                },
+            ],
+        });
+    }, [seenotifaction, notifaction])
+
+
+
+    // const handelRead = async () => {
+    //     try {
+    //         const notifi = await axios.post(`${link}/user/readnoti`, {
+    //             userId: user._id,
+    //         });
+    //     } catch (error) { }
+    // };
 
 
 
@@ -67,9 +102,7 @@ const Notification = () => {
                             className={({ selected }) =>
                                 classNames(
                                     classes.btns,
-                                    selected
-                                        ? classes.activebtn
-                                        : classes.btn
+                                    selected ? classes.activebtn : classes.btn
                                 )
                             }
                         >
@@ -79,33 +112,26 @@ const Notification = () => {
                 </Tab.List>
                 <Tab.Panels className={classes.warper}>
                     {Object.values(categories).map((posts, idx) => (
-                        <Tab.Panel
-                            key={idx}
-                            className={
-                                classes.active
-                            }
-                        >
+                        <Tab.Panel key={idx} className={classes.active}>
                             <ul>
-                                {posts && posts.map((post) => (
+                                {posts.map((post) => (
                                     <div>
-                                        {/* {post.notifactions?.map((val, idx) => {
-                                            return (
-                                                <ul>
+                                        {post.notifaction &&
+                                            post.notifaction.map((val, index) => (
+                                                <div key={index}>
                                                     <li>{val.data.name}</li>
-                                                    {console.log("sss", val)}
-                                                </ul>
-                                            )
-                                        })} */}
-                                        <div>
-                                            {/* {post.noti} */}sas
-                                        </div>
-                                        <li>{post.id}</li>
-                                        <li>{post.notifaction}</li>
 
-                                        <li>{console.log(post)}</li>
 
-                                        <li>{console.log("S", post.notifaction && post.notifaction)}</li>
-
+                                                </div>
+                                            ))}
+                                        {post.delnoti ?
+                                            <button
+                                                onClick={(event) => handelAllReadRead(event)}
+                                            >{post.delnoti}</button> :
+                                            <button
+                                                onClick={() => handelRead()}
+                                            >Mark All Read</button>
+                                        }
                                     </div>
                                 ))}
                             </ul>
@@ -114,7 +140,7 @@ const Notification = () => {
                 </Tab.Panels>
             </Tab.Group>
         </div>
-    )
-}
+    );
+};
 
-export default Notification
+export default Notification;

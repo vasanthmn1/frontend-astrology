@@ -14,7 +14,7 @@ function App() {
       dispatch(logoutuser())
     }
   }, [token])
-  console.log(token);
+  // console.log(token);
   return (
     <>
       <Layout />

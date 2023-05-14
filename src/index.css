@@ -7,3 +7,26 @@
     font-family: 'Poppins', sans-serif;
 }
 /* font-family: 'Philosopher', sans-serif; */
+
+
+
+
+/* ! admin header constom change css */
+
+.dropdown-toggle::after {
+    display: none !important;
+    background-color: red;
+  }
+  .dropdown-toggle{
+    outline: none;
+    border: transparent !important;
+  }
+
+  .btn.show{
+    border: transparent !important;
+  }
+#dropdown-basic{
+    /* width: 70px; */
+    
+}
+  /* ! admin header constom change css end    */

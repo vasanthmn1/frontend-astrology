@@ -3,7 +3,7 @@ import classes from './adminAppoinmentpage.module.css'
 const AdminAppoinmentpage = () => {
     return (
         <div>
-            AdminAppoinmentpage
+            AdminAppoinmentpage  &copy;
         </div>
     )
 }

@@ -13,9 +13,11 @@ const AdminSidbar = () => {
         const sidebar = document.querySelector(`.${classes.sidebar}`);
         if (sidebar) {
             sidebar.style.width = isDropdownOpen ? '80px' : '180px';
-        }
-    }
 
+        }
+
+    }
+    console.log(isDropdownOpen);
     const list = [
         {
             path: "/admin",
