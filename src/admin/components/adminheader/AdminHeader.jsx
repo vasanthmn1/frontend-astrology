@@ -28,6 +28,8 @@ const AdminHeader = () => {
 
         getAdmin();
     }, [user,])
+
+
     const getAdmin = async () => {
         try {
             const admin = await axios.get(`${link}/auth/getadmin`);
@@ -54,7 +56,7 @@ const AdminHeader = () => {
             console.log("not", notifi);
             navigator('/appoinment')
             // setNotifaction([])
-
+            window.location.reload()
             // dispatch(stopLoading())
         } catch (error) { }
     };
