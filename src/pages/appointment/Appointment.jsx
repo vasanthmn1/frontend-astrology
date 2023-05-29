@@ -21,7 +21,7 @@ const Appointment = () => {
         initialValues: {
 
             name: "",
-            email: "",
+            email: user.email,
             phone: "",
             address: "",
             times: "",
@@ -53,11 +53,11 @@ const Appointment = () => {
                 err.times = "required "
             }
 
-            if (!values.email) {
-                err.email = "Enter full email"
-            } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-                err.email = 'Invalid email address !!';
-            }
+            // if (!values.email) {
+            //     err.email = "Enter full email"
+            // } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+            //     err.email = 'Invalid email address !!';
+            // }
 
             return err
         },
@@ -127,17 +127,17 @@ const Appointment = () => {
                         <Col lg='4'>
                             <label >Email:</label>
                             <input
-                                className={
-                                    myFormik.errors.email && myFormik.touched.email ? classes.warinng : classes.success}
+                                // className={
+                                // myFormik.errors.email && myFormik.touched.email ? classes.warinng : classes.success}
                                 onBlur={myFormik.handleBlur}
                                 onChange={myFormik.handleChange}
                                 type='text'
-                                placeholder={myFormik.errors.email && myFormik.touched.email ? myFormik.errors.email : "Enter Full Email.."}
-
+                                // placeholder={myFormik.errors.email && myFormik.touched.email ? myFormik.errors.email : "Enter Full Email.."}
+                                disabled
                                 value={myFormik.values.email}
                                 name='email'
                             />
-                            <div className={classes.emailSpan}>  {myFormik.errors.email && myFormik.touched.email ? myFormik.errors.email : null} </div>
+                            {/* <div className={classes.emailSpan}>  {myFormik.errors.email && myFormik.touched.email ? myFormik.errors.email : null} </div> */}
 
                         </Col>
                         <Col lg='4'>
