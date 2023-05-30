@@ -49,7 +49,7 @@ const AdminAppoinmentpage = () => {
                 </section>
                 <section className={classes.table__body}>
                     <table>
-                        <thead>
+                        <thead className={classes.thead}>
                             <tr>
                                 <th>#  </th>
                                 <th>Name</th>
@@ -68,7 +68,7 @@ const AdminAppoinmentpage = () => {
 
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className={classes.tbody}>
 
                             {
                                 notifaction.notifaction?.map((val, idx) => {

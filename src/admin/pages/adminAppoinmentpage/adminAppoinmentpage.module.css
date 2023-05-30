@@ -112,7 +112,7 @@ table {
     width: 100%; */
 }
 
-thead th {
+.thead th {
     position: sticky;
     top: 0;
     left: 0;
@@ -122,21 +122,21 @@ thead th {
     color: #fff;
 }
 
-tbody tr:nth-child(even) {
+.tbody tr:nth-child(even) {
     background-color: #ff00cc0c ;
 }
 
-tbody tr {
+.tbody tr {
     --delay: .1s;
     transition: .5s ease-in-out var(--delay), background-color 0s;
 }
 
-tbody tr.hide {
+.tbody tr.hide {
     opacity: 0;
     transform: translateX(100%);
 }
 
-tbody tr:hover {
+.tbody tr:hover {
     background-color: #f848d5c7!important;
 }
 

@@ -33,72 +33,72 @@ const ClientNotification = () => {
     // updatedAt
     return (
         <Container>
-            <table>
-                <thead>
-                    <tr>
-                        <th>#  </th>
-                        <th>Name</th>
-                        <th>Date</th>
 
-                        <th>Time</th>
-                        <th>E-mail</th>
-                        <th> status </th>
-                        <th className={classes.actiontd} > Action </th>
+            {/* <thead className={classes.thead}> */}
+            <ul className={classes.ul}>
+                <li>#  </li>
+                <li>Name</li>
+                <li>Date</li>
+
+                <li>Time</li>
+                <li>E-mail</li>
+                <li> status </li>
+                <li className={classes.actiontd} > Action </li>
 
 
-                        {/* <th>Number</th>
+                {/* <th>Number</th>
                         <th>Message</th>
                         <th>action</th> */}
 
 
-                    </tr>
-                </thead>
-                <tbody></tbody>
-                {sameValues.length > 0 ?
-                    sameValues[0].notifaction?.map((val, idx) => (
-
-                        <tr key={idx} className={classes.notificationBox}>
-                            <td>{idx + 1}</td>
-                            <td className={classes.list}>
-                                {val.data.name}
-                            </td>
-                            <td>
-                                {moment(val.data.date).format("DD-MM-YYYY")}
-                            </td>
-                            <td>{val.data.times}</td>
-                            <td>{val.data.email}</td>
-
-                            <td>
-                                {
-                                    val.data.status == "Reject" ?
-                                        <button className='btn  btn-danger'>Reject</button> : val.data.status
-                                }
-
-                            </td>
-                            <td>
+            </ul>
 
 
-                                <button className='btn  btn-success me-5'>Approved</button>
+            {sameValues.length > 0 ?
+                sameValues[0].notifaction?.map((val, idx) => (
+
+                    <ul key={idx} className={classes.notificationBox}>
+                        <li>{idx + 1}</li>
+                        <li className={classes.list}>
+                            {val.data.name}
+                        </li>
+                        <li>
+                            {moment(val.data.date).format("DD-MM-YYYY")}
+                        </li>
+                        <li>{val.data.times}</li>
+                        <li>{val.data.email}</li>
+
+                        <li>
+                            {
+                                val.data.status == "Reject" ?
+                                    <button className='btn  btn-danger'>Reject</button> : val.data.status
+                            }
+
+                        </li>
+                        <li>
 
 
-                            </td>
-                            {/* <td ></td> */}
+                            <button className='btn  btn-success me-5'>Approved</button>
 
-                            {/* {val.data.userId} */}
-                            {/* <button
+
+                        </li>
+                        {/* <td ></td> */}
+
+                        {/* {val.data.userId} */}
+                        {/* <button
                         onClick={() => handeldel(val.data.userId)}
                     >
                         Del
                     </button> */}
 
 
-                        </tr>
+                    </ul>
 
-                    )) : <>
+                )) : <>
 
-                        <h1>HEllo</h1>
-                    </>}
-            </table>
+                    <h1>HEllo</h1>
+                </>}
+
         </Container>
     )
 }

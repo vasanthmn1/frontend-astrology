@@ -3,12 +3,36 @@
     background-color: rgba(255, 0, 0, 0.26);
     justify-content: space-between;
 }
-.ullist li{
-    list-style: none;
-    display: flex;
+.thead{
+    background-color: rgb(236, 63, 228);
+    color: #fff;
+    margin-top: 50px;
 }
 table, th, td {
     border-collapse: collapse;
     padding: 1rem;
     text-align: left;
+  
+}
+td{
+
+}
+/* .notificationBox {
+    background-color: rgb(235, 34, 34);
+    padding: 10px !important;
+    margin-top: 30px !important;
+} */
+.ul{
+    display: flex;
+    align-items: center;
+   justify-content: space-around;
+}
+.ul li{
+    list-style: none;
+}
+.notificationBox{
+    background-color: rgb(235, 34, 34);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
