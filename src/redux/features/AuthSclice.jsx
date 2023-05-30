@@ -9,6 +9,7 @@ const initialState = {
     token: token ? token : null,
     isLoading: false,
     isstopLoading: false,
+    getallusers: []
 
 }
 const AuthSlice = createSlice({
@@ -35,10 +36,15 @@ const AuthSlice = createSlice({
         },
         stopLoading: (state, action) => {
             state.isLoading = false
-        }
+        },
+        getalluser: (state, action) => {
+            state.isLoading = true
+            state.getallusers = action.payload
+
+        },
     }
 })
 
-export const { stopLoading, loginSuccess, loginSuccessToken, logoutuser, isLoading } = AuthSlice.actions
+export const { stopLoading, loginSuccess, loginSuccessToken, logoutuser, isLoading, getalluser } = AuthSlice.actions
 
 export default AuthSlice.reducer

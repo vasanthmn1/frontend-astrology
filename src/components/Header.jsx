@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 // import "./header.css";
 import { Badge, Container } from "react-bootstrap";
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa'
 import { MdOutlineExitToApp } from 'react-icons/md'
 import { AiOutlineBell } from 'react-icons/ai'
@@ -27,6 +27,7 @@ const Header = () => {
     const headerRef = useRef(null)
     const { user } = useSelector((state) => state.auth)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     useEffect(() => {
         window.addEventListener('scroll', () => {
             if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
@@ -90,12 +91,16 @@ const Header = () => {
                                 <>
 
                                     <div className={classes.notification}>
-                                        <AiOutlineBell className={classes.logout} />
-                                        <Badge bg="danger" className={classes.badge}>9</Badge>
+                                        <Link to='notifiction'>
+                                            <AiOutlineBell className={classes.logout} />
+                                            <Badge bg="danger" className={classes.badge}>9</Badge>
+                                        </Link>
+
                                     </div>
                                     <MdOutlineExitToApp
                                         onClick={() => {
                                             dispatch(logoutuser())
+                                            navigate('/')
                                         }}
                                         title="logout" className={classes.logout} />
                                 </> : null

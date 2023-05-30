@@ -93,11 +93,7 @@ table {
 
 
 
-table, th, td {
-    border-collapse: collapse;
-    padding: 1rem;
-    text-align: left;
-}
+
 
 .time {
     padding: 0;

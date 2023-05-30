@@ -68,9 +68,7 @@ const Login = () => {
             }
         }
     })
-    // useEffect(() => {
 
-    // }, [user])
     return (
         <div className={classes.container}>
             <ToastContainer />

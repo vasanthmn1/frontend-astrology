@@ -13,6 +13,7 @@ import AdminPortal from '../admin/pages/adminPortal/AdminPortal'
 import AdminAppoinmentpage from '../admin/pages/adminAppoinmentpage/AdminAppoinmentpage'
 import Appointment from '../pages/appointment/Appointment'
 import Notification from '../admin/pages/notification/Notification'
+import ClientNotification from '../pages/notification/ClientNotification'
 
 const ClientRoutes = () => {
     const { user, token, isLoading } = useSelector((state) => state.auth)
@@ -40,6 +41,8 @@ const ClientRoutes = () => {
                             <Route path='home' element={<Home />} />
                             {/* <Route path='appointment' element={<Appoi />} /> */}
                             <Route path='/appointment' element={<Appointment />} />
+                            <Route path='/notifiction' element={<ClientNotification />} />
+
 
 
                         </Route>
