@@ -1,65 +1,22 @@
 
 
 .container{
-    /* display: flex;
+    display: flex;
     justify-content: center;
-    align-items: center; */
-  
+    align-items: center;
 }
 
 main.table {
-    width: 100%;
+    width: 82vw;
     height: 90vh;
     background-color: #fff5;
 
     backdrop-filter: blur(7px);
+    box-shadow: 0 .4rem .8rem #0005;
+    border-radius: .8rem;
+margin-top: 50px;
     overflow: hidden;
 }
-
-.table__header {
-    width: 100%;
-    height: 10%;
-    background-color: #fff4;
-    padding: .8rem 1rem;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.table__header .input-group {
-    width: 35%;
-    height: 100%;
-    background-color: #fff5;
-    padding: 0 .8rem;
-    border-radius: 2rem;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    transition: .2s;
-}
-
-.table__header .input-group:hover {
-    width: 45%;
-    background-color: #fff8;
-    box-shadow: 0 .1rem .4rem #0002;
-}
-
-.table__header .input-group img {
-    width: 1.2rem;
-    height: 1.2rem;
-}
-
-.table__header .input-group input {
-    width: 100%;
-    padding: 0 .5rem 0 .3rem;
-    background-color: transparent;
-    border: none;
-    outline: none;
-}
-
 .table__body {
     width: 95%;
     max-height: calc(89% - 1.6rem);
@@ -93,7 +50,11 @@ table {
 
 
 
-
+table, th, td {
+    border-collapse: collapse;
+    padding: 1rem;
+    text-align: left;
+}
 
 .time {
     padding: 0;
@@ -112,32 +73,32 @@ table {
     width: 100%; */
 }
 
-.thead th {
+thead th {
     position: sticky;
     top: 0;
     left: 0;
-    background-color: #8B1874 ;
+    background-color: #8B1874;
     cursor: pointer;
     text-transform: capitalize;
     color: #fff;
 }
 
-.tbody tr:nth-child(even) {
-    background-color: #ff00cc0c ;
+tbody tr:nth-child(even) {
+    background-color: #8b18742d;
 }
 
-.tbody tr {
+tbody tr {
     --delay: .1s;
     transition: .5s ease-in-out var(--delay), background-color 0s;
 }
 
-.tbody tr.hide {
+tbody tr.hide {
     opacity: 0;
     transform: translateX(100%);
 }
 
-.tbody tr:hover {
-    background-color: #f848d5c7!important;
+tbody tr:hover {
+    background-color: #fff6 !important;
 }
 
 .delbtn{
@@ -147,7 +108,4 @@ table {
     color: #fff;
     width: 70px ;
     cursor: pointer;
-}
-.actiontd{
-    padding-left: 110px;
 }

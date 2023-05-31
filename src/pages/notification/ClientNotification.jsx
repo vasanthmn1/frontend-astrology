@@ -34,72 +34,74 @@ const ClientNotification = () => {
     return (
         <Container>
 
-            {/* <thead className={classes.thead}> */}
-            <ul className={classes.ul}>
-                <li>#  </li>
-                <li>Name</li>
-                <li>Date</li>
-
-                <li>Time</li>
-                <li>E-mail</li>
-                <li> status </li>
-                <li className={classes.actiontd} > Action </li>
+            <main className={classes.table}>
+                <section className={classes.table__header}>
 
 
-                {/* <th>Number</th>
+                </section>
+                <section className={classes.table__body}>
+                    <table>
+                        <thead className={classes.thead}>
+                            <tr>
+                                <th>#  </th>
+                                <th>Name</th>
+                                <th>Date</th>
+
+                                <th>Time</th>
+                                <th>E-mail</th>
+                                <th className={classes.statusntd}> status </th>
+
+
+                                {/* <th>Number</th>
                         <th>Message</th>
                         <th>action</th> */}
 
 
-            </ul>
+                            </tr>
+                        </thead>
+                        <tbody className={classes.tbody}>
+
+                            {sameValues.length > 0 ?
+                                sameValues[0].notifaction?.map((val, idx) => (
 
 
-            {sameValues.length > 0 ?
-                sameValues[0].notifaction?.map((val, idx) => (
-
-                    <ul key={idx} className={classes.notificationBox}>
-                        <li>{idx + 1}</li>
-                        <li className={classes.list}>
-                            {val.data.name}
-                        </li>
-                        <li>
-                            {moment(val.data.date).format("DD-MM-YYYY")}
-                        </li>
-                        <li>{val.data.times}</li>
-                        <li>{val.data.email}</li>
-
-                        <li>
-                            {
-                                val.data.status == "Reject" ?
-                                    <button className='btn  btn-danger'>Reject</button> : val.data.status
-                            }
-
-                        </li>
-                        <li>
+                                    <tr key={idx} className={classes.notificationBox}>
+                                        <td>{idx + 1}</td>
+                                        <td className={classes.list}>{val.data.name} </td><td>
+                                            {moment(val.data.date).format("DD-MM-YYYY")}
+                                        </td>
+                                        <td>{val.data.times}</td>
+                                        <td>{val.data.email}</td>
+                                        {val.data.status === "Reject" ? (
+                                            <td className={classes.rejected}><button>{val.data.status}</button></td>
+                                        ) : val.data.status === "pending" ? (
+                                            <td className={classes.pending}><button>{val.data.status}</button></td>
+                                        ) : (
+                                            <td className={classes.success}>{val.data.status}</td>
+                                        )}
 
 
-                            <button className='btn  btn-success me-5'>Approved</button>
 
 
-                        </li>
-                        {/* <td ></td> */}
-
-                        {/* {val.data.userId} */}
-                        {/* <button
-                        onClick={() => handeldel(val.data.userId)}
-                    >
-                        Del
-                    </button> */}
 
 
-                    </ul>
 
-                )) : <>
 
-                    <h1>HEllo</h1>
-                </>}
+                                    </tr>
 
-        </Container>
+
+                                )) : <>
+
+                                    <h1>HEllo</h1>
+                                </>}
+                        </tbody>
+
+
+                    </table>
+                </section>
+            </main>
+
+        </Container >
     )
 }
 

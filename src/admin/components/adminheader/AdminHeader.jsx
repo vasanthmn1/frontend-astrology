@@ -18,14 +18,6 @@ const AdminHeader = () => {
     console.log(notifaction.notifaction);
 
     useEffect(() => {
-        // const getadmin = async () => {
-        //     const admin = await axios.get(`${link}/auth/getadmin`)
-        //     setNotifaction(admin.data.user)
-        // }
-        // getadmin()
-
-
-
         getAdmin();
     }, [user,])
 
@@ -35,29 +27,22 @@ const AdminHeader = () => {
             const admin = await axios.get(`${link}/auth/getadmin`);
             const notifi = admin.data.user;
             console.log(notifi);
-            // if (Array.isArray(notifi)) {
             setNotifaction(notifi);
-            // } else {
-            //     setNotifaction([]);
-            // }
-
-            // setseeNotifaction(notifi?.seenotnotifaction);
-            // dispatch(stopLoading());
         } catch (error) {
             console.error(error);
         }
     };
     const handelRead = async () => {
-        // dispatch(isLoading())
+
         try {
             const notifi = await axios.post(`${link}/user/readnoti`, {
                 userId: user._id,
             });
             console.log("not", notifi);
             navigator('/appoinment')
-            // setNotifaction([])
+
             window.location.reload()
-            // dispatch(stopLoading())
+
         } catch (error) { }
     };
 
@@ -67,13 +52,13 @@ const AdminHeader = () => {
         <div>
             <nav className={classes.navbar}>
                 <Link className="navbar-brand" to="/">
-                    {/* <img src={logo} alt="Logo" /> */}
+
                     Logo
                 </Link>
                 <div className={classes.user_profile}>
 
                     <div className={classes.notification} onClick={() => {
-                        // navigator('/notification')
+
 
                     }}>
                         <Dropdown>
@@ -93,20 +78,17 @@ const AdminHeader = () => {
                                             notifaction.notifaction && notifaction.notifaction.map((val, idx) => {
                                                 return (
                                                     <div key={idx}>
-                                                        {/* <Link to='/appoinment'> */}
+
                                                         <Dropdown.Item
                                                             onClick={() => handelRead()}
 
                                                         >{val.data.email}</Dropdown.Item>
-                                                        {/* </Link> */}
 
                                                     </div>
                                                 )
                                             })
                                         }
-                                        {/* <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-    <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-    <Dropdown.Item href="#/action-3">Something else</Dropdown.Item> */}
+
                                     </Dropdown.Menu>
 
                                     : null
@@ -116,7 +98,7 @@ const AdminHeader = () => {
 
                     </div>
                     <div>
-                        {/* <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200" alt="Profile" /> */}
+
                         <span>{user.username}</span>
                     </div>
                 </div>

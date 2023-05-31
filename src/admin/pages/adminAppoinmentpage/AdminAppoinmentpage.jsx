@@ -34,10 +34,16 @@ const AdminAppoinmentpage = () => {
             console.error(error);
         }
     };
-    const handeldel = async (val) => {
-        const admin = await axios.delete(`${link}/user/deleteallnoti`, val);
-        console.log(admin);
-        console.log(val);
+    const handeldel = async (id) => {
+        try {
+            const admin = await axios.delete(`${link}/user/delnotifications/${id}`);
+            console.log(admin);
+            getAdmin()
+        } catch (error) {
+            console.log(error);
+        }
+
+        // getAdmin()
     }
     return (
         <div className={classes.container}>
@@ -59,7 +65,7 @@ const AdminAppoinmentpage = () => {
                                 <th>E-mail</th>
                                 <th> status </th>
                                 <th className={classes.actiontd} > Action </th>
-                                <th  >  </th>
+
 
                                 {/* <th>Number</th>
                         <th>Message</th>
@@ -83,17 +89,10 @@ const AdminAppoinmentpage = () => {
 
                                             <td>{val.data.status}</td>
                                             <td><button className='btn  btn-success me-5'>Approved</button>
-                                                <button className='btn  btn-danger'>Reject</button>
+                                                <button className='btn  btn-danger' onClick={() => handeldel(val.data.userId)}>Reject</button>
 
                                             </td>
-                                            {/* <td ></td> */}
 
-                                            {/* {val.data.userId} */}
-                                            {/* <button
-                                        onClick={() => handeldel(val.data.userId)}
-                                    >
-                                        Del
-                                    </button> */}
 
 
                                         </tr>
