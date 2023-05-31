@@ -109,3 +109,70 @@ tbody tr:hover {
     width: 70px ;
     cursor: pointer;
 }
+
+
+
+
+.Appoverd button{
+    cursor:auto;
+    border:none;
+    padding: 5px 10px;
+    background-color: rgb(126, 126, 126);
+    color: #37ff05;
+    border-radius: 5px;
+}
+.pending button{
+    cursor:auto;
+    border:none;
+    padding: 5px 10px;
+    background-color: rgba(126, 126, 126, 0.493);
+    color: #e6ff05;
+    border-radius: 5px;
+}
+
+/* del pop */
+
+
+.logoutbox{
+    padding: 30px;
+  }
+  .logoutbox h5{
+text-align: center;
+  }
+  .logoutbtn{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px;
+    align-items: center;
+margin-top: 20px;
+  }
+.logoutDel{
+    background-color: rgba(255, 2, 2, 0.733);
+    padding: 10px 20px;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 40px;
+}
+.logoutDel:hover{
+    background-color: red;
+}
+.logoutChannel{
+    cursor: pointer;
+    color: #fff;
+
+    background-color: rgba(132, 145, 209, 0.634);
+    padding: 10px 20px;
+}
+.logoutChannel:hover{
+    cursor: pointer;
+    color: #fff;
+
+    background-color: rgb(132, 145, 209);
+    padding: 10px 20px;
+}
+
+.descbox{
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 10px 10px;
+}

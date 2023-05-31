@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { isLoading, loginSuccess, loginSuccessToken, stopLoading } from '../../redux/features/AuthSclice'
+import { isLoading, stopLoading } from '../../redux/features/AuthSclice'
 import { Col, Row } from 'react-bootstrap'
 const Appointment = () => {
 

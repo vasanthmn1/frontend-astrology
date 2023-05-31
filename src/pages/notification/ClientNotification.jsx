@@ -75,18 +75,10 @@ const ClientNotification = () => {
                                         {val.data.status === "Reject" ? (
                                             <td className={classes.rejected}><button>{val.data.status}</button></td>
                                         ) : val.data.status === "pending" ? (
-                                            <td className={classes.pending}><button>{val.data.status}</button></td>
+                                            <td className={classes.pending}><button>{val.data.status}...</button></td>
                                         ) : (
-                                            <td className={classes.success}>{val.data.status}</td>
+                                            <td className={classes.success}><button>{val.data.status}</button></td>
                                         )}
-
-
-
-
-
-
-
-
                                     </tr>
 
 

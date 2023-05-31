@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import './adminHeader.css'
 import classes from './adminHeader.module.css'
 import { AiOutlineBell } from 'react-icons/ai'
 import { Badge } from 'react-bootstrap'
@@ -35,10 +34,10 @@ const AdminHeader = () => {
     const handelRead = async () => {
 
         try {
-            const notifi = await axios.post(`${link}/user/readnoti`, {
-                userId: user._id,
-            });
-            console.log("not", notifi);
+            // const notifi = await axios.post(`${link}/user/readnoti`, {
+            //     userId: user._id,
+            // });
+            // console.log("not", notifi);
             navigator('/appoinment')
 
             window.location.reload()
@@ -63,14 +62,14 @@ const AdminHeader = () => {
                     }}>
                         <Dropdown>
                             <Dropdown.Toggle variant="" id="dropdown-basic" >
-                                <AiOutlineBell className={classes.logout} />
+                                <AiOutlineBell className={classes.logout} onClick={() => handelRead()} />
                                 <span className={classes.badge}
 
                                 >
                                     {notifaction.notifaction?.length}
                                 </span>
                             </Dropdown.Toggle>
-                            {
+                            {/* {
                                 notifaction.notifaction?.length >= 1 ?
                                     <Dropdown.Menu>
 
@@ -92,7 +91,7 @@ const AdminHeader = () => {
                                     </Dropdown.Menu>
 
                                     : null
-                            }
+                            } */}
 
                         </Dropdown>
 

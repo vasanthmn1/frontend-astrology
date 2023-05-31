@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import classes from './adminSidebar.module.css'
 import { Link, NavLink } from 'react-router-dom'
 import { FcCdLogo } from 'react-icons/fc'
-import { AiOutlineUserAdd } from 'react-icons/ai'
+import { AiFillHome, AiOutlineUserAdd } from 'react-icons/ai'
 
 
 const AdminSidbar = () => {
@@ -22,7 +22,7 @@ const AdminSidbar = () => {
         {
             path: "/admin",
             title: 'home',
-            icon: <FcCdLogo />
+            icon: <AiFillHome />
         },
         {
             path: "/appoinment",

@@ -139,3 +139,14 @@ border: 1px solid rgb(247, 0, 0);
     background: rgba(247, 231, 0, 0.234);
 border: 1px solid rgb(247, 218, 0);
 }
+.success button{
+    padding: 10px 20px ;
+    border: none;
+    border-radius:100% 0% 2% 98% / 50% 49% 51% 50%;
+    color: #6e744a;
+    
+    cursor: auto;
+    background: rgba(54, 255, 4, 0.234);
+border: 1px solid rgb(50, 252, 0);
+
+}
