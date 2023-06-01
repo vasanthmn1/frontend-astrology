@@ -10,6 +10,7 @@ import { AiOutlineBell } from 'react-icons/ai'
 import classes from './header.module.css'
 import { useDispatch, useSelector } from "react-redux";
 import { logoutuser } from "../redux/features/AuthSclice";
+import logo from '../../assets/logo.png';
 const NAV_LINKS = [
     {
         url: "/home",
@@ -54,7 +55,7 @@ const Header = () => {
             <div className={classes.conatiner}>
                 <div className={classes.navigation} >
                     <div className={classes.logo}>
-                        s
+                        <img src={logo} />
                     </div>
                     <div className={classes.nav_right}>
                         <div className={classes.nav_menu} ref={menuRef} onClick={toggleMenu}>
