@@ -150,3 +150,11 @@ border: 1px solid rgb(247, 218, 0);
 border: 1px solid rgb(50, 252, 0);
 
 }
+.deletebtn{
+    cursor: pointer;
+    color: red;
+    position: relative;
+    display: inline-block;
+   font-size: 2rem;
+}
+
