@@ -15,9 +15,7 @@ const AdminAppoinmentpage = () => {
     const [pop, SetPop] = useState(false)
 
     const dispatch = useDispatch()
-    const load = useSelector((state) => state.auth)
-    console.log(load.isLoading);
-    console.log(notifaction.notifaction);
+
     const [isDataFetched, setIsDataFetched] = useState(false);
     useEffect(() => {
         if (!isDataFetched) {
@@ -25,7 +23,6 @@ const AdminAppoinmentpage = () => {
         }
 
     }, [isDataFetched])
-    console.log(notifaction);
 
     const getAdmin = async () => {
         try {
@@ -73,7 +70,7 @@ const AdminAppoinmentpage = () => {
                     <table>
                         <thead className={classes.thead}>
                             <tr>
-                                <th>#  </th>
+                                <th>#</th>
                                 <th>Name</th>
                                 <th>Date</th>
 

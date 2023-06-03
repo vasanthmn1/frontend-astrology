@@ -1,0 +1,23 @@
+
+.warper{
+    /* display: flex; */
+    background-color: gray;
+    margin-bottom: 10px;
+    padding: 10px;
+    margin: 30px 10px;
+}
+
+
+.image{
+width: 200px;
+display: flex;
+}
+.image img{
+    width: 50%;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+}
+.container{
+    margin: 30px 50px;
+
+}

@@ -13,9 +13,6 @@ const AdminHeader = () => {
     const navigator = useNavigate()
     const [notifaction, setNotifaction] = useState([])
 
-    const dispatch = useDispatch()
-    console.log(notifaction.notifaction);
-
     useEffect(() => {
         getAdmin();
     }, [user,])
@@ -25,7 +22,7 @@ const AdminHeader = () => {
         try {
             const admin = await axios.get(`${link}/auth/getadmin`);
             const notifi = admin.data.user;
-            console.log(notifi);
+
             setNotifaction(notifi);
         } catch (error) {
             console.error(error);

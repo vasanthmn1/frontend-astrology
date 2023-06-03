@@ -108,11 +108,11 @@ const Appointment = () => {
                 <h4> Login</h4>
                 <form className={classes.form} onSubmit={myFormik.handleSubmit}>
                     <Row>
-                        <Col lg='4'>
+                        <Col lg='4' className={classes.box}>
                             <label >Name:</label>
                             <input
                                 className={
-                                    myFormik.errors.name && myFormik.touched.name ? classes.warinng : classes.success}
+                                    myFormik.errors.name && myFormik.touched.name ? classes.warinng : classes.success || classes.box}
                                 onBlur={myFormik.handleBlur}
                                 onChange={myFormik.handleChange}
                                 type='text'
@@ -124,7 +124,7 @@ const Appointment = () => {
                             <div className={classes.emailSpan}>  {myFormik.errors.name && myFormik.touched.name ? myFormik.errors.name : null} </div>
 
                         </Col>
-                        <Col lg='4'>
+                        <Col lg='4' className={classes.box}>
                             <label >Email:</label>
                             <input
                                 // className={
@@ -140,7 +140,7 @@ const Appointment = () => {
                             {/* <div className={classes.emailSpan}>  {myFormik.errors.email && myFormik.touched.email ? myFormik.errors.email : null} </div> */}
 
                         </Col>
-                        <Col lg='4'>
+                        <Col lg='4' className={classes.box}>
                             <label >Phone:</label>
                             <input
                                 className={
@@ -156,7 +156,7 @@ const Appointment = () => {
                             <div className={classes.emailSpan}>  {myFormik.errors.phone && myFormik.touched.phone ? myFormik.errors.phone : null} </div>
 
                         </Col>
-                        <Col lg='8'>
+                        <Col lg='8' className={classes.textarea}>
                             <label >Address:</label>
                             <textarea
                                 className={

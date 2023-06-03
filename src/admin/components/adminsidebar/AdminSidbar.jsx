@@ -3,6 +3,8 @@ import classes from './adminSidebar.module.css'
 import { Link, NavLink } from 'react-router-dom'
 import { FcCdLogo } from 'react-icons/fc'
 import { AiFillHome, AiOutlineUserAdd } from 'react-icons/ai'
+import { TbZodiacLibra } from 'react-icons/tb'
+
 
 
 const AdminSidbar = () => {
@@ -28,6 +30,16 @@ const AdminSidbar = () => {
             path: "/appoinment",
             title: 'Appoimenns',
             icon: < AiOutlineUserAdd />
+        },
+        {
+            path: "/zodiac",
+            title: 'Zodiac',
+            icon: < TbZodiacLibra />
+        },
+        {
+            path: "/zodiaclist",
+            title: 'Zodiac',
+            icon: < TbZodiacLibra />
         },
     ]
 

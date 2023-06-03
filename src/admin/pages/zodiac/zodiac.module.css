@@ -1,0 +1,52 @@
+.Container{
+    padding: 40px 40px;
+}
+.imagebox {
+width: 600px;
+}
+.imagebox img{
+width: 70%;
+aspect-ratio: 3/2;
+object-fit: contain;
+/* mix-blend-mode: color-dodge; */
+}
+.imageinput{
+    display: flex;
+        margin-top: 20px;
+}
+.imageinput label{
+    color: #7e1453;
+    border: none;
+}
+.addimgIcon{
+    color: #7e1453;
+
+    font-size: 2rem;
+}
+.fileInput span{
+    color: gray;
+}
+.input{
+    width: 250px;
+}
+
+.input textarea{
+    width: 400px;
+    height: 100px;
+    border-radius: 5px;
+    border: 2px solid gray;
+}
+.sumitbtn{
+    background-color: #B71375;
+    color: #fff;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    transition: 0.2s ease-in-out all;
+}
+.sumitbtn:hover{
+   transform: scale(0.9);
+   border-radius: 2px;
+   background-color: #7e1453;
+
+}

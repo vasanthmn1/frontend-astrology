@@ -7,26 +7,31 @@ import Login from '../pages/login/Login'
 import Register from '../pages/register/Register'
 import { useSelector } from 'react-redux'
 import Spiner from '../components/spiner/Spiner'
-import AdminHome from '../admin/pages/AdminHome'
+import AdminHome from '../admin/pages/home/AdminHome'
 
 import AdminPortal from '../admin/pages/adminPortal/AdminPortal'
 import AdminAppoinmentpage from '../admin/pages/adminAppoinmentpage/AdminAppoinmentpage'
 import Appointment from '../pages/appointment/Appointment'
 import Notification from '../admin/pages/notification/Notification'
 import ClientNotification from '../pages/notification/ClientNotification'
+import Zodiac from '../admin/pages/zodiac/Zodiac'
+import ZodiacList from '../admin/pages/zodiacList/ZodiacList'
 
 const ClientRoutes = () => {
     const { user, token, isLoading } = useSelector((state) => state.auth)
+    const { postLoading } = useSelector((state) => state.zodiac)
+
     console.log(user && user[0]?.isAdmin || user && user.isAdmin);
     return (
         <div>
 
             {
-                isLoading && <Spiner />
+                isLoading && <Spiner /> || postLoading && <Spiner />
+
             }
 
             <Routes>
-
+                {/* zodiaclist */}
                 {
                     user && user[0]?.isAdmin || user && user?.isAdmin ?
                         <Route path='/' element={<AdminPortal />}>
@@ -34,6 +39,9 @@ const ClientRoutes = () => {
                             <Route path='admin' element={<AdminHome />} />
                             <Route path='appoinment' element={<AdminAppoinmentpage />} />
                             <Route path='/notification' element={<Notification />} />
+                            <Route path='/zodiac' element={<Zodiac />} />
+                            <Route path='/zodiaclist' element={<ZodiacList />} />
+
                         </Route>
                         :
                         <Route path='/' element={<Portal />}>
@@ -42,6 +50,8 @@ const ClientRoutes = () => {
                             {/* <Route path='appointment' element={<Appoi />} /> */}
                             <Route path='/appointment' element={<Appointment />} />
                             <Route path='/notifiction' element={<ClientNotification />} />
+
+
 
 
 
