@@ -1,22 +1,44 @@
 import React, { useState } from 'react'
-import classes from './zodiac.module.css'
+import classes from './zodiacEdit.module.css'
+
 import { Col, Container, Row } from 'react-bootstrap'
 import { BiImageAdd, BiShapePolygon } from 'react-icons/bi'
 import { useFormik } from 'formik'
 import axios from 'axios'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import ZodiacPosts from '../../components/zodiacposts/ZodiacPosts'
 import { useEffect } from 'react'
-const Zodiac = () => {
+import { useNavigate, useParams } from 'react-router-dom'
+import { isLoading, stopLoading } from '../../../redux/features/ZodiacSlice'
+const ZodiacEdit = () => {
 
     const { link } = useSelector((state) => state.link)
     const { user } = useSelector((state) => state.auth)
+    const navigate = useNavigate()
+    const params = useParams()
+    const dispatch = useDispatch()
 
+    useEffect(() => {
+        Getuser()
+    }, [])
 
+    const Getuser = async () => {
+        try {
+            // dispatch(isLoading())
+            let get = await axios.get(`${link}/zodiac/get/${params.id}`)
+            dispatch(stopLoading())
+            myFormik.setValues(get.data)
+            console.log(get.data);
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
 
     let myFormik = useFormik({
         initialValues: {
-
+            _id: "",
+            poto: "",
             title: "",
             desc: "",
             date: "",
@@ -24,9 +46,6 @@ const Zodiac = () => {
         },
         validate: (values) => {
             let err = {}
-
-
-
             if (!values.title) {
                 err.title = "Enter Title in Your blog "
             }
@@ -66,11 +85,14 @@ const Zodiac = () => {
                 } catch (err) { }
             }
             try {
-                // setisLoding(true)
-                const res = await axios.post(`${link}/zodiac/create`, values);
+                dispatch(isLoading())
+                const res = await axios.put(`${link}/zodiac/edit/${myFormik.values._id}`, values);
                 console.log(res)
-                // window.location.replace("/post/" + res.data._id);
-            } catch (err) { }
+                dispatch(stopLoading())
+
+                navigate('/zodiaclist')
+
+            } catch (err) { console.log(err) }
 
         }
     })
@@ -88,10 +110,12 @@ const Zodiac = () => {
             <Row>
                 <Col lg='6'>
                     <div className={classes.imagebox}>
-                        {myFormik.values.file && (
-                            <img className={""} src={URL.createObjectURL(myFormik.values.file)} alt="" />
-                        )}
-                        {/* <img src='https://img.freepik.com/free-vector/gradient-zodiac-sign-collection_23-2148988174.jpg?size=626&ext=jpg' /> */}
+                        {myFormik.values.file ? (
+                            <>
+
+                                <img className={""} src={URL.createObjectURL(myFormik.values.file)} alt="" />
+                            </>
+                        ) : <img src={`${link}/images/${myFormik.values.poto}`} />}
                     </div>
                     <form onSubmit={myFormik.handleSubmit}>
                         <div className={classes.imageinput}>
@@ -99,6 +123,7 @@ const Zodiac = () => {
                                 <BiImageAdd className={classes.addimgIcon} />
                                 <span> Choose File</span>
                             </label>
+                            {/* {console.log(myFormik.values.poto)} */}
 
                             <input
                                 style={{ display: 'none' }}
@@ -131,7 +156,7 @@ const Zodiac = () => {
                                 name='desc'
                                 onBlur={myFormik.handleBlur}
                                 onChange={myFormik.handleChange}
-
+                                value={myFormik.values.desc}
                                 type='text' />
                         </div>
                         <div className={classes.input}>
@@ -163,5 +188,5 @@ const Zodiac = () => {
     )
 }
 
-export default Zodiac
+export default ZodiacEdit
 

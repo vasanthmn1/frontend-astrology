@@ -16,6 +16,7 @@ import Notification from '../admin/pages/notification/Notification'
 import ClientNotification from '../pages/notification/ClientNotification'
 import Zodiac from '../admin/pages/zodiac/Zodiac'
 import ZodiacList from '../admin/pages/zodiacList/ZodiacList'
+import ZodiacEdit from '../admin/pages/zodiacEdit/ZodiacEdit'
 
 const ClientRoutes = () => {
     const { user, token, isLoading } = useSelector((state) => state.auth)
@@ -41,6 +42,7 @@ const ClientRoutes = () => {
                             <Route path='/notification' element={<Notification />} />
                             <Route path='/zodiac' element={<Zodiac />} />
                             <Route path='/zodiaclist' element={<ZodiacList />} />
+                            <Route path='/zodiaedit/:id' element={<ZodiacEdit />} />
 
                         </Route>
                         :
