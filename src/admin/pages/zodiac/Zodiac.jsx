@@ -7,12 +7,13 @@ import axios from 'axios'
 import { useSelector } from 'react-redux'
 import ZodiacPosts from '../../components/zodiacposts/ZodiacPosts'
 import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 const Zodiac = () => {
 
     const { link } = useSelector((state) => state.link)
     const { user } = useSelector((state) => state.auth)
 
-
+    const navigate = useNavigate()
 
     let myFormik = useFormik({
         initialValues: {
@@ -30,18 +31,17 @@ const Zodiac = () => {
             if (!values.title) {
                 err.title = "Enter Title in Your blog "
             }
-            // if (values.title.length < 5) {
-            //     err.title = "minumam 5 letters "
-            // }
-
-            // if (!values.desc) {
-            //     err.desc = "Fill the description "
-            // }
-            // if (values.desc.length < 25) {
-            //     err.desc = "minumam 25 letters "
-            // }
+            if (values.title.length > 15) {
+                err.title = "maximum 15 leater "
+            }
+            if (!values.desc) {
+                err.desc = "Enter Description "
+            }
+            if (!values.date) {
+                err.date = "Enter Date "
+            }
             if (!values.file) {
-                err.file = "Upload one image in Your Blog"
+                err.file = "Upload one image "
             }
 
             return err
@@ -66,22 +66,16 @@ const Zodiac = () => {
                 } catch (err) { }
             }
             try {
-                // setisLoding(true)
+
                 const res = await axios.post(`${link}/zodiac/create`, values);
-                console.log(res)
-                // window.location.replace("/post/" + res.data._id);
+                navigate('/zodiaclist')
+
             } catch (err) { }
 
         }
     })
     // const [posts, SetPosts] = useState([])
-    // useEffect(() => {
-    //     getposts()
-    // }, [])
-    // const getposts = async () => {
-    //     const res = await axios.get(`${link}/zodiac/get`);
 
-    // }
 
     return (
         <div className={classes.Container}>
@@ -91,15 +85,13 @@ const Zodiac = () => {
                         {myFormik.values.file && (
                             <img className={""} src={URL.createObjectURL(myFormik.values.file)} alt="" />
                         )}
-                        {/* <img src='https://img.freepik.com/free-vector/gradient-zodiac-sign-collection_23-2148988174.jpg?size=626&ext=jpg' /> */}
                     </div>
                     <form onSubmit={myFormik.handleSubmit}>
-                        <div className={classes.imageinput}>
+                        <div className={classes.imageinput} style={{ display: "block" }}>
                             <label htmlFor='fileInput'>'
                                 <BiImageAdd className={classes.addimgIcon} />
                                 <span> Choose File</span>
                             </label>
-
                             <input
                                 style={{ display: 'none' }}
                                 name='file'
@@ -111,6 +103,9 @@ const Zodiac = () => {
                                     myFormik.setFieldValue('file', e.currentTarget.files[0])}
                                 autoFocus={true}
                             />
+                            <div className={classes.Spanerr}>    {myFormik.errors.file && myFormik.touched.file ? myFormik.errors.file : null} </div>
+
+
                         </div>
                         <div className={classes.input}>
                             <label>Title</label>
@@ -121,9 +116,11 @@ const Zodiac = () => {
                                 type='text'
                                 name='title'
                                 value={myFormik.values.title}
-
+                                className={
+                                    myFormik.errors.title && myFormik.touched.title ? classes.warinng : classes.success}
                                 placeholder="Title"
                             />
+                            <span className={classes.Spanerr}>  {myFormik.errors.title && myFormik.touched.title ? myFormik.errors.title : null} </span>
                         </div>
                         <div className={classes.input}>
                             <label>Description</label>
@@ -131,8 +128,11 @@ const Zodiac = () => {
                                 name='desc'
                                 onBlur={myFormik.handleBlur}
                                 onChange={myFormik.handleChange}
-
+                                className={
+                                    myFormik.errors.desc && myFormik.touched.desc ? classes.descwarinng : classes.descsuccess}
                                 type='text' />
+                            <span className={classes.Spanerr}>  {myFormik.errors.desc && myFormik.touched.desc ? myFormik.errors.desc : null} </span>
+
                         </div>
                         <div className={classes.input}>
                             <input
@@ -140,17 +140,12 @@ const Zodiac = () => {
                                 onBlur={myFormik.handleBlur}
                                 onChange={myFormik.handleChange}
                                 value={myFormik.values.date}
-
-
-                                // onBlur={myFormik.handleBlur}
-                                // onChange={myFormik.handleChange}
-                                // value={myFormik.values.date}
-
+                                className={
+                                    myFormik.errors.date && myFormik.touched.date ? classes.warinng : classes.success}
                                 name='date'
-                            // className={
-                            //     myFormik.errors.date && myFormik.touched.date ? classes.warinng : classes.success}
-
                             />
+                            <span className={classes.Spanerr}>  {myFormik.errors.date && myFormik.touched.date ? myFormik.errors.date : null} </span>
+
                         </div>
                         <button type='submit' className={classes.sumitbtn}>Sumit</button>
                     </form>

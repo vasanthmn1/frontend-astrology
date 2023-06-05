@@ -13,10 +13,12 @@ object-fit: contain;
 .imageinput{
     display: flex;
         margin-top: 20px;
+       
 }
 .imageinput label{
     color: #7e1453;
     border: none;
+    cursor: pointer;
 }
 .addimgIcon{
     color: #7e1453;
@@ -30,11 +32,29 @@ object-fit: contain;
     width: 250px;
 }
 
+
 .input textarea{
     width: 400px;
     height: 100px;
     border-radius: 5px;
+    /* border: 2px solid gray; */
+}
+.descwarinng{
+    border: 2px solid #ffffff;
+    -webkit-box-shadow: -0.5px 0.5px 2.5px 2.5px rgba(242, 0, 0, 0.58);
+    -moz-box-shadow: -0.5px 0.5px 2.5px 2.5px rgba(242, 0, 0, 0.58);
+    box-shadow: -0.5px 0.5px 2.5px 2.5px rgba(242, 0, 0, 0.58);
+}
+.descsuccess{
     border: 2px solid gray;
+
+}
+.descsuccess:focus{
+    outline: none;
+    border: 2px solid rgb(252, 252, 252);
+    -webkit-box-shadow: -0.5px 0.5px 2.5px 2.5px rgba(71, 74, 255, 0.57);
+    -moz-box-shadow: -0.5px 0.5px 2.5px 2.5px rgba(71, 74, 255, 0.57);
+    box-shadow: -0.5px 0.5px 2.5px 2.5px rgba(71, 74, 255, 0.57);
 }
 .sumitbtn{
     background-color: #B71375;
@@ -50,7 +70,27 @@ object-fit: contain;
    background-color: #7e1453;
 
 }
+.warinng{
+    border: 2px solid #ffffff;
+    -webkit-box-shadow: -0.5px 0.5px 2.5px 2.5px rgba(242, 0, 0, 0.58);
+    -moz-box-shadow: -0.5px 0.5px 2.5px 2.5px rgba(242, 0, 0, 0.58);
+    box-shadow: -0.5px 0.5px 2.5px 2.5px rgba(242, 0, 0, 0.58);
+}
+.success{
+   
+}
 
+.success:focus{
+    border: 2px solid rgb(252, 252, 252);
+    -webkit-box-shadow: -0.5px 0.5px 2.5px 2.5px rgba(71, 74, 255, 0.57);
+    -moz-box-shadow: -0.5px 0.5px 2.5px 2.5px rgba(71, 74, 255, 0.57);
+    box-shadow: -0.5px 0.5px 2.5px 2.5px rgba(71, 74, 255, 0.57);
+    
+   }
+   .Spanerr{
+    color: red;
+    line-height: 2.2rem;
+   }
 @media (max-width:450px){
     .input textarea{
         width: 100%;

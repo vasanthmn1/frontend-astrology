@@ -4,6 +4,7 @@ import Banner from '../../components/banner/Banner'
 import Spiner from '../../components/spiner/Spiner'
 import HandDetail from '../../components/handeDetail/HandDetail'
 import classes from './home.module.css'
+import ZodiacSign from '../../components/zodiacSign/ZodiacSign'
 
 const Home = () => {
 
@@ -13,6 +14,7 @@ const Home = () => {
             <Banner />
             {/* <Spiner /> */}
             <HandDetail />
+            <ZodiacSign />
         </div>
 
     )

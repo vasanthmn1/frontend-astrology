@@ -7,7 +7,7 @@ const HandDetail = () => {
         <div className={classes.container}>
             <Container>
                 <Row>
-                    <Col lg="6">
+                    <Col lg="6" className='d-flex justify-content-center align-items-center'>
                         <div className={classes.img}>
                             <img src={img} />
                         </div>

@@ -142,7 +142,8 @@ const ZodiacEdit = () => {
                             <input
                                 onChange={myFormik.handleChange}
                                 onBlur={myFormik.handleBlur}
-
+                                className={
+                                    myFormik.errors.title && myFormik.touched.title ? classes.warinng : classes.success}
                                 type='text'
                                 name='title'
                                 value={myFormik.values.title}

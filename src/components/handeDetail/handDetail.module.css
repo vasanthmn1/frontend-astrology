@@ -7,8 +7,9 @@
 }
 .img{
     width: 500px;
-    display: flex;
-    
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
 }
 .img img{
     width: 100%;
@@ -27,7 +28,7 @@ margin-bottom: 50px;
     .detail button{
         padding: 15px 25px;
         background-color: #B71375;
-        border: none;
+        border: 2px solid #fff;
         color: #fff;
         font-weight: 500;
         -webkit-box-shadow: -0.5px 0.5px 18px -0.5px #b71375;
@@ -47,4 +48,21 @@ margin-bottom: 50px;
     @keyframes mover {
         0% { transform: translateY(0); }
         100% { transform: translateY(-50px); }
+    }
+    @media only screen and (max-width:400px) {
+        .container{
+            Width: 100%;
+            /* Height: 400px; */
+            background-color: #2F1A49;
+            clip-path: polygon(0% 0%, 100% 0%, 100.1% 90.8%, 0% 100%);
+            padding: 50px 0px;
+        }
+        .img{
+            width: 300px;
+            
+        }
+        .img img{
+            width: 100%;
+            animation: mover 1s infinite  alternate;
+        }
     }

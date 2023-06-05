@@ -50,7 +50,9 @@ object-fit: contain;
    background-color: #7e1453;
 
 }
-
+.warinng{
+    border: 2px solid red;
+}
 @media (max-width:450px){
     .input textarea{
         width: 100%;
