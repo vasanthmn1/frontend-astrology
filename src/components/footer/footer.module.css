@@ -2,6 +2,7 @@
 .conatiner{
     background: #2F1A49 ;
 padding: 30px;
+height: 100%;
 }
 .row{
     border-top: 1px solid #fdfdfd;
@@ -91,3 +92,13 @@ padding: 30px;
 padding-top: 25px ;
 text-align: center;
   }
+/* 
+  @media (min-width:1333px){
+    .conatiner{
+      background: #2F1A49 ;
+  padding: 30px;
+  height: 30vh;
+  }
+
+
+} */

@@ -6,11 +6,11 @@ import Footer from '../../components/footer/Footer'
 
 const Portal = () => {
     return (
-        <div>
+        <>
             <Header />
             <Outlet />
             <Footer />
-        </div>
+        </>
     )
 }
 

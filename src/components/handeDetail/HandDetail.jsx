@@ -2,6 +2,7 @@ import React from 'react'
 import classes from './handDetail.module.css'
 import { Col, Container, Row } from 'react-bootstrap'
 import img from '../../../assets/hand.png'
+import { Link } from 'react-router-dom'
 const HandDetail = () => {
     return (
         <div className={classes.container}>
@@ -20,7 +21,10 @@ const HandDetail = () => {
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mi tellus, pulvinar vel tempus eget, finibus vitae ante. Fusce sit amet velit eleifend, iaculis velit quis, malesuada lacus. Vestibulum sodales magna a volutpat tempus. Mauris vestibulum id urna viverra ultrices. Nullam rhoncus elit eget libero varius dapibus.
                             </p>
-                            <button>Get started</button>
+                            <button>
+                                <Link to={'/appointment'}>
+
+                                    Get started  </Link></button>
                         </div>
                     </Col>
                 </Row>

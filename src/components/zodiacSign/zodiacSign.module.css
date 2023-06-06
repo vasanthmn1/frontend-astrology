@@ -68,3 +68,9 @@ align-items: center;
 .content p{
     color: #fff;
 }
+
+@media (min-width:1333px){
+    .container{
+      /* height:50vh; */
+  }
+}
