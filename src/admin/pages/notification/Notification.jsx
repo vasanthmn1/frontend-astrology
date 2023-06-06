@@ -39,7 +39,7 @@ const Notification = () => {
             });
             setseeNotifaction([])
             console.log(dellAllnotifi);
-        } catch (error) { }
+        } catch (error) { console.log(error); }
     };
 
     useEffect(() => {

@@ -82,7 +82,7 @@ const ZodiacEdit = () => {
                 try {
 
                     await axios.post(`${link}/upload`, data);
-                } catch (err) { }
+                } catch (err) { console.log(err); }
             }
             try {
                 dispatch(isLoading())

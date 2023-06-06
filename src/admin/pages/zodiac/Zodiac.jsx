@@ -62,14 +62,18 @@ const Zodiac = () => {
                 try {
 
                     await axios.post(`${link}/upload`, data);
-                } catch (err) { }
+                } catch (err) { console.log(err); }
             }
             try {
 
-                const res = await axios.post(`${link}/zodiac/create`, values);
-                navigate('/zodiaclist')
+                try {
+                    const res = await axios.post(`${link}/zodiac/create`, values);
+                    navigate('/zodiaclist')
+                } catch (error) {
+                    console.log(error);
+                }
 
-            } catch (err) { }
+            } catch (err) { console.log(err); }
 
         }
     })
