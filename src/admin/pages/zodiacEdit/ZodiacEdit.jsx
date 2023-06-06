@@ -80,8 +80,9 @@ const ZodiacEdit = () => {
                 myFormik.values.poto = filename;
 
                 try {
-
+                    dispatch(isLoading())
                     await axios.post(`${link}/upload`, data);
+                    dispatch(stopLoading())
                 } catch (err) { console.log(err); }
             }
             try {
