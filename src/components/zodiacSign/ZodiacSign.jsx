@@ -18,10 +18,15 @@ const ZodiacSign = () => {
         getposts()
     }, [])
     const getposts = async () => {
-        dispatch(isLoading())
-        const res = await axios.get(`${link}/zodiac/get`);
-        dispatch(getallpost(res.data))
-        dispatch(stopLoading())
+        try {
+            dispatch(isLoading())
+            const res = await axios.get(`${link}/zodiac/get`);
+            dispatch(getallpost(res.data))
+            dispatch(stopLoading())
+        } catch (error) {
+            dispatch(stopLoading())
+        }
+
 
     }
     return (
