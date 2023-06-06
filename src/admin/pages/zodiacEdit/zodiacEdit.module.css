@@ -51,7 +51,7 @@ object-fit: contain;
 
 }
 .warinng{
-    border: 2px solid red;
+    border: 2px solid rgb(0, 238, 247) !important;
 }
 @media (max-width:450px){
     .input textarea{

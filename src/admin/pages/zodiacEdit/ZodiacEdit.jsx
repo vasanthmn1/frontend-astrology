@@ -59,9 +59,9 @@ const ZodiacEdit = () => {
             // if (values.desc.length < 25) {
             //     err.desc = "minumam 25 letters "
             // }
-            if (!values.file) {
-                err.file = "Upload one image in Your Blog"
-            }
+            // if (!values.file) {
+            //     err.file = "Upload one image in Your Blog"
+            // }
 
             return err
 
@@ -129,6 +129,7 @@ const ZodiacEdit = () => {
                                     myFormik.setFieldValue('file', e.currentTarget.files[0])}
                                 autoFocus={true}
                             />
+                            <div className={classes.Spanerr}>    {myFormik.errors.file && myFormik.touched.file ? myFormik.errors.file : null} </div>
                         </div>
                         <div className={classes.input}>
                             <label>Title</label>
@@ -143,6 +144,8 @@ const ZodiacEdit = () => {
 
                                 placeholder="Title"
                             />
+                            <div className={classes.Spanerr}>    {myFormik.errors.title && myFormik.touched.title ? myFormik.errors.title : null} </div>
+
                         </div>
                         <div className={classes.input}>
                             <label>Description</label>
