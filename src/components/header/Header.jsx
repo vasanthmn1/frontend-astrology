@@ -30,17 +30,6 @@ const Header = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     useEffect(() => {
-        window.addEventListener('scroll', () => {
-            if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-                headerRef.current.classList.add(classes.header_shrink)
-            }
-            else {
-                headerRef.current.classList.remove(classes.header_shrink)
-            }
-        })
-        // return () => {
-        //     window.removeEventListener('scroll');
-        // }
 
     }, [user]);
 
@@ -51,7 +40,7 @@ const Header = () => {
 
     return (
 
-        <header className={classes.header} ref={headerRef}>
+        <header className={classes.header} >
             <div className={classes.conatiner}>
                 <div className={classes.navigation} >
                     <div className={classes.logo}>
@@ -79,11 +68,11 @@ const Header = () => {
 
                                         >  Appointment </Link>
                                     </button> :
-                                    <button className={classes.login}>
-                                        <Link to={'/login'}
+                                    <Link to={'/login'}
 
-                                        >  Login</Link>
-                                    </button>
+                                    >   <button className={classes.login}>
+                                            Login
+                                        </button></Link>
                             }
 
                         </div>

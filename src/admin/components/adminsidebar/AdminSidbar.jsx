@@ -4,8 +4,13 @@ import { Link, NavLink } from 'react-router-dom'
 import { FcCdLogo } from 'react-icons/fc'
 import { AiFillHome, AiOutlineUserAdd } from 'react-icons/ai'
 import { BsListNested } from 'react-icons/bs'
+// import { LuLogOut } from 'react-icons/lu'
+
 
 import { TbZodiacLibra } from 'react-icons/tb'
+
+import { MdOutlineExitToApp } from 'react-icons/md'
+
 
 
 
@@ -16,7 +21,7 @@ const AdminSidbar = () => {
         setIsDropdownOpen(!isDropdownOpen);
         const sidebar = document.querySelector(`.${classes.sidebar}`);
         if (sidebar) {
-            sidebar.style.width = isDropdownOpen ? '80px' : '180px';
+            sidebar.style.width = isDropdownOpen ? '80px' : '210px';
 
         }
 
@@ -30,7 +35,7 @@ const AdminSidbar = () => {
         },
         {
             path: "/appoinment",
-            title: 'Appoimenns',
+            title: 'appoinment',
             icon: < AiOutlineUserAdd />
         },
         {
@@ -42,6 +47,11 @@ const AdminSidbar = () => {
             path: "/zodiaclist",
             title: 'Zodiac List',
             icon: < BsListNested />
+        },
+        {
+            path: "/Logout",
+            title: 'Exit',
+            icon: <   MdOutlineExitToApp />
         },
     ]
 
@@ -56,10 +66,10 @@ const AdminSidbar = () => {
                                     className={navClass => navClass.isActive ? classes.active : classes.unactive}
 
                                 >
-                                    {val.icon}
+                                    <span> {val.icon}</span>
                                     {isDropdownOpen && (
 
-                                        <span>{val.title}</span>
+                                        <span className={classes.title}>{val.title}</span>
 
                                     )}
                                 </NavLink>

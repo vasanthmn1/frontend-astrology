@@ -23,10 +23,14 @@ const ZodiacList = () => {
         getposts()
     }, [])
     const getposts = async () => {
-        dispatch(isLoading())
-        const res = await axios.get(`${link}/zodiac/get`);
-        dispatch(getallpost(res.data))
-        dispatch(stopLoading())
+        try {
+            dispatch(isLoading())
+            const res = await axios.get(`${link}/zodiac/get`);
+            dispatch(getallpost(res.data))
+            dispatch(stopLoading())
+        } catch (error) {
+            console.log(error);
+        }
 
     }
     const handelDel = async (id) => {

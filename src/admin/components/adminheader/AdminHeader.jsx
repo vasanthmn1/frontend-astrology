@@ -31,10 +31,6 @@ const AdminHeader = () => {
     const handelRead = async () => {
 
         try {
-            // const notifi = await axios.post(`${link}/user/readnoti`, {
-            //     userId: user._id,
-            // });
-            // console.log("not", notifi);
             navigator('/appoinment')
 
             window.location.reload()
