@@ -6,7 +6,8 @@ import { getallpost, isLoading, stopLoading } from '../../redux/features/ZodiacS
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
-
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const ZodiacSign = () => {
@@ -24,13 +25,16 @@ const ZodiacSign = () => {
             dispatch(getallpost(res.data))
             dispatch(stopLoading())
         } catch (error) {
+            console.log(error);
             dispatch(stopLoading())
+            toast.error(error.response.data)
         }
 
 
     }
     return (
         <div className={classes.container}>
+            <ToastContainer />
             <div className={classes.heading}>
                 <h1>Choose Your Zodiac Sign</h1>
                 <p>What’s Your Sign? Read Your Daily  <br />Horoscope Today</p>
