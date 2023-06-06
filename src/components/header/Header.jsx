@@ -9,8 +9,8 @@ import { AiOutlineBell } from 'react-icons/ai'
 
 import classes from './header.module.css'
 import { useDispatch, useSelector } from "react-redux";
-import { logoutuser } from "../redux/features/AuthSclice";
-import logo from '../../assets/logo.png';
+import { logoutuser } from "../../redux/features/AuthSclice";
+import logo from '../../../assets/logo.png';
 const NAV_LINKS = [
     {
         url: "/home",
@@ -94,7 +94,7 @@ const Header = () => {
                                     <div className={classes.notification}>
                                         <Link to='notifiction'>
                                             <AiOutlineBell className={classes.logout} />
-                                            <Badge bg="danger" className={classes.badge}>9</Badge>
+                                            <Badge bg="danger" className={classes.badge}></Badge>
                                         </Link>
 
                                     </div>

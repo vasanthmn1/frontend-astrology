@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import classes from './appointment.module.css'
-import { TimePicker, message } from 'antd'
+// import {  message } from 'react-toastify'
 import { useFormik } from 'formik'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,12 +9,14 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { isLoading, stopLoading } from '../../redux/features/AuthSclice'
 import { Col, Row } from 'react-bootstrap'
+import 'react-toastify/dist/ReactToastify.css';
+import { message } from 'antd'
 const Appointment = () => {
 
     const { link } = useSelector((state) => state.link)
     const { user } = useSelector((state) => state.auth)
 
-    const navigater = useNavigate()
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const [err, setErr] = useState(false)
     let myFormik = useFormik({
@@ -53,48 +55,24 @@ const Appointment = () => {
                 err.times = "required "
             }
 
-            // if (!values.email) {
-            //     err.email = "Enter full email"
-            // } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-            //     err.email = 'Invalid email address !!';
-            // }
-
             return err
         },
 
         onSubmit: async (values) => {
-            setErr(false)
+
             dispatch(isLoading())
             try {
-                console.log(values);
                 const res = await axios.post(`${link}/user/apply`, values, {
                     userId: user._id
                 })
-                console.log(res);
-                // message.success('Login Success')
-                // console.log(res.data.user.token
-                // );
-                // localStorage.setItem('user', JSON.stringify(res.data.user.user))
-                // localStorage.setItem('token', JSON.stringify(res.data.user.token))
 
-                // if (res.data.user.user?.isAdmin === true) {
-                //     navigater('/admin')
-                //     // navigater('')
-                // } else {
-                //     navigater('/home')
-                // }
+                message.success("applayed Conform")
 
-
-                // dispatch(loginSuccess([res.data.user.user,]))
-                // dispatch(loginSuccessToken([
-                //     res.data.user.token
-                // ]))
+                navigate('/notifiction')
 
                 dispatch(stopLoading())
             } catch (error) {
-                // console.log(error);
-                // dispatch(stopLoading())
-                // setErr(toast.error('Email or Password wrong'))
+
             }
         }
     })
@@ -127,17 +105,14 @@ const Appointment = () => {
                         <Col lg='4' className={classes.box}>
                             <label >Email:</label>
                             <input
-                                // className={
-                                // myFormik.errors.email && myFormik.touched.email ? classes.warinng : classes.success}
                                 onBlur={myFormik.handleBlur}
                                 onChange={myFormik.handleChange}
                                 type='text'
-                                // placeholder={myFormik.errors.email && myFormik.touched.email ? myFormik.errors.email : "Enter Full Email.."}
                                 disabled
                                 value={myFormik.values.email}
                                 name='email'
                             />
-                            {/* <div className={classes.emailSpan}>  {myFormik.errors.email && myFormik.touched.email ? myFormik.errors.email : null} </div> */}
+
 
                         </Col>
                         <Col lg='4' className={classes.box}>
@@ -200,26 +175,11 @@ const Appointment = () => {
                             />
                             <div className={classes.emailSpan}>  {myFormik.errors.times && myFormik.touched.times ? myFormik.errors.times : null} </div>
                         </Col>
-                        {/* <Col lg='8'>
-                            <label >Adderess:</label>
-                            <input
-                                className={
-                                    myFormik.errors.email && myFormik.touched.email ? classes.warinng : classes.success}
-                                onBlur={myFormik.handleBlur}
-                                onChange={myFormik.handleChange}
-                                type='time'
-                                placeholder={myFormik.errors.email && myFormik.touched.email ? myFormik.errors.email : "Enter Full Email.."}
 
-                                value={myFormik.values.email}
-                                name='email'
-                            />
-                            <div className={classes.emailSpan}>  {myFormik.errors.email && myFormik.touched.email ? myFormik.errors.email : null} </div>
-                            <TimePicker.RangePicker />
-                        </Col> */}
                     </Row>
                     <div className={classes.btn}>
                         <button type='submit' >
-                            Login
+                            Submit
                         </button>
                     </div>
                 </form>

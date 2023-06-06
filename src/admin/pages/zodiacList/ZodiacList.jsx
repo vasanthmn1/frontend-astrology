@@ -14,7 +14,7 @@ const ZodiacList = () => {
 
     const { link } = useSelector((state) => state.link)
     const { getallposts } = useSelector((state) => state.zodiac)
-    console.log(getallposts);
+
     const [open, SetOpen] = useState(false)
     const [singlepost, Setsinglepost] = useState({})
 
@@ -124,12 +124,6 @@ const ZodiacList = () => {
                                 </Row>
                                 <div className={classes.logoutbtn}>
 
-                                    {/* <h5 className={classes.logoutDel}
-                    // onClick={() => handelDelete()}
-                    >Delete</h5>
-                    <h5 className={classes.logoutChannel}
-                        onClick={() => SetOpen(false)}
-                    >channel</h5> */}
 
                                 </div>
 

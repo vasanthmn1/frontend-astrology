@@ -17,12 +17,11 @@ import ClientNotification from '../pages/notification/ClientNotification'
 import Zodiac from '../admin/pages/zodiac/Zodiac'
 import ZodiacList from '../admin/pages/zodiacList/ZodiacList'
 import ZodiacEdit from '../admin/pages/zodiacEdit/ZodiacEdit'
+import ZodiacSignSingle from '../pages/zodiacSignSingle/ZodiacSignSingle'
 
 const ClientRoutes = () => {
     const { user, token, isLoading } = useSelector((state) => state.auth)
     const { postLoading } = useSelector((state) => state.zodiac)
-
-    console.log(user && user[0]?.isAdmin || user && user.isAdmin);
     return (
         <div>
 
@@ -32,7 +31,6 @@ const ClientRoutes = () => {
             }
 
             <Routes>
-                {/* zodiaclist */}
                 {
                     user && user[0]?.isAdmin || user && user?.isAdmin ?
                         <Route path='/' element={<AdminPortal />}>
@@ -52,6 +50,8 @@ const ClientRoutes = () => {
                             {/* <Route path='appointment' element={<Appoi />} /> */}
                             <Route path='/appointment' element={<Appointment />} />
                             <Route path='/notifiction' element={<ClientNotification />} />
+                            <Route path='/zodiac/:id' element={<ZodiacSignSingle />} />
+
 
 
 

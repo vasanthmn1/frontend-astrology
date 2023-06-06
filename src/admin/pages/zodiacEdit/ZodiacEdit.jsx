@@ -28,9 +28,9 @@ const ZodiacEdit = () => {
             let get = await axios.get(`${link}/zodiac/get/${params.id}`)
             dispatch(stopLoading())
             myFormik.setValues(get.data)
-            console.log(get.data);
+
         } catch (error) {
-            console.log(error);
+
         }
 
     }
@@ -96,14 +96,6 @@ const ZodiacEdit = () => {
 
         }
     })
-    // const [posts, SetPosts] = useState([])
-    // useEffect(() => {
-    //     getposts()
-    // }, [])
-    // const getposts = async () => {
-    //     const res = await axios.get(`${link}/zodiac/get`);
-
-    // }
 
     return (
         <div className={classes.Container}>
@@ -123,7 +115,7 @@ const ZodiacEdit = () => {
                                 <BiImageAdd className={classes.addimgIcon} />
                                 <span> Choose File</span>
                             </label>
-                            {/* {console.log(myFormik.values.poto)} */}
+
 
                             <input
                                 style={{ display: 'none' }}

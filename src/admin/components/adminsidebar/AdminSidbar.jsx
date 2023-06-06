@@ -3,6 +3,8 @@ import classes from './adminSidebar.module.css'
 import { Link, NavLink } from 'react-router-dom'
 import { FcCdLogo } from 'react-icons/fc'
 import { AiFillHome, AiOutlineUserAdd } from 'react-icons/ai'
+import { BsListNested } from 'react-icons/bs'
+
 import { TbZodiacLibra } from 'react-icons/tb'
 
 
@@ -19,7 +21,7 @@ const AdminSidbar = () => {
         }
 
     }
-    console.log(isDropdownOpen);
+
     const list = [
         {
             path: "/admin",
@@ -33,13 +35,13 @@ const AdminSidbar = () => {
         },
         {
             path: "/zodiac",
-            title: 'Zodiac',
+            title: 'Zodiac Add',
             icon: < TbZodiacLibra />
         },
         {
             path: "/zodiaclist",
-            title: 'Zodiac',
-            icon: < TbZodiacLibra />
+            title: 'Zodiac List',
+            icon: < BsListNested />
         },
     ]
 

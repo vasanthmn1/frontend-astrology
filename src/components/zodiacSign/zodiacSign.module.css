@@ -1,4 +1,70 @@
 .container{
-    background: linear-gradient(#0c042279, #b713750a), url(../../../assets/zodiacbg.jpg);
+    /* background: url(../../../assets/zodiacbg.jpg); */
+    background: linear-gradient(to bottom,#b71375  0.1%, #2F1A49), url(../../../assets/zodiacbg.jpg);
+      /* background: linear-gradient(to top, lime, 20%, cyan); */
+      
+    /* height: 100vh; */
+}
+.heading{
+    text-align: center;
+  padding: 50px;
+}
+.heading h1{
+    font-family: 'Philosopher', sans-serif;
+    color: #2F1A49;
+    font-weight: 700;
+    font-size: 3rem;
+  
+}
+.heading p{
+    color: #fff;
+    font-size: 1.5rem;
+}
+.mainbox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+    /* border: 2px solid #fff; */
+}
+.box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px;
+    cursor: pointer;
+    /* align-items: center; */
+    border: 2px solid #ffffff;
+    /* background-color: aliceblue; */
+    -webkit-box-shadow: 0 0 26.5px 3px #d3d3d3;
+-moz-box-shadow: 0 0 26.5px 3px #d3d3d3;
+box-shadow: 0 0 26.5px 3px #d3d3d3;
+border-radius: 5px;
+}
+ .image{
+width: 250px;
+display: flex;
+justify-content: center;
+margin-top: 20px;
 
+}
+
+.image img{
+    width: 50%;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+}
+.content{
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+.content h6{
+    margin-top: 10px;
+    color: #219AF1;
+}
+.content p{
+    color: #fff;
 }

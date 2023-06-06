@@ -29,9 +29,6 @@ const ClientNotification = () => {
 
         dispatch(stopLoading())
     }
-    // const findeall = getalluser?.map((val) => val)
-
-    console.log(user._id);
 
     const handelDelete = async (id) => {
         const del = await axios.delete(`${link}/user/${user._id}/notifications/${id}`)
@@ -73,7 +70,6 @@ const ClientNotification = () => {
 
 
                                     <tr key={idx} className={classes.notificationBox}>
-                                        {console.log(val)}
                                         <td>{idx + 1}</td>
                                         <td className={classes.list}>{val.data.name} </td><td>
                                             {moment(val.data.date).format("DD-MM-YYYY")}

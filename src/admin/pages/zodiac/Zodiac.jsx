@@ -49,8 +49,7 @@ const Zodiac = () => {
         },
 
         onSubmit: async (values) => {
-            // setErr(false)
-            // dispatch(isLoading())
+
             const file = myFormik.values.file
             if (file) {
 
@@ -151,7 +150,7 @@ const Zodiac = () => {
                     </form>
                 </Col >
                 <Col lg='6'>
-                    💚💚
+
                 </Col>
             </Row>
         </div>
