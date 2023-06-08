@@ -13,7 +13,7 @@ import { isLoading, stopLoading } from '../../../redux/features/ZodiacSlice'
 const ZodiacEdit = () => {
 
     const { link } = useSelector((state) => state.link)
-    const { user } = useSelector((state) => state.auth)
+ 
     const navigate = useNavigate()
     const params = useParams()
     const dispatch = useDispatch()

@@ -42,19 +42,24 @@ justify-content: center; */
 .title{
     display: flex;
 }
+.title h3{
+    font-size: 1.3rem;
+}
 .title p{
-    font-size: 1.5rem;
+    font-size: 1rem;
     padding-right:20px;
+    margin-top: 2px;
 }
 .date{
     display: flex;
 }
 .date p{
-    font-size: 1.5rem;
+    font-size: 1rem;
     padding-right:20px;
+    margin-top: 2px;
 }
 .date  h3{
-font-size: 1.4rem;
+font-size: 1rem;
 margin-top: 5px;
 }
 

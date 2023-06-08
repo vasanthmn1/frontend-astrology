@@ -56,14 +56,14 @@ const ZodiacList = () => {
 
                                     <div className={classes.image}>
                                         <img src={`${link}/images/${val.poto}`} />
-                                        {/* <img src={img} /> */}
+
                                         <div className={classes.contantbox}>
                                             <div className={classes.title}>
                                                 <p>Title</p>
                                                 <h3>{val.title} </h3>
                                             </div>
                                             <div className={classes.date}>
-                                                {/*  */}
+
                                                 <p>Date</p>
                                                 <h3>  {moment(val.date).format("DD-MM-YYYY")} </h3>
                                             </div>

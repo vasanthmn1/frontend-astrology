@@ -11,7 +11,7 @@ import { isLoading, loginSuccess, loginSuccessToken, stopLoading } from '../../r
 // import { loginStart, loginSuccess } from '../../redux/feutures/AuthSlice'
 const Login = () => {
     const { link } = useSelector((state) => state.link)
-    // const { user } = useSelector((state) => state.auth)
+
 
     const navigater = useNavigate()
     const dispatch = useDispatch()
@@ -42,8 +42,7 @@ const Login = () => {
             try {
                 const res = await axios.post(`${link}/auth/login`, values)
                 message.success('Login Success')
-                console.log(res.data.user.token
-                );
+
                 localStorage.setItem('user', JSON.stringify(res.data.user.user))
                 localStorage.setItem('token', JSON.stringify(res.data.user.token))
 

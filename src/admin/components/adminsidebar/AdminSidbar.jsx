@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import classes from './adminSidebar.module.css'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { FcCdLogo } from 'react-icons/fc'
 import { AiFillHome, AiOutlineUserAdd } from 'react-icons/ai'
 import { BsListNested } from 'react-icons/bs'
@@ -10,13 +10,16 @@ import { BsListNested } from 'react-icons/bs'
 import { TbZodiacLibra } from 'react-icons/tb'
 
 import { MdOutlineExitToApp } from 'react-icons/md'
+import { useDispatch } from 'react-redux'
+import { logoutuser } from '../../../redux/features/AuthSclice'
 
 
 
 
 const AdminSidbar = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
+    const dipatch = useDispatch()
+    const navigate = useNavigate()
     function handleDropdownToggle() {
         setIsDropdownOpen(!isDropdownOpen);
         const sidebar = document.querySelector(`.${classes.sidebar}`);
@@ -49,19 +52,25 @@ const AdminSidbar = () => {
             icon: < BsListNested />
         },
         {
-            path: "/Logout",
+            path: "/",
             title: 'Exit',
-            icon: <   MdOutlineExitToApp />
+            icon: < MdOutlineExitToApp onClick={() => {
+
+            }} />
         },
     ]
+    const exit = () => {
 
+    }
     return (
         <aside className={classes.sidebar} onMouseEnter={handleDropdownToggle} onMouseLeave={handleDropdownToggle}>
             {
                 list.map((val, idx) => {
                     return (
                         <ul key={idx}>
-                            <li>
+                            <li
+
+                                onClick={() => val.title == "Exit" && dipatch(logoutuser())}>
                                 <NavLink to={val.path}
                                     className={navClass => navClass.isActive ? classes.active : classes.unactive}
 
