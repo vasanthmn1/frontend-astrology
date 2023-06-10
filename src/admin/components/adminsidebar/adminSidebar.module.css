@@ -22,18 +22,25 @@
   }
   .sidebar li a:hover {
     background-color: #e9ecef;
+    color: #000 !important;
   }
   .title{
     transition: 0.5s all ease-in-out;
   }
+  .unactive:hover{
+    /* color: #000 !important; */
+  }
   .unactive {
-    color: #343a40;
+    color: #ffffff;
     text-decoration: none;
     display: flex;
     align-items: center;
     padding: 10px;
     border-radius: 5px;
   }
+
+
+
   .active {
     color: #343a40;
     background-color:#e9ecef ;
@@ -52,7 +59,9 @@
   .unactive span{
     font-size: 1.3rem;
     margin-right: 2px;
+    /* color: #e9ecef; */
   }
+ 
   .title{
     margin-left: 10px;
   }

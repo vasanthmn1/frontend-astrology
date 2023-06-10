@@ -1,165 +1,192 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+import { BiImageAdd } from 'react-icons/bi';
+import { useFormik } from 'formik';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import classes from './zodiac.module.css'
-import { Col, Container, Row } from 'react-bootstrap'
-import { BiImageAdd, BiShapePolygon } from 'react-icons/bi'
-import { useFormik } from 'formik'
-import axios from 'axios'
-import { useSelector } from 'react-redux'
-import ZodiacPosts from '../../components/zodiacposts/ZodiacPosts'
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+
+import { toast } from 'react-toastify';
+
 const Zodiac = () => {
-
-    const { link } = useSelector((state) => state.link)
-    const { user } = useSelector((state) => state.auth)
-
-    const navigate = useNavigate()
-
-    let myFormik = useFormik({
+    const { link } = useSelector((state) => state.link);
+    const navigate = useNavigate();
+    useEffect(() => {
+        console.log(formik.values.poto);
+    }, [])
+    const formik = useFormik({
         initialValues: {
-
-            title: "",
-            desc: "",
-            date: "",
-            file: null,
+            title: '',
+            desc: '',
+            date: '',
+            poto: null
         },
         validate: (values) => {
-            let err = {}
-
-
+            const errors = {};
 
             if (!values.title) {
-                err.title = "Enter Title in Your blog "
+                errors.title = 'Enter Title in Your blog';
             }
+
             if (values.title.length > 15) {
-                err.title = "maximum 15 leater "
+                errors.title = 'Maximum 15 letters';
             }
+
             if (!values.desc) {
-                err.desc = "Enter Description "
+                errors.desc = 'Enter Description';
             }
+
             if (!values.date) {
-                err.date = "Enter Date "
-            }
-            if (!values.file) {
-                err.file = "Upload one image "
+                errors.date = 'Enter Date';
             }
 
-            return err
+            if (!values.poto) {
+                errors.poto = 'Upload one image';
+            }
 
+            return errors;
         },
 
         onSubmit: async (values) => {
-
-            const file = myFormik.values.file
-            if (file) {
-
-                const data = new FormData();
-                const filename = Date.now() + file.name;
-                data.append("name", filename);
-                data.append("file", file);
-                myFormik.values.poto = filename;
-
-                try {
-
-                    await axios.post(`${link}/upload`, data);
-                } catch (err) { console.log(err); }
-            }
             try {
 
-                try {
-                    const res = await axios.post(`${link}/zodiac/create`, values);
-                    navigate('/zodiaclist')
-                } catch (error) {
-                    console.log(error);
+
+
+                const res = await axios.post(`${link}/zodiac/create`,
+                    {
+                        title: values.title,
+                        poto: {
+                            public_id: values.poto.name,
+                            url: values.poto
+
+                        },
+                        desc: values.desc,
+                        date: values.date
+
+                    }
+
+                );
+                navigate('/zodiaclist')
+                console.log(res);
+            } catch (error) {
+                if (error.response) {
+                    console.log('Server Error:', error.response.data);
+                } else {
+                    console.log('Request Error:', error.message);
                 }
+                toast.error('Server Error:', error.response.data)
+            }
+        },
+    });
 
-            } catch (err) { console.log(err); }
+    console.log(formik.values.poto);
+    const handleImage = (e) => {
+        const file = e.target.files[0];
+        setFileToBase(file);
+        console.log(file);
+    }
 
+    const setFileToBase = (file) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+            formik.setFieldValue("poto", reader.result)
         }
-    })
-    // const [posts, SetPosts] = useState([])
+
+    }
 
 
     return (
         <div className={classes.Container}>
             <Row>
-                <Col lg='6'>
+                <Col lg="6">
                     <div className={classes.imagebox}>
-                        {myFormik.values.file && (
-                            <img className={""} src={URL.createObjectURL(myFormik.values.file)} alt="" />
+                        {formik.values.poto && (
+                            <img
+                                className=""
+                                src={formik.values.poto}
+                                alt={formik.values.title}
+                            />
                         )}
                     </div>
-                    <form onSubmit={myFormik.handleSubmit}>
-                        <div className={classes.imageinput} style={{ display: "block" }}>
-                            <label htmlFor='fileInput'>'
+                    <form onSubmit={formik.handleSubmit}>
+                        <div className={classes.imageinput} style={{ display: 'block' }}>
+                            <label htmlFor="fileInput">
                                 <BiImageAdd className={classes.addimgIcon} />
                                 <span> Choose File</span>
                             </label>
                             <input
+                                id='fileInput'
                                 style={{ display: 'none' }}
-                                name='file'
+                                name="poto"
                                 type="file"
-                                id="fileInput"
-                                accept='image/*'
-
-                                onChange={(e) =>
-                                    myFormik.setFieldValue('file', e.currentTarget.files[0])}
-                                autoFocus={true}
+                                accept="image/*"
+                                // onChange={(e) =>
+                                //     formik.setFieldValue('poto', e.currentTarget.files[0])}
+                                onChange={handleImage}
                             />
-                            <div className={classes.Spanerr}>    {myFormik.errors.file && myFormik.touched.file ? myFormik.errors.file : null} </div>
-
-
+                            <div className={classes.Spanerr}>
+                                {formik.errors.poto && formik.touched.poto && formik.errors.poto}
+                            </div>
                         </div>
                         <div className={classes.input}>
                             <label>Title</label>
                             <input
-                                onChange={myFormik.handleChange}
-                                onBlur={myFormik.handleBlur}
-
-                                type='text'
-                                name='title'
-                                value={myFormik.values.title}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                type="text"
+                                name="title"
+                                value={formik.values.title}
                                 className={
-                                    myFormik.errors.title && myFormik.touched.title ? classes.warinng : classes.success}
+                                    formik.errors.title && formik.touched.title ? classes.warinng : classes.success
+                                }
                                 placeholder="Title"
                             />
-                            <span className={classes.Spanerr}>  {myFormik.errors.title && myFormik.touched.title ? myFormik.errors.title : null} </span>
+                            <span className={classes.Spanerr}>
+                                {formik.errors.title && formik.touched.title && formik.errors.title}
+                            </span>
                         </div>
                         <div className={classes.input}>
                             <label>Description</label>
                             <textarea
-                                name='desc'
-                                onBlur={myFormik.handleBlur}
-                                onChange={myFormik.handleChange}
+                                name="desc"
+                                onBlur={formik.handleBlur}
+                                onChange={formik.handleChange}
                                 className={
-                                    myFormik.errors.desc && myFormik.touched.desc ? classes.descwarinng : classes.descsuccess}
-                                type='text' />
-                            <span className={classes.Spanerr}>  {myFormik.errors.desc && myFormik.touched.desc ? myFormik.errors.desc : null} </span>
-
+                                    formik.errors.desc && formik.touched.desc ? classes.descwarinng : classes.descsuccess
+                                }
+                                type="text"
+                            />
+                            <span className={classes.Spanerr}>
+                                {formik.errors.desc && formik.touched.desc && formik.errors.desc}
+                            </span>
                         </div>
                         <div className={classes.input}>
                             <input
-                                type='date'
-                                onBlur={myFormik.handleBlur}
-                                onChange={myFormik.handleChange}
-                                value={myFormik.values.date}
+                                type="date"
+                                name="date"
+                                value={formik.values.date}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                                 className={
-                                    myFormik.errors.date && myFormik.touched.date ? classes.warinng : classes.success}
-                                name='date'
+                                    formik.errors.date && formik.touched.date ? classes.warinng : classes.success
+                                }
                             />
-                            <span className={classes.Spanerr}>  {myFormik.errors.date && myFormik.touched.date ? myFormik.errors.date : null} </span>
-
+                            <span className={classes.Spanerr}>
+                                {formik.errors.date && formik.touched.date && formik.errors.date}
+                            </span>
                         </div>
-                        <button type='submit' className={classes.sumitbtn}>Sumit</button>
+                        <button type="submit" className={classes.sumitbtn}>
+                            Submit
+                        </button>
                     </form>
-                </Col >
-                <Col lg='6'>
-
                 </Col>
+                <Col lg="6"></Col>
             </Row>
         </div>
-    )
-}
+    );
+};
 
-export default Zodiac
+export default Zodiac;
 

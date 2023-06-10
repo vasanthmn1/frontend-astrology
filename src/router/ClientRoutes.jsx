@@ -19,6 +19,7 @@ import ZodiacList from '../admin/pages/zodiacList/ZodiacList'
 import ZodiacEdit from '../admin/pages/zodiacEdit/ZodiacEdit'
 import ZodiacSignSingle from '../pages/zodiacSignSingle/ZodiacSignSingle'
 import PageNotFound from '../utils/Accordion/pagenotefoung/PageNotFound'
+import SingleZodiac from '../admin/pages/singleZodiac/SingleZodiac'
 
 const ClientRoutes = () => {
     const { user, token, isLoading } = useSelector((state) => state.auth)
@@ -42,6 +43,8 @@ const ClientRoutes = () => {
                             <Route path='/zodiac' element={<Zodiac />} />
                             <Route path='/zodiaclist' element={<ZodiacList />} />
                             <Route path='/zodiaedit/:id' element={<ZodiacEdit />} />
+                            <Route path='/siglezodiac/:id' element={<SingleZodiac />} />
+
 
                         </Route>
                         :

@@ -19,7 +19,7 @@ import { logoutuser } from '../../../redux/features/AuthSclice'
 const AdminSidbar = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const dipatch = useDispatch()
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     function handleDropdownToggle() {
         setIsDropdownOpen(!isDropdownOpen);
         const sidebar = document.querySelector(`.${classes.sidebar}`);

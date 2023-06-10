@@ -59,7 +59,7 @@ const ZodiacSignSingle = () => {
             behavior: "smooth"
         })
     }
-
+    console.log(getsinglepost);
     return (
         <div className={classes.container}>
             <Container>
@@ -74,7 +74,7 @@ const ZodiacSignSingle = () => {
                                         return (
                                             <div onClick={() => changepost(val._id)} key={idx}>
                                                 <div className={val._id == params.id ? classes.active : classes.box}  >
-                                                    <img src={`${link}/images/${val.poto}`} />
+                                                    <img src={val.poto.url} alt={val.title} />
                                                     <div className={classes.content}>
                                                         <h6>{val.title}</h6>
                                                         <p>{moment(val.date).format("DD-MM-YYYY")}</p>
@@ -93,27 +93,33 @@ const ZodiacSignSingle = () => {
                     </Col>
                     <Col lg='8' >
                         <Row className={classes.box2}>
-                            <Col lg='4'>
-                                <div className={classes.box2image}>
-                                    <img src={`${link}/images/${getsinglepost.poto}`} />
-                                </div>
+                            {
+                                getsinglepost && (
+                                    <>
+                                        <Col lg='4'>
+                                            <div className={classes.box2image}>
+                                                <img src={getsinglepost.poto?.url} />
+                                            </div>
 
-                            </Col>
-                            <Col lg='8'>
-                                <div className={classes.box2content}>
-                                    <h1>{getsinglepost.title}</h1>
-                                    <h3> {moment(getsinglepost.date).format("DD-MM-YYYY")}</h3>
-                                </div>
-                            </Col>
-                            <Col lg='12'>
-                                <div className={classes.descbox}>
-                                    <p>
-                                        {getsinglepost.desc}
-                                    </p>
-                                </div>
-                            </Col>
+                                        </Col>
+                                        <Col lg='8'>
+                                            <div className={classes.box2content}>
+                                                <h1>{getsinglepost.title}</h1>
+                                                <h3> {moment(getsinglepost.date).format("DD-MM-YYYY")}</h3>
+                                            </div>
+                                        </Col>
+                                        <Col lg='12'>
+                                            <div className={classes.descbox}>
+                                                <p>
+                                                    {getsinglepost.desc}
+                                                </p>
+                                            </div>
+                                        </Col>
+                                    </>
+                                )}
                         </Row>
                     </Col>
+
                 </Row>
                 <div ref={uparraw} onClick={() => handelup()}>
                     <BiUpArrowAlt className={classes.up} />

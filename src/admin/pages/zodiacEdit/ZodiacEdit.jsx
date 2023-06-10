@@ -1,34 +1,35 @@
 import React, { useState } from 'react'
 import classes from './zodiacEdit.module.css'
-
-import { Col, Container, Row } from 'react-bootstrap'
-import { BiImageAdd, BiShapePolygon } from 'react-icons/bi'
+import { Col, Row } from 'react-bootstrap'
+import { BiImageAdd } from 'react-icons/bi'
 import { useFormik } from 'formik'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
-import ZodiacPosts from '../../components/zodiacposts/ZodiacPosts'
 import { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { isLoading, stopLoading } from '../../../redux/features/ZodiacSlice'
+import { ToastContainer, toast } from 'react-toastify'
 const ZodiacEdit = () => {
 
     const { link } = useSelector((state) => state.link)
- 
+
     const navigate = useNavigate()
+    const [getsingle, setgetsingle] = useState({})
     const params = useParams()
     const dispatch = useDispatch()
-
+    console.log(getsingle.poto?.url);
     useEffect(() => {
         Getuser()
     }, [])
 
     const Getuser = async () => {
         try {
-            // dispatch(isLoading())
+            dispatch(isLoading())
             let get = await axios.get(`${link}/zodiac/get/${params.id}`)
+            setgetsingle(get.data)
             dispatch(stopLoading())
             myFormik.setValues(get.data)
-
+            console.log(get.data);
         } catch (error) {
 
         }
@@ -37,78 +38,84 @@ const ZodiacEdit = () => {
 
     let myFormik = useFormik({
         initialValues: {
-            _id: "",
+
             poto: "",
             title: "",
             desc: "",
             date: "",
-            file: null,
         },
         validate: (values) => {
             let err = {}
             if (!values.title) {
                 err.title = "Enter Title in Your blog "
             }
-            // if (values.title.length < 5) {
-            //     err.title = "minumam 5 letters "
-            // }
 
-            // if (!values.desc) {
-            //     err.desc = "Fill the description "
-            // }
-            // if (values.desc.length < 25) {
-            //     err.desc = "minumam 25 letters "
-            // }
-            // if (!values.file) {
-            //     err.file = "Upload one image in Your Blog"
-            // }
 
             return err
 
         },
 
         onSubmit: async (values) => {
-            // setErr(false)
-            // dispatch(isLoading())
-            const file = myFormik.values.file
-            if (file) {
 
-                const data = new FormData();
-                const filename = Date.now() + file.name;
-                data.append("name", filename);
-                data.append("file", file);
-                myFormik.values.poto = filename;
-
-                try {
-                    dispatch(isLoading())
-                    await axios.post(`${link}/upload`, data);
-                    dispatch(stopLoading())
-                } catch (err) { console.log(err); }
-            }
+            // setFileToBase
             try {
                 dispatch(isLoading())
-                const res = await axios.put(`${link}/zodiac/edit/${myFormik.values._id}`, values);
-                console.log(res)
-                dispatch(stopLoading())
+                const response = await axios.put(`${link}/zodiac/edit/${params.id}`, {
+                    title: values.title,
+                    desc: values.desc,
+                    date: values.date,
 
+                    poto: values.poto
+                });
+                console.log(response.data)
+
+
+                dispatch(stopLoading())
                 navigate('/zodiaclist')
 
-            } catch (err) { console.log(err) }
+            } catch (err) {
+                console.log(values.poto.url)
+                toast.error(err.message)
+                dispatch(stopLoading())
+                console.log(err)
+            }
+
+
 
         }
     })
+    const handleImage = (e) => {
+        const file = e.target.files[0];
+        setFileToBase(file);
+        // console.log(file);
+    }
 
+    const setFileToBase = (file) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+            myFormik.setFieldValue("poto", reader.result)
+            console.log(reader.result);
+
+        }
+        // console.log(reader);
+
+        console.log(reader.result);
+
+    }
+    // myFormik.setFieldValue("poto", getsingle.poto)
     return (
         <div className={classes.Container}>
+            <ToastContainer />
             <Row>
                 <Col lg='6'>
                     <div className={classes.imagebox}>
-                        {myFormik.values.file ? (
+                        {myFormik.values.poto.url ? (
                             <>
 
-                                <img className={""} src={URL.createObjectURL(myFormik.values.file)} alt="" />
+                                <img className={""} src={myFormik.values.poto.url} alt="" />
                             </>
-                        ) : <img src={`${link}/images/${myFormik.values.poto}`} />}
+                        ) : <img src={myFormik.values.poto} />}
                     </div>
                     <form onSubmit={myFormik.handleSubmit}>
                         <div className={classes.imageinput}>
@@ -124,9 +131,10 @@ const ZodiacEdit = () => {
                                 type="file"
                                 id="fileInput"
                                 accept='image/*'
-
-                                onChange={(e) =>
-                                    myFormik.setFieldValue('file', e.currentTarget.files[0])}
+                                onChange={handleImage}
+                                // value={getsingle.poto?.url}
+                                // onChange={(e) =>
+                                //     myFormik.setFieldValue('file', e.currentTarget.files[0])}
                                 autoFocus={true}
                             />
                             <div className={classes.Spanerr}>    {myFormik.errors.file && myFormik.touched.file ? myFormik.errors.file : null} </div>
@@ -178,7 +186,7 @@ const ZodiacEdit = () => {
                     </form>
                 </Col >
                 <Col lg='6'>
-                    💚💚
+
                 </Col>
             </Row>
         </div>

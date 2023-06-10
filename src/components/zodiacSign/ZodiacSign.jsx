@@ -49,7 +49,7 @@ const ZodiacSign = () => {
                                         <Link to={`/zodiac/${val._id}`}>
                                             <div className={classes.box} >
                                                 <div className={classes.image}>
-                                                    <img src={`${link}/images/${val.poto}`} />
+                                                    <img src={val.poto.url} alt={val.title} />
                                                     {/* <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeBqe25wChX63K8lO-hOAYf7eHkD-APMkx9MU4pGcmeA&s' /> */}
                                                 </div>
                                                 <div className={classes.content}>
