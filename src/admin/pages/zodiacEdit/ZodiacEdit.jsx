@@ -50,13 +50,30 @@ const ZodiacEdit = () => {
             date: "",
         },
         validate: (values) => {
-            let err = {}
+            let errors = {}
+
             if (!values.title) {
-                err.title = "Enter Title in Your blog "
+                errors.title = 'Enter Title in Your blog';
+            }
+
+            if (values.title.length > 15) {
+                errors.title = 'Maximum 15 letters';
+            }
+
+            if (!values.desc) {
+                errors.desc = 'Enter Description';
+            }
+
+            if (!values.date) {
+                errors.date = 'Enter Date';
+            }
+
+            if (!values.poto) {
+                errors.poto = 'Upload one image';
             }
 
 
-            return err
+            return errors
 
         },
 
@@ -139,7 +156,9 @@ const ZodiacEdit = () => {
                                 //     myFormik.setFieldValue('file', e.currentTarget.files[0])}
                                 autoFocus={true}
                             />
-                            <div className={classes.Spanerr}>    {myFormik.errors.file && myFormik.touched.file ? myFormik.errors.file : null} </div>
+                            <div className={classes.Spanerr}>
+                                {myFormik.errors.poto && myFormik.touched.poto && myFormik.errors.poto}
+                            </div>
                         </div>
                         <div className={classes.input}>
                             <label>Title</label>
@@ -154,7 +173,8 @@ const ZodiacEdit = () => {
 
                                 placeholder="Title"
                             />
-                            <div className={classes.Spanerr}>    {myFormik.errors.title && myFormik.touched.title ? myFormik.errors.title : null} </div>
+                            <div className={classes.Spanerr}>
+                                {myFormik.errors.title && myFormik.touched.title ? myFormik.errors.title : null} </div>
 
                         </div>
                         <div className={classes.input}>
@@ -164,25 +184,28 @@ const ZodiacEdit = () => {
                                 onBlur={myFormik.handleBlur}
                                 onChange={myFormik.handleChange}
                                 value={myFormik.values.desc}
+                                className={
+                                    myFormik.errors.desc && myFormik.touched.desc ? classes.descwarinng : classes.descsuccess}
                                 type='text' />
+                            <div className={classes.Spanerr}>
+                                {myFormik.errors.desc && myFormik.touched.desc && myFormik.errors.desc}
+                            </div>
                         </div>
+
                         <div className={classes.input}>
                             <input
                                 type='date'
                                 onBlur={myFormik.handleBlur}
                                 onChange={myFormik.handleChange}
                                 value={myFormik.values.date}
-
-
-                                // onBlur={myFormik.handleBlur}
-                                // onChange={myFormik.handleChange}
-                                // value={myFormik.values.date}
-
                                 name='date'
-                            // className={
-                            //     myFormik.errors.date && myFormik.touched.date ? classes.warinng : classes.success}
+                                className={
+                                    myFormik.errors.date && myFormik.touched.date ? classes.warinng : classes.success}
 
                             />
+                        </div>
+                        <div className={classes.Spanerr}>
+                            {myFormik.errors.date && myFormik.touched.date && myFormik.errors.date}
                         </div>
                         <button type='submit' className={classes.sumitbtn}>Sumit</button>
                     </form>

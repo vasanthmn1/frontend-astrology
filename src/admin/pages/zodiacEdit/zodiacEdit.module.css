@@ -52,8 +52,40 @@ object-fit: contain;
 
 }
 .warinng{
-    border: 2px solid rgb(0, 238, 247) !important;
+    border: 2px solid #ffffff;
+    -webkit-box-shadow: -0.5px 0.5px 2.5px 2.5px rgba(242, 0, 0, 0.58);
+    -moz-box-shadow: -0.5px 0.5px 2.5px 2.5px rgba(242, 0, 0, 0.58);
+    box-shadow: -0.5px 0.5px 2.5px 2.5px rgba(242, 0, 0, 0.58);
 }
+.descwarinng{
+    outline: none;
+    border: 2px solid #ffffff !important;
+    -webkit-box-shadow: -0.5px 0.5px 2.5px 2.5px rgba(242, 0, 0, 0.58);
+    -moz-box-shadow: -0.5px 0.5px 2.5px 2.5px rgba(242, 0, 0, 0.58);
+    box-shadow: -0.5px 0.5px 2.5px 2.5px rgba(242, 0, 0, 0.58);
+}
+.descsuccess{
+    /* border: 2px solid gray; */
+
+}
+.descsuccess:focus{
+    outline: none;
+    border: 2px solid rgb(252, 252, 252);
+    -webkit-box-shadow: -0.5px 0.5px 2.5px 2.5px rgba(71, 74, 255, 0.57);
+    -moz-box-shadow: -0.5px 0.5px 2.5px 2.5px rgba(71, 74, 255, 0.57);
+    box-shadow: -0.5px 0.5px 2.5px 2.5px rgba(71, 74, 255, 0.57);
+}
+.success:focus{
+    border: 2px solid rgb(252, 252, 252);
+    -webkit-box-shadow: -0.5px 0.5px 2.5px 2.5px rgba(71, 74, 255, 0.57);
+    -moz-box-shadow: -0.5px 0.5px 2.5px 2.5px rgba(71, 74, 255, 0.57);
+    box-shadow: -0.5px 0.5px 2.5px 2.5px rgba(71, 74, 255, 0.57);
+    
+   }
+   .Spanerr{
+    color: red;
+    line-height: 2.2rem;
+   }
 @media (max-width:450px){
     .input textarea{
         width: 100%;
