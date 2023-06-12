@@ -23,6 +23,11 @@ const ZodiacEdit = () => {
     }, [])
 
     const Getuser = async () => {
+
+
+
+
+
         try {
             dispatch(isLoading())
             let get = await axios.get(`${link}/zodiac/get/${params.id}`)
@@ -56,8 +61,16 @@ const ZodiacEdit = () => {
         },
 
         onSubmit: async (values) => {
+            try {
+                dispatch(isLoading())
+                const response = await axios.put(`${link}/zodiac/editimg/${params.id}`, {
+                    poto: values.poto
+                })
+            } catch (error) {
+                dispatch(stopLoading())
+                toast.error(err.message)
+            }
 
-            // setFileToBase
             try {
                 dispatch(isLoading())
                 const response = await axios.put(`${link}/zodiac/edit/${params.id}`, {
@@ -67,12 +80,8 @@ const ZodiacEdit = () => {
 
                     poto: values.poto
                 });
-                console.log(response.data)
-
-
                 dispatch(stopLoading())
                 navigate('/zodiaclist')
-
             } catch (err) {
                 console.log(values.poto.url)
                 toast.error(err.message)
@@ -87,7 +96,6 @@ const ZodiacEdit = () => {
     const handleImage = (e) => {
         const file = e.target.files[0];
         setFileToBase(file);
-        // console.log(file);
     }
 
     const setFileToBase = (file) => {
@@ -95,15 +103,9 @@ const ZodiacEdit = () => {
         reader.readAsDataURL(file);
         reader.onloadend = () => {
             myFormik.setFieldValue("poto", reader.result)
-            console.log(reader.result);
-
         }
-        // console.log(reader);
-
-        console.log(reader.result);
-
     }
-    // myFormik.setFieldValue("poto", getsingle.poto)
+
     return (
         <div className={classes.Container}>
             <ToastContainer />

@@ -48,7 +48,7 @@ const ZodiacList = () => {
                                 <div className={classes.warper} key={idx} >
                                     <Link to={`/siglezodiac/${val._id}`} >
                                         <div className={classes.image}>
-                                            <img src={val.poto.url} alt={val.title} />
+                                            <img src={val.poto.url || val.poto} alt={val.title} />
 
                                             <div className={classes.contantbox}>
                                                 <div className={classes.title}>

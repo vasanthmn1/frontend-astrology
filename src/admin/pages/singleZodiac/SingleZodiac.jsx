@@ -78,7 +78,7 @@ const SingleZodiac = () => {
             <Row>
                 <Col lg='6'>
                     <div className={classes.popimage}>
-                        <img src={singlepost.poto?.url} />
+                        <img src={singlepost.poto?.url || singlepost.poto} />
                     </div>
                 </Col>
                 <Col lg='6'>
