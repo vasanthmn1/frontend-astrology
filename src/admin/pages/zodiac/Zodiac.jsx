@@ -102,13 +102,14 @@ const Zodiac = () => {
             <Row>
                 <Col lg="6">
                     <div className={classes.imagebox}>
-                        {formik.values.poto && (
+                        {formik.values.poto ? (
                             <img
                                 className=""
+
                                 src={formik.values.poto}
                                 alt={formik.values.title}
                             />
-                        )}
+                        ) : <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjl3C3TaTxwJToSwA6E4EGA1rlotxVf7XAmFIKNugGpQ&s' />}
                     </div>
                     <form onSubmit={formik.handleSubmit}>
                         <div className={classes.imageinput} style={{ display: 'block' }}>
