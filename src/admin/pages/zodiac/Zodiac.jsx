@@ -59,11 +59,9 @@ const Zodiac = () => {
                         poto: {
                             public_id: values.poto.name,
                             url: values.poto
-
                         },
                         desc: values.desc,
                         date: values.date
-
                     }
 
                 );

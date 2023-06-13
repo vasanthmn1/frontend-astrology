@@ -48,6 +48,7 @@ transition: none;
 
 .active {
     color: #fff;
+    
 }
 .inactive{
     color: #14141f !important;
@@ -65,11 +66,22 @@ transition: none;
     font-size: 0.8rem;
 }
 
-.appointmentbtn{
+.inactiveappointmentbtn button{
+    background-color: #8B1874 !important;
+    border-radius: 3px !important;
+    border: 3px solid #0f0231;
+ padding: 0px 20px !important;
+ color: #041f21;
+ font-weight: 600;
+}
+.activeappointmentbtn button{
     background-color: #8B1874 !important;
     border-radius: 3px !important;
     border: 3px solid #FC4F00;
  padding: 0px 20px !important;
+ color: #fff;
+ font-weight: 600;
+
 }
 .btn span i {
     color: #fff;

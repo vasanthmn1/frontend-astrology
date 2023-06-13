@@ -26,13 +26,13 @@ const NAV_LINKS = [
 const Header = () => {
 
     const headerRef = useRef(null)
-    const { user } = useSelector((state) => state.auth)
+    const { user, getallusers } = useSelector((state) => state.auth)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     useEffect(() => {
 
     }, [user]);
-
+    console.log(getallusers.length);
     const menuRef = useRef(null);
 
     const toggleMenu = () => menuRef.current.classList.toggle(classes.active_menu)
@@ -63,11 +63,16 @@ const Header = () => {
                         <div className={classes.btn}>
                             {
                                 user ?
-                                    <button className={classes.appointmentbtn}>
-                                        <Link to={'/appointment'}
 
-                                        >  Appointment </Link>
-                                    </button> :
+
+
+
+                                    <NavLink to={'/appointment'} className={navClass => navClass.isActive ? classes.activeappointmentbtn : classes.inactiveappointmentbtn}>
+                                        <button > Appointment</button>
+
+                                    </NavLink>
+
+                                    :
                                     <Link to={'/login'}
 
                                     >   <button className={classes.login}>
@@ -83,7 +88,8 @@ const Header = () => {
                                     <div className={classes.notification}>
                                         <Link to='notifiction'>
                                             <AiOutlineBell className={classes.logout} />
-                                            <Badge bg="danger" className={classes.badge}></Badge>
+                                            {getallusers.length >= 1 ?
+                                                <Badge bg="danger" className={classes.badge}>   {getallusers.length}</Badge> : null}
                                         </Link>
 
                                     </div>

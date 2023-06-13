@@ -22,12 +22,16 @@ const ClientNotification = () => {
 
     const getall = async () => {
 
-        dispatch(isLoading())
-        const { data } = await axios.get(`${link}/user/usergetall/${user._id}`)
-        dispatch(getalluser(data.filteredData
-        ))
+        try {
+            dispatch(isLoading())
+            const { data } = await axios.get(`${link}/user/usergetall/${user._id}`)
+            dispatch(getalluser(data.filteredData))
 
-        dispatch(stopLoading())
+            dispatch(stopLoading())
+        } catch (error) {
+            console.log(error);
+            dispatch(stopLoading())
+        }
     }
 
     const handelDelete = async (id) => {
@@ -35,6 +39,7 @@ const ClientNotification = () => {
         getall()
         console.log(del);
     }
+    console.log(getallusers);
     return (
         <Container>
 
@@ -55,47 +60,49 @@ const ClientNotification = () => {
                                 <th>E-mail</th>
                                 <th className={classes.statusntd}> status </th>
                                 <th>Action</th>
-                                {/* <th></th> */}
-                                {/* <th>Number</th>
-                        <th>Message</th>
-                        <th>action</th> */}
-
-
                             </tr>
                         </thead>
                         <tbody className={classes.tbody}>
 
+
                             {
-                                getallusers?.map((val, idx) => (
-
-
-                                    <tr key={idx} className={classes.notificationBox}>
-                                        <td>{idx + 1}</td>
-                                        <td className={classes.list}>{val.data.name} </td><td>
-                                            {moment(val.data.date).format("DD-MM-YYYY")}
-                                        </td>
-                                        <td>{val.data.times}</td>
-                                        <td>{val.data.email}</td>
-                                        {val.data.status === "Reject" ? (
-                                            <td className={classes.rejected}><button>{val.data.status}</button></td>
-                                        ) : val.data.status === "pending" ? (
-                                            <td className={classes.pending}><button>{val.data.status}...</button></td>
-                                        ) : (
-                                            <td className={classes.success}><button>{val.data.status}</button></td>
-                                        )}
-                                        <td>
-                                            {val.data.status === "Reject" ?
-
-                                                <>
-                                                    <AiFillDelete data-title="this is a textarea" className={classes.deletebtn} onClick={() => handelDelete(val.data.userId)} />
-                                                    {/* <span className={classes.tooltiptext}>Tooltip text</span> */}
-                                                </>
-                                                : null}
+                                (!getallusers || getallusers.length === 0) ?
+                                    <tr>
+                                        <td colSpan="7" className="text-center mt-5">
+                                            No Appointment List
                                         </td>
                                     </tr>
 
+                                    :
+                                    getallusers?.map((val, idx) => (
+                                        <tr key={idx} className={classes.notificationBox}>
+                                            <td>{idx + 1}</td>
+                                            <td className={classes.list}>{val.data.name} </td><td>
+                                                {moment(val.data.date).format("DD-MM-YYYY")}
+                                            </td>
+                                            <td>{val.data.times}</td>
+                                            <td>{val.data.email}</td>
+                                            {val.data.status === "Reject" ? (
+                                                <td className={classes.rejected}><button>{val.data.status}</button></td>
+                                            ) : val.data.status === "pending" ? (
+                                                <td className={classes.pending}><button>{val.data.status}...</button></td>
+                                            ) : (
+                                                <td className={classes.success}><button>{val.data.status}</button></td>
+                                            )}
+                                            <td>
+                                                {val.data.status === "Reject" ?
 
-                                ))}
+                                                    <>
+                                                        <AiFillDelete data-title="this is a textarea" className={classes.deletebtn} onClick={() => handelDelete(val.data.userId)} />
+                                                        {/* <span className={classes.tooltiptext}>Tooltip text</span> */}
+                                                    </>
+                                                    : null}
+                                            </td>
+                                        </tr>
+
+
+                                    ))
+                            }
                         </tbody>
 
 
