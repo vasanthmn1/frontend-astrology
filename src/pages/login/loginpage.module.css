@@ -1,70 +1,103 @@
 .container{
-    background-color: #8B1874;
+  background: #8a2387;
+  background: -webkit-linear-gradient(290deg, #8a2387 0%, #8e54e9 100%);
+  background: linear-gradient(290deg, #8a2387 0%, #8e54e9 100%);
     min-height: 100vh;
-    height: 100%;
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
+  
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    /* background-color: rgba(28, 23, 23, 0.511); */
+position: absolute;
 }
+.containercontent{
+  padding: 0 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  position: relative;
+
+}
+
 .warper{
   background-color: #fff;
-  padding: 50px 50px;
+  padding: 30px 50px;
   border-radius: 5px;
- 
 }
-.warper h4{
+.warper h3{
   text-align: center;
-  font-size: 2rem !important;
+  font-size: 2.5rem;
+  background: #8A2387;
+  background: radial-gradient(circle farthest-corner at right center, #8A2387 11%, #02AFEE 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .form{
   display: flex;
   flex-direction: column;
 }
+.input{
+  margin: 10px !important;
+}
 label{
   padding: 10px 0px;
 }
 .btn{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
+  margin: 10px;
+  
 }
 .btn button{
   background-color: #8B1874;
-  padding: 7px 20px;
+  padding: 7px 40px;
   border: none;
   border-radius: 5px;
   color: #fff;
 }
-.emailSpan{
-  color: red;
-}
-input{
-  font-size: 1rem !important;
-  padding: 5px 2px;
-  font-size: 1rem !important;
-}
-input:focus{
 
-  outline: none; 
- }
 
- .warinng{
-  border:2px solid #ff0000;
-  outline: none;
-
- }
- .warinng::placeholder{
-  color: red;
- }
- .success:focus{
-  border:2px solid #00f731;
-  outline: none;
- }
  .loginlink{
-  margin-top: 20px;
+  margin: 10px;
  }
  .loginlink a{
   color: rgb(0, 94, 255);
+  margin-left: 3px;
  }
+
+ .containercontent{
+  padding: 0 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  position: relative;
+
+}
+
+@media only screen and (max-width:550px) {
+  .containercontent{
+    padding: 0 10px;
+   
+  
+  }
+  .btn button{
+    background-color: #8B1874;
+    padding: 7px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+  }
+
+}
+
+@media only screen and (max-width:450px) {
+
+
+}
+

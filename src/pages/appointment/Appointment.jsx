@@ -19,11 +19,15 @@ const Appointment = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [err, setErr] = useState(false)
+
+    useEffect(() => {
+
+    }, [])
     let myFormik = useFormik({
         initialValues: {
 
             name: "",
-            email: user.email,
+            email: user?.email,
             phone: "",
             address: "",
             times: "",

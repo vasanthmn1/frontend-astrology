@@ -37,7 +37,8 @@
     cursor: pointer;
     /* align-items: center; */
     border: 2px solid #ffffff;
-    /* background-color: aliceblue; */
+    background-color: #2F1A49;
+
     -webkit-box-shadow: 0 0 26.5px 3px #d3d3d3;
 -moz-box-shadow: 0 0 26.5px 3px #d3d3d3;
 box-shadow: 0 0 26.5px 3px #d3d3d3;

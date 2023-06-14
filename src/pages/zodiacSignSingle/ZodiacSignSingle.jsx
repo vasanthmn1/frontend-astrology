@@ -18,6 +18,7 @@ const ZodiacSignSingle = () => {
         getposts()
         getpost()
         stickyHeader()
+        window.scrollTo(0, 0)
     }, [params.id])
 
     const getpost = async () => {

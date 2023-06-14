@@ -52,9 +52,16 @@ const ClientRoutes = () => {
                             <Route path='/' element={<Navigate to='/home' />} />
                             <Route path='home' element={<Home />} />
                             {/* <Route path='appointment' element={<Appoi />} /> */}
-                            <Route path='/appointment' element={<Appointment />} />
-                            <Route path='/notifiction' element={<ClientNotification />} />
+
+
                             <Route path='/zodiac/:id' element={<ZodiacSignSingle />} />
+                            {
+                                user ?
+                                    <>
+                                        <Route path='/appointment' element={<Appointment />} />
+                                        <Route path='/notifiction' element={<ClientNotification />} />
+                                    </>
+                                    : null}
                         </Route>
 
                 }
@@ -65,6 +72,7 @@ const ClientRoutes = () => {
                         <>
                             <Route path='/login' element={<Navigate to='/home' />} />
                             <Route path='/register' element={<Navigate to='/home' />} />
+
                         </>
 
                         :

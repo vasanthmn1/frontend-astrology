@@ -25,17 +25,7 @@ const ZodiacList = () => {
         }
 
     }
-    // const handelDel = async (id) => {
-    //     dispatch(isLoading())
-    //     const res = await axios.delete(`${link}/zodiac/delete/${id}`);
-    //     window.location.reload()
-    //     dispatch(stopLoading())
-    //     getposts()
-    // }
-    // const handleClose = () => {
-    //     SetOpen(false);
-    //     openbox.current.classList.remove(classes.hello);
-    // };
+
     return (
         <div className={classes.fullbox} >
             <div className={classes.container}>

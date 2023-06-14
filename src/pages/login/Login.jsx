@@ -1,15 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import classes from './loginpage.module.css'
 import { message } from 'antd'
+import { Row, Col, Container } from 'react-bootstrap'
+
 import { useFormik } from 'formik'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import 'react-toastify/dist/ReactToastify.css';
 import { isLoading, loginSuccess, loginSuccessToken, stopLoading } from '../../redux/features/AuthSclice'
-// import { loginStart, loginSuccess } from '../../redux/feutures/AuthSlice'
+
+
+import TextField from '@mui/material/TextField';
+import { IconButton, InputAdornment } from '@mui/material'
+
+
 const Login = () => {
+
+    const [showPassword, setShowPassword] = useState(false);
+
     const { link } = useSelector((state) => state.link)
 
 
@@ -26,7 +38,7 @@ const Login = () => {
             let err = {}
 
             if (!values.email) {
-                err.email = "Enter full email"
+                err.email = "  email required"
             } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
                 err.email = 'Invalid email address !!';
             }
@@ -63,15 +75,20 @@ const Login = () => {
             } catch (error) {
                 console.log(error);
                 dispatch(stopLoading())
-                setErr(toast.error('Email or Password wrong'))
+                setErr(toast.error('Email or Password wrong', {
+                    theme: "colored"
+                }))
             }
         }
     })
 
+
+
     return (
+
         <div className={classes.container}>
             <ToastContainer />
-            <div className={classes.warper}>
+            {/* <div className={classes.warper}>
                 <h4> Login</h4>
                 <form className={classes.form} onSubmit={myFormik.handleSubmit}>
                     <label>Email:</label>
@@ -118,12 +135,90 @@ const Login = () => {
                         </button>
                     </div>
                 </form>
-            </div>
+            </div> */}
 
+            <div className={classes.containercontent}>
+                <Row>
+                    <Col lg='4' sm='1'>
+
+                    </Col>
+                    <Col lg='8' sm='11'>
+                        <div className={classes.warper}>
+                            <h3 >Login</h3>
+                            <form onSubmit={myFormik.handleSubmit} className={classes.form}  >
+                                <TextField
+                                    error={myFormik.touched.email && !!myFormik.errors.email}
+                                    onBlur={myFormik.handleBlur}
+                                    onChange={myFormik.handleChange}
+                                    name='email' label="Email" type='email'
+                                    value={myFormik.values.email}
+                                    helperText={myFormik.touched.email && myFormik.errors.email}
+                                    className={classes.input}
+
+
+                                    FormHelperTextProps={{
+                                        style: {
+                                            color: "red",
+                                        },
+
+                                    }}
+
+                                />
+
+                                <TextField
+                                    FormHelperTextProps={{
+                                        style: {
+                                            color: "red",
+                                        },
+
+                                    }}
+                                    label="Password"
+                                    // type="password"
+                                    name="password"
+                                    value={myFormik.values.password}
+                                    onChange={myFormik.handleChange}
+                                    onBlur={myFormik.handleBlur}
+                                    error={myFormik.touched.password && !!myFormik.errors.password}
+
+                                    helperText={myFormik.touched.password && myFormik.errors.password}
+                                    className={classes.input}
+                                    type={showPassword ? 'text' : 'password'}
+                                    InputProps={{
+                                        endAdornment: (
+                                            <InputAdornment position="end">
+                                                <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
+                                                    {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                                                </IconButton>
+                                            </InputAdornment>
+                                        ),
+                                    }}
+                                />
+                                <p className={classes.loginlink}>
+                                    Don't have an account?
+                                    <Link to={'/register'}>
+                                        register now
+                                    </Link>
+                                </p>
+                                <div className={classes.btn}>
+                                    <button type='submit' >
+
+
+                                        Login
+                                    </button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </Col>
+                </Row>
+            </div>
 
 
         </div>
     )
 }
+
+
+
 
 export default Login
