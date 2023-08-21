@@ -14,3 +14,10 @@ const LinkSlice = createSlice({
 
 
 export default LinkSlice.reducer
+
+    // .then(async (authUser) => {
+    //     await axios.post(`${link}/auth/register`, {
+    //         email: emailRef.current.value,
+    //         password: passwordRef.current.value
+    //     })
+    // })
