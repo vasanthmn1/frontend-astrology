@@ -23,13 +23,12 @@ import SingleZodiac from '../admin/pages/singleZodiac/SingleZodiac'
 
 const ClientRoutes = () => {
     const { user, isLoading } = useSelector((state) => state.auth)
-    const { postLoading } = useSelector((state) => state.zodiac)
+
     return (
         <div>
 
             {
-                isLoading && <Spiner /> || postLoading && <Spiner />
-
+                isLoading && <Spiner />
             }
 
             <Routes>

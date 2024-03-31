@@ -1,4 +1,4 @@
-import React from 'react'
+
 import ClientRoutes from '../router/ClientRoutes'
 
 const Layout = () => {
