@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Home from '../pages/home/Home'
 
@@ -6,7 +6,7 @@ import Portal from '../pages/portal/Portal'
 import Login from '../pages/login/Login'
 import Register from '../pages/register/Register'
 import { useSelector } from 'react-redux'
-import Spiner from '../components/spiner/Spiner'
+import Spiner from '../components/loader/spiner/Spiner'
 import AdminHome from '../admin/pages/home/AdminHome'
 
 import AdminPortal from '../admin/pages/adminPortal/AdminPortal'
@@ -22,7 +22,7 @@ import PageNotFound from '../utils/Accordion/pagenotefoung/PageNotFound'
 import SingleZodiac from '../admin/pages/singleZodiac/SingleZodiac'
 
 const ClientRoutes = () => {
-    const { user, token, isLoading } = useSelector((state) => state.auth)
+    const { user, isLoading } = useSelector((state) => state.auth)
     const { postLoading } = useSelector((state) => state.zodiac)
     return (
         <div>

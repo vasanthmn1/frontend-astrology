@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 // import "./header.css";
-import { Badge, Container } from "react-bootstrap";
+import { Badge } from "react-bootstrap";
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa'
 import { MdOutlineExitToApp } from 'react-icons/md'
@@ -25,7 +25,7 @@ const NAV_LINKS = [
 
 const Header = () => {
 
-    const headerRef = useRef(null)
+
     const { user, getallusers } = useSelector((state) => state.auth)
     const dispatch = useDispatch()
     const navigate = useNavigate()

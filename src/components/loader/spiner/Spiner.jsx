@@ -1,5 +1,5 @@
 // import React from 'react'
-import { useState, CSSProperties } from "react";
+
 import MoonLoader from "react-spinners/MoonLoader";
 import classes from './spiner.module.css'
 

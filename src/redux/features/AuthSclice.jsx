@@ -25,16 +25,16 @@ const AuthSlice = createSlice({
             state.isLoading = true
             state.token = action.payload
         },
-        logoutuser: (state, action) => {
+        logoutuser: (state) => {
             localStorage.removeItem('user')
             localStorage.removeItem('token')
             state.user = null;
             state.token = null;
         },
-        isLoading: (state, action) => {
+        isLoading: (state) => {
             state.isLoading = true
         },
-        stopLoading: (state, action) => {
+        stopLoading: (state) => {
             state.isLoading = false
         },
         getalluser: (state, action) => {
