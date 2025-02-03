@@ -1,12 +1,20 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+import { useAppDispatch, useAppSelector } from './redux/hooks'
+import { increment, incrementByAmount, selectCount } from './redux/features/counter/counterSlice'
 
+function App() {
+
+  const count = useAppSelector(selectCount)
+  const dispatch = useAppDispatch()
+
+  console.log(count);
   return (
+
+
     <>
       <div>
         <a href="https://vite.dev" target="_blank">
@@ -18,7 +26,8 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+        <button onClick={() => dispatch(incrementByAmount(3))}>
+          {/* //onClick={() => setCount((count) => count + 1)}> */}
           count is {count}
         </button>
         <p>
