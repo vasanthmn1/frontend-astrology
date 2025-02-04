@@ -1,0 +1,220 @@
+.client-header-main {
+    width: 100%;
+    height: 70px;
+    line-height: 35px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    background-color: #b71375;
+
+    .wrapper {
+        margin: 0 20px;
+    }
+    .navigation {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo {
+        width: 100%;
+        height: 60px;
+        img {
+            height: 100%;
+            margin-top: 5px;
+        }
+    }
+
+    .nav-right {
+        display: flex;
+        align-items: center;
+        .nav-list {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0;
+            list-style: none;
+            margin-top: 10px !important;
+            margin-right: 30px;
+
+            .nav-item {
+                a {
+                    text-decoration: none;
+                    font-size: 1.3rem;
+                    color: #fff;
+
+                    &:hover {
+                        transition: none;
+                    }
+                }
+                ul {
+                    list-style: none;
+                }
+                .active {
+                    color: #fff;
+                }
+                .inactive {
+                    color: #14141f !important;
+                }
+            }
+        }
+        .group-btn {
+            padding: 7px 25px;
+
+            margin-top: 5px;
+
+            a {
+                text-decoration: none;
+                color: #fff;
+                font-size: 0.8rem;
+                &:hover {
+                    color: #fff;
+                }
+            }
+
+            span {
+                i {
+                    color: #fff;
+                }
+            }
+
+            padding: 7px 25px;
+
+            margin-top: 5px;
+            a {
+                text-decoration: none;
+                color: #fff;
+                font-size: 0.8rem;
+            }
+
+            .inactiveappointmentbtn {
+                button {
+                    background-color: #8b1874 !important;
+                    border-radius: 3px !important;
+                    border: 3px solid #0f0231;
+                    padding: 0px 20px !important;
+                    color: #041f21;
+                    font-weight: 600;
+                }
+            }
+            .activeappointmentbtn {
+                button {
+                    background-color: #8b1874 !important;
+                    border-radius: 3px !important;
+                    border: 3px solid #219af1;
+                    padding: 0px 20px !important;
+                    color: #fff;
+                    font-weight: 600;
+                }
+            }
+
+            .login {
+                cursor: pointer;
+                color: #fff;
+                background-color: #2f1a49;
+                text-decoration: none;
+                padding: 5px 30px;
+                border-radius: 35px;
+            }
+        }
+
+        .notification {
+            position: relative;
+
+            .logout {
+                background-color: #fc4f00;
+                color: #fff;
+                margin-right: 50px;
+                padding: 2px;
+                font-size: 2.3rem;
+                margin-top: 6px;
+                transition: 0.8s all ease;
+                cursor: pointer;
+            }
+
+            .badge {
+                right: 12px;
+                position: absolute;
+            }
+        }
+        .mobile-menu {
+            color: #fff;
+            font-size: 1.3rem;
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(#14141f83, #14141f83);
+        z-index: 222222;
+        display: none;
+
+        .nav-list {
+            position: absolute;
+            top: -20px;
+            left: 0;
+            width: 250px;
+            height: 120vh;
+            background: #343444;
+            z-index: 333333;
+            flex-direction: column;
+            padding-top: 40px;
+
+            .nav-item {
+                padding: 10px !important;
+            }
+            .inactive {
+                color: #fff !important;
+            }
+        }
+    }
+
+    .active-menu {
+        display: block;
+    }
+
+    .group-btn {
+        padding: 0px 0px;
+
+        margin-top: 15px;
+        .login {
+            color: #fff;
+            background-color: rgb(255, 166, 0);
+            text-decoration: none;
+            padding: 0px 20px;
+            font-size: 0.8rem;
+            border-radius: 10px;
+            margin-top: 5px;
+        }
+    }
+    .mobile-menu {
+        display: block !important;
+        color: black;
+        margin-top: 10px;
+        margin-right: 20px;
+        font-size: 1.7rem;
+    }
+
+    .notification {
+        position: relative;
+
+        .logout {
+            margin-right: 20px;
+            margin-left: 20px;
+
+            margin-top: 15px;
+        }
+        .badge {
+            top: 10px;
+            right: 12px;
+            position: absolute;
+        }
+    }
+}

@@ -1,3 +1,200 @@
+@import url("https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  color: #000000;
+}
 
+.client-header-main {
+  width: 100%;
+  height: 70px;
+  line-height: 35px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  background-color: #b71375;
+}
+.client-header-main .wrapper {
+  margin: 0 20px;
+}
+.client-header-main .navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.client-header-main .logo {
+  width: 100%;
+  height: 60px;
+}
+.client-header-main .logo img {
+  height: 100%;
+  margin-top: 5px;
+}
+.client-header-main .nav-right {
+  display: flex;
+  align-items: center;
+}
+.client-header-main .nav-right .nav-list {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  list-style: none;
+  margin-top: 10px !important;
+  margin-right: 30px;
+}
+.client-header-main .nav-right .nav-list .nav-item a {
+  text-decoration: none;
+  font-size: 1.3rem;
+  color: #fff;
+}
+.client-header-main .nav-right .nav-list .nav-item a:hover {
+  transition: none;
+}
+.client-header-main .nav-right .nav-list .nav-item ul {
+  list-style: none;
+}
+.client-header-main .nav-right .nav-list .nav-item .active {
+  color: #fff;
+}
+.client-header-main .nav-right .nav-list .nav-item .inactive {
+  color: #14141f !important;
+}
+.client-header-main .nav-right .group-btn {
+  padding: 7px 25px;
+  margin-top: 5px;
+  padding: 7px 25px;
+  margin-top: 5px;
+}
+.client-header-main .nav-right .group-btn a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 0.8rem;
+}
+.client-header-main .nav-right .group-btn a:hover {
+  color: #fff;
+}
+.client-header-main .nav-right .group-btn span i {
+  color: #fff;
+}
+.client-header-main .nav-right .group-btn a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 0.8rem;
+}
+.client-header-main .nav-right .group-btn .inactiveappointmentbtn button {
+  background-color: #8b1874 !important;
+  border-radius: 3px !important;
+  border: 3px solid #0f0231;
+  padding: 0px 20px !important;
+  color: #041f21;
+  font-weight: 600;
+}
+.client-header-main .nav-right .group-btn .activeappointmentbtn button {
+  background-color: #8b1874 !important;
+  border-radius: 3px !important;
+  border: 3px solid #219af1;
+  padding: 0px 20px !important;
+  color: #fff;
+  font-weight: 600;
+}
+.client-header-main .nav-right .group-btn .login {
+  cursor: pointer;
+  color: #fff;
+  background-color: #2f1a49;
+  text-decoration: none;
+  padding: 5px 30px;
+  border-radius: 35px;
+}
+.client-header-main .nav-right .notification {
+  position: relative;
+}
+.client-header-main .nav-right .notification .logout {
+  background-color: #fc4f00;
+  color: #fff;
+  margin-right: 50px;
+  padding: 2px;
+  font-size: 2.3rem;
+  margin-top: 6px;
+  transition: 0.8s all ease;
+  cursor: pointer;
+}
+.client-header-main .nav-right .notification .badge {
+  right: 12px;
+  position: absolute;
+}
+.client-header-main .nav-right .mobile-menu {
+  color: #fff;
+  font-size: 1.3rem;
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(20, 20, 31, 0.5137254902), rgba(20, 20, 31, 0.5137254902));
+    z-index: 222222;
+    display: none;
+  }
+  .nav-menu .nav-list {
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 250px;
+    height: 120vh;
+    background: #343444;
+    z-index: 333333;
+    flex-direction: column;
+    padding-top: 40px;
+  }
+  .nav-menu .nav-list .nav-item {
+    padding: 10px !important;
+  }
+  .nav-menu .nav-list .inactive {
+    color: #fff !important;
+  }
+  .active-menu {
+    display: block;
+  }
+  .group-btn {
+    padding: 0px 0px;
+    margin-top: 15px;
+  }
+  .group-btn .login {
+    color: #fff;
+    background-color: rgb(255, 166, 0);
+    text-decoration: none;
+    padding: 0px 20px;
+    font-size: 0.8rem;
+    border-radius: 10px;
+    margin-top: 5px;
+  }
+  .mobile-menu {
+    display: block !important;
+    color: black;
+    margin-top: 10px;
+    margin-right: 20px;
+    font-size: 1.7rem;
+  }
+  .notification {
+    position: relative;
+  }
+  .notification .logout {
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 15px;
+  }
+  .notification .badge {
+    top: 10px;
+    right: 12px;
+    position: absolute;
+  }
+}
 
 /*# sourceMappingURL=styles.css.map */

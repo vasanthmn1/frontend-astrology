@@ -1,0 +1,8 @@
+
+const ClientHomeMain = () => {
+    return (
+        <div>ClientHomeMain</div>
+    )
+}
+
+export default ClientHomeMain
