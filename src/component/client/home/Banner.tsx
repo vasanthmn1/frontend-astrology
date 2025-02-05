@@ -7,12 +7,12 @@ const Banner = () => {
 
 
     return (
-        <div>
-            <div className={"conatiner"}>
+        <div className='client-home-banner'>
+            <div className={"wrapper"}>
                 <Container>
                     <Row className={"row"}>
 
-                        <Col lg='6' className={"box1"}>
+                        <Col lg='6' className={"box-1"}>
                             <h1>
                                 Ultimate Guide
                             </h1>
@@ -37,7 +37,7 @@ const Banner = () => {
                             </Link>
                             {/* } */}
                         </Col>
-                        <Col lg='6' className={"box2"}>
+                        <Col lg='6' className={"box-2"}>
                             <img className={"img"} src={bannerImg} />
                         </Col>
 
