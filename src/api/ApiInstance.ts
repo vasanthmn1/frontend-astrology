@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 import { TargetApiEnum } from "./ApiClient";
 import { AuthUser } from "../interface/auth/AuthUser";
-import { LocalStorageAction } from "../acction/localStorage/LocalStorage";
+import { LocalStorageAction } from "../action/localStorage/LocalStorage";
 
 enum PointAccessEnum {
     Public, Private

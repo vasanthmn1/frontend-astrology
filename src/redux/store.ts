@@ -1,11 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import counterReducer from '../redux/features/counter/counterSlice'
+import zodiacListReducer from './features/zodiac/list/zodiacListSlice'
+
 
 export const store = configureStore({
     reducer: {
-        counter: counterReducer
-
-
+        counter: counterReducer,
+        zodiacListSlice: zodiacListReducer
     }
 
 })

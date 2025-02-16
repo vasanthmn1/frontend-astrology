@@ -11,13 +11,13 @@ export class HttpRequest extends ApiInstance {
         this.targetApi = targetApi
     }
 
-    postJson = (url: string, body: any,) => {
-        return this.postRequest(url, body, { type: "application/json" })
+    postJson = <T>(url: string, body: any,) => {
+        return this.postRequest<T>(url, body, { type: "application/json" })
     }
 
 
-    private postRequest = (url: string, body: any, ContentType: ContentType) => {
-        return this.getInstance().post(url, body, {
+    private postRequest = <T>(url: string, body: any, ContentType: ContentType) => {
+        return this.getInstance().post<T>(url, body, {
             headers: {
                 'Content-Type': ContentType.type
             }
