@@ -1,8 +1,8 @@
 import { ReduxBaseHelper } from "../../../abstract/ReduxBaseHelper";
-import { ZodiacState } from "../../../redux/features/zodiac/list/zodiacListSlice";
+import { SimpleHelper } from "../../../abstract/SimpleHelper";
+import { changeState, ZodiacState } from "../../../redux/features/zodiac/zodiacListSlice";
+import { ZodiacListAction } from "./ZodiacListAction";
 
-export class HelperChild extends ReduxBaseHelper<ZodiacState> {
-    constructor() {
-        super("zodiacListSlice");
-    }
+export class HelperChild extends SimpleHelper<ZodiacListAction> {
+
 }

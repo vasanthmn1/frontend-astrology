@@ -8,7 +8,7 @@ export const ZodiacList = () => {
     const zodiacListAction = new ZodiacListAction();
 
     useEffect(() => {
-        zodiacListAction.load();
+        zodiacListAction.request.load();
     }, []);
 
     console.log(result)

@@ -393,4 +393,144 @@ body a {
   }
 }
 
+.login-section {
+  background: #8a2387;
+  background: -webkit-linear-gradient(290deg, #8a2387 0%, #8e54e9 100%);
+  background: linear-gradient(290deg, #8a2387 0%, #8e54e9 100%);
+  min-height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  position: absolute;
+}
+.login-section .container-content {
+  padding: 0 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: relative;
+}
+.login-section .container-content .wrapper {
+  background-color: #fff;
+  padding: 30px 50px;
+  border-radius: 5px;
+}
+.login-section .container-content .wrapper h3 {
+  text-align: center;
+  font-size: 2.5rem;
+  background: #8a2387;
+  background: radial-gradient(circle farthest-corner at right center, #8a2387 11%, #02afee 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.login-section .container-content .wrapper .input {
+  margin: 10px !important;
+}
+.login-section .container-content .wrapper label {
+  padding: 10px 0px;
+}
+.login-section .container-content .wrapper .form-box {
+  display: flex;
+  flex-direction: column;
+}
+.login-section .container-content .wrapper .form-box .input {
+  margin: 10px !important;
+}
+.login-section .container-content .wrapper .form-box .button {
+  margin: 10px;
+}
+.login-section .container-content .wrapper .form-box .button button {
+  background-color: #8b1874;
+  padding: 7px 40px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+}
+.login-section .container-content .wrapper .login-link {
+  margin: 10px;
+}
+.login-section .container-content .wrapper .login-link a {
+  color: rgb(0, 94, 255);
+  margin-left: 3px;
+}
+@media only screen and (max-width: 550px) {
+  .login-section .container-content {
+    padding: 0 10px;
+  }
+}
+
+.signup-section {
+  background: #8a2387;
+  background: -webkit-linear-gradient(290deg, #8a2387 0%, #8e54e9 100%);
+  background: linear-gradient(290deg, #8a2387 0%, #8e54e9 100%);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+}
+.signup-section .container-content {
+  padding: 0 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: relative;
+}
+.signup-section .container-content .wrapper {
+  background-color: #fff;
+  padding: 30px 50px;
+  border-radius: 5px;
+}
+.signup-section .container-content .wrapper h3 {
+  text-align: center;
+  font-size: 2.5rem;
+  background: #8a2387;
+  background: radial-gradient(circle farthest-corner at right center, #8a2387 11%, #02afee 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.signup-section .container-content .wrapper .input {
+  margin: 10px !important;
+}
+.signup-section .container-content .wrapper label {
+  padding: 10px 0px;
+}
+.signup-section .container-content .wrapper .form-box {
+  display: flex;
+  flex-direction: column;
+}
+.signup-section .container-content .wrapper .form-box .input {
+  margin: 10px !important;
+}
+.signup-section .container-content .wrapper .form-box .button {
+  margin: 10px;
+}
+.signup-section .container-content .wrapper .form-box .button button {
+  background-color: #8b1874;
+  padding: 7px 40px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+}
+.signup-section .container-content .wrapper .login-link {
+  margin: 10px;
+}
+.signup-section .container-content .wrapper .login-link a {
+  color: rgb(0, 94, 255);
+  margin-left: 3px;
+}
+@media only screen and (max-width: 550px) {
+  .signup-section .container-content {
+    padding: 0 10px;
+  }
+}
+
 /*# sourceMappingURL=styles.css.map */

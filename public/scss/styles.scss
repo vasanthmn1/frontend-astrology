@@ -3,3 +3,6 @@
 
 @use "client/header";
 @use "client/home";
+
+@use "auth/login";
+@use "auth/signup";
