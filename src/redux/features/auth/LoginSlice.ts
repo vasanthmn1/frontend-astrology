@@ -1,25 +1,21 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 import { RootState } from '../../store'
-export interface LoginState {
-    isLoading: boolean
-    internalErrorMessage: string,
-    isInternalError: boolean,
-    isSubmitting: true,
-    submittingMessage: string
+import { PageAction } from "../../../action/page/PageAction"
+import { PageHandle } from "../../../interface/page/Ipage"
+export interface LoginState extends PageHandle {
+
     email: string
     password: string
+    showPassword: boolean
 }
 
 const initialState: LoginState = {
-    internalErrorMessage: "",
-    isInternalError: false,
-    isLoading: true,
-    isSubmitting: true,
-    submittingMessage: "",
+
     email: "",
     password: "",
-
+    showPassword: false,
+    ...PageAction.defaultPage()
 }
 
 export const loginSlice = createSlice({
@@ -35,6 +31,6 @@ export const loginSlice = createSlice({
 
 export const { changeState } = loginSlice.actions;
 
-export const selectCount = (state: RootState) => state.counter.value
+export const selectRegisterState = (state: RootState) => state.register;
 
 export default loginSlice.reducer

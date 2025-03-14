@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom"
 import ClientHomeMain from "../component/client/home/ClientHomeMain"
 import ClientPortal from "../component/client/ClientPortal"
-import { LoginPage } from "../component/auth/login/LoginPage"
+import { LoginPage, LoginPageFn } from "../component/auth/login/LoginPage"
 // import { RegisterPageFn } from "../component/auth/register/RegisterPage"
 import AppointMentMain from "../component/client/appointment/AppointMentMain"
 import { RegisterPage, RegisterPageFn } from "../component/auth/register/RegisterPage"
@@ -18,7 +18,7 @@ const ClientRoutes = () => {
                     <Route path="/appointment" element={<AppointMentMain />} />
                 </Route>
                 <Route>
-                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/login" element={<LoginPageFn />} />
                     <Route path="/register" element={<RegisterPageFn />} />
                 </Route>
             </Routes>

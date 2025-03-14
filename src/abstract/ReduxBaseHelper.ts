@@ -9,6 +9,11 @@ export abstract class ReduxBaseHelper<S, T> {
 
     ctx: T;
 
+
+    getState = (): any => {
+        return store.getState()[this.sliceName]
+    }
+
     constructor(sliceName: keyof RootState, changeStateAction: (state: S) => any, ctx: T) {
         // super(action);
         this.sliceName = sliceName;

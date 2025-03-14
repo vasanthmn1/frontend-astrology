@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 
 import { IconButton, InputAdornment, TextField } from '@mui/material'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { SignupAction } from '../../../action/auth/signup/SignupAction';
-import { RootState, store } from '../../../redux/store';
+import { RootState } from '../../../redux/store';
 
-import { connect, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { HookParams } from '../../../interface/HookParams';
-import { selectRegisterState, SignUpState } from '../../../redux/features/auth/RegisterSlice';
+import { SignUpState } from '../../../redux/features/auth/RegisterSlice';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
@@ -69,15 +69,6 @@ export class RegisterPage extends Component<HookParams<SignUpState>> {
                                                 </InputAdornment>
                                             },
                                         }}
-                                        // InputProps={{
-                                        //     endAdornment: (
-                                        //         <InputAdornment position="end">
-                                        //             <IconButton onClick={() => this.showPassword()} edge="end">
-                                        //                 {this.state.showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-                                        //             </IconButton>
-                                        //         </InputAdornment>
-                                        //     ),
-                                        // }}
                                         className='input' name='password' label="password" onChange={(e) => this.action.onChangeInput(e)} />
 
                                     <p className='login-link'>
