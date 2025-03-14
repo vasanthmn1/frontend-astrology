@@ -6,15 +6,18 @@ import { PageAction } from "../../../action/page/PageAction"
 export interface SignUpState extends PageHandle {
 
     email: string
+    name: string
     password: string
-    conformPassword: string
-
+    // conformPassword: string
+    showPassword: boolean
 }
 
 const initialState: SignUpState = {
     email: "",
     password: "",
-    conformPassword: "",
+    name: "",
+    // conformPassword: "",
+    showPassword: false,
     ...PageAction.defaultPage()
 
 }
@@ -32,6 +35,6 @@ export const registerSlice = createSlice({
 
 export const { changeState } = registerSlice.actions;
 
-export const selectCount = (state: RootState) => state.counter.value
+export const selectRegisterState = (state: RootState) => state.register;
 
 export default registerSlice.reducer

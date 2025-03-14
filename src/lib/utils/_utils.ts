@@ -2,6 +2,15 @@
 
 export let _utils = {
 
+
+    validateEmail: (value: any): boolean => {
+        value = _utils.trim(value)
+        if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
+            return true
+        }
+        return false
+    },
+
     isParseInt: (value: any): number => {
         if (typeof value === "number") {
             return parseInt(_utils.trim(value.toString()))

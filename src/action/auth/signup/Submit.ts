@@ -1,25 +1,25 @@
-import { ApiClient } from "../../../api/ApiClient";
 import { ServiceResponse } from "../../../interface/response/ServiceResponse";
 import { store } from "../../../redux/store";
+import { PageTostfication } from "../../page/PageNotification";
+import { PageResponse } from "../../page/PageResponse";
 import { HelperChild } from "./helper";
-import { SignupAction } from "./SignupAction";
 
 export class Submit extends HelperChild {
 
     submit = () => {
         this.triggerLoad(async () => {
             let currentState = store.getState().register
+
             try {
                 const response = await this.p.apiClient.webApi.postJson<ServiceResponse>("/acc/signup/", {
                     email: currentState.email,
                     password: currentState.password
                 });
 
-                if (response) {
-                    this.updateSuccess(response.data.result)
+                if (PageResponse.validateResponse(response.data)) {
+                    this.updateSuccess(response.data.message)
                 } else {
-                    console.log('Error');
-
+                    this.updateError(response.data.result)
                 }
             } catch (error: any) {
                 this.updateError(error.message)
@@ -32,30 +32,33 @@ export class Submit extends HelperChild {
 
         this.p.changeState({ isSubmitting: true });
 
-        await callback()
+        let state = store.getState().register
+
+        if (!this.p.validate.validate(state)) {
+
+
+            await callback()
+
+        }
+
 
     }
 
-    updateSuccess = (response: string) => {
-        // let currentState = store.getState().zodiacListSlice
+    updateSuccess = (message: string) => {
 
-        // const newState = {...changeState}
-        // const newState = {
-        //     ...currentState,
-        //     result: { list: response.list },
-        //     isLoading: false
-        // };
-        // currentState.isLoading = false
-
-        console.log(response);
+        PageTostfication.pageSuccess(message)
 
         this.p.changeState({
+            isLoading: false,
             isSubmitting: false
         });
-
+        this.p.ctx.props.navigate('/login')
 
     }
     updateError = (error: string) => {
+
+        PageTostfication.pageError(error)
+
         this.p.changeState({
             isInternalError: true,
             internalErrorMessage: error,
