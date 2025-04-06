@@ -1,0 +1,27 @@
+@use "../variables" as c;
+
+.appointment {
+    .form {
+        background-color: c.$primary-color;
+        min-height: 100dvh;
+        height: 100%;
+
+        .wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            .input {
+                display: flex;
+                flex-direction: column;
+                margin: 10px;
+                input {
+                    background-color: #fff;
+                    border-radius: 10px;
+                    border: none;
+                    padding: 10px;
+                }
+            }
+        }
+    }
+}

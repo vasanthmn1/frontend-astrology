@@ -1,8 +1,14 @@
 @use "navbar";
 @use "global";
 
+@use "client/appointment";
 @use "client/header";
 @use "client/home";
 
 @use "auth/login";
 @use "auth/signup";
+
+@use "admin/ad-sidebar";
+@use "admin/ad-header";
+
+@use "admin/admin.scss";

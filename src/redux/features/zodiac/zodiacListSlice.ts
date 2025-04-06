@@ -1,33 +1,43 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { RootState } from '../../store'
-import { IPageNation } from '../../../interface/page/Ipage'
-import { pageNationAction } from '../../../action/page/PageNationAction'
-import { IZodiacRow } from '../../../interface/response/zodiac/IZodiacRow'
+import { PageHandle } from '../../../interface/page/Ipage'
 
-export interface ZodiacState extends IPageNation {
-    isLoading: boolean
-    internalErrorMessage: string,
-    isInternalError: boolean,
-    result: {
-        list: Array<IZodiacRow>
+import { IZodiacRow } from '../../../interface/response/zodiac/IZodiacRow'
+import { PageAction } from '../../../action/page/PageAction'
+import { RootState } from '../../store'
+
+export interface ZodiacListState extends PageHandle {
+
+    list: Array<IZodiacRow>
+
+
+    showPopup: boolean
+
+    add: {
+        title: string
+        desc: string
+        photo: string
+
     }
 }
 
-const initialState: ZodiacState = {
-    internalErrorMessage: "",
-    isInternalError: false,
-    isLoading: true,
-    result: {
-        list: []
+const initialState: ZodiacListState = {
+
+    list: [],
+    add: {
+        desc: "",
+        photo: "",
+        title: "",
     },
-    ...pageNationAction.intPage()
+
+    showPopup: false,
+    ...PageAction.defaultPage()
 }
 
 export const zodiacListSlice = createSlice({
     name: 'zodiacList',
     initialState,
     reducers: {
-        changeState: (state, action: PayloadAction<ZodiacState>) => {
+        changeState: (state, action: PayloadAction<ZodiacListState>) => {
             Object.assign(state, action.payload);
         },
 
@@ -36,7 +46,8 @@ export const zodiacListSlice = createSlice({
 
 export const { changeState } = zodiacListSlice.actions;
 
-export const selectCount = (state: RootState) => state.counter.value
+export const selectRegisterState = (state: RootState) => state.zodiacListSlice;
+
 
 export default zodiacListSlice.reducer
 

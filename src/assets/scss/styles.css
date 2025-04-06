@@ -11,6 +11,41 @@ body a {
   text-decoration: none;
 }
 
+.top-30 {
+  top: 30px;
+}
+
+.w-210 {
+  width: 210px;
+}
+
+.w-80 {
+  width: 9px;
+}
+
+.appointment .form {
+  background-color: #8b1874;
+  min-height: 100dvh;
+  height: 100%;
+}
+.appointment .form .wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.appointment .form .wrapper .input {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+.appointment .form .wrapper .input input {
+  background-color: #fff;
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+}
+
 .client-header-main {
   width: 100%;
   height: 70px;
@@ -211,7 +246,7 @@ body a {
   align-items: center;
   animation: slideshow 10s linear infinite;
   background-position: center;
-  background: linear-gradient(rgba(255, 255, 255, 0.1176470588), rgba(183, 19, 117, 0.0392156863)), url(/img/client/home/bannerbg.jpg);
+  background: linear-gradient(rgba(255, 255, 255, 0.1176470588), rgba(183, 19, 117, 0.0392156863)), url("/src/assets/img//client//home/bannerbg.jpg");
 }
 .client-home-banner .wrapper .box-1 h1 {
   font-family: "Philosopher", sans-serif;
@@ -232,7 +267,9 @@ body a {
   font-size: 18px;
   background: transparent;
   cursor: pointer;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   overflow: hidden;
   color: #fff;
   z-index: 1;
@@ -299,7 +336,7 @@ body a {
     height: 100%;
     animation: slideshow 10s linear infinite;
     background-position: center;
-    background: linear-gradient(rgba(255, 255, 255, 0.1176470588), rgba(183, 19, 117, 0.0392156863)), url(/img/client/home/bannerbg.jpg);
+    background: linear-gradient(rgba(255, 255, 255, 0.1176470588), rgba(183, 19, 117, 0.0392156863)), url("/src/assets/img//client//home/bannerbg.jpg");
   }
   .client-home-banner .wrapper .box-1 {
     order: 2;
@@ -325,7 +362,8 @@ body a {
   width: 100%;
   /* Height: 400px; */
   background-color: #2f1a49;
-  clip-path: polygon(0% 0%, 100% 0%, 100.1% 81.8%, 0% 100%);
+  -webkit-clip-path: polygon(0% 0%, 100% 0%, 100.1% 81.8%, 0% 100%);
+          clip-path: polygon(0% 0%, 100% 0%, 100.1% 81.8%, 0% 100%);
   padding: 50px 0px;
 }
 .client-home-about .img {
@@ -353,21 +391,11 @@ body a {
   border: 2px solid #fff;
   color: #fff;
   font-weight: 500;
-  -webkit-box-shadow: -0.5px 0.5px 18px -0.5px #8b1874;
-  -moz-box-shadow: -0.5px 0.5px 18px -0.5px #8b1874;
   box-shadow: -0.5px 0.5px 18px -0.5px #8b1874;
   transition: all 0.5s ease;
 }
 .client-home-about .detail button:hover {
   transform: translate(0px, -5px);
-}
-@-webkit-keyframes mover {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-30px);
-  }
 }
 @keyframes mover {
   0% {
@@ -381,7 +409,8 @@ body a {
   .client-home-about {
     width: 100%;
     background-color: #2f1a49;
-    clip-path: polygon(0% 0%, 100% 0%, 100.1% 90.8%, 0% 100%);
+    -webkit-clip-path: polygon(0% 0%, 100% 0%, 100.1% 90.8%, 0% 100%);
+            clip-path: polygon(0% 0%, 100% 0%, 100.1% 90.8%, 0% 100%);
     padding: 50px 0px;
   }
   .client-home-about .img {
@@ -395,7 +424,6 @@ body a {
 
 .login-section {
   background: #8a2387;
-  background: -webkit-linear-gradient(290deg, #8a2387 0%, #8e54e9 100%);
   background: linear-gradient(290deg, #8a2387 0%, #8e54e9 100%);
   min-height: 100vh;
   top: 0;
@@ -466,7 +494,6 @@ body a {
 
 .signup-section {
   background: #8a2387;
-  background: -webkit-linear-gradient(290deg, #8a2387 0%, #8e54e9 100%);
   background: linear-gradient(290deg, #8a2387 0%, #8e54e9 100%);
   top: 0;
   left: 0;
@@ -533,4 +560,134 @@ body a {
   }
 }
 
-/*# sourceMappingURL=styles.css.map */
+.ad-sidebar {
+  height: 100vh;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 80px;
+  transition: width 0.3s ease-in-out;
+  background-color: #b71375;
+  padding: 15px;
+  z-index: 1;
+}
+.ad-sidebar svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5px;
+}
+.ad-sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.ad-sidebar ul li {
+  margin-bottom: 10px;
+}
+.ad-sidebar ul li a:hover {
+  background-color: #e9ecef;
+  color: #000 !important;
+}
+.ad-sidebar ul li .title {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-left: 10px;
+  transition: 0.5s all ease-in-out;
+}
+.ad-sidebar .un-active {
+  color: #6e1515;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+}
+.ad-sidebar .un-active span {
+  font-size: 1.3rem;
+  margin-right: 2px;
+  /* color: #e9ecef; */
+}
+.ad-sidebar .active {
+  color: #343a40;
+  background-color: #e9ecef;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.ad-navbar {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  filter: drop-shadow(0px 10px 4px rgba(0, 0, 0, 0.178));
+}
+.ad-navbar .navbar-brand {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-right: 1rem;
+  font-size: 1.25rem;
+  color: rgba(0, 0, 0, 0.9);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.ad-navbar .user-profile {
+  display: flex;
+  /* align-items: center; */
+  margin-left: auto;
+}
+.ad-navbar .notification {
+  margin-right: 30px;
+  position: relative;
+}
+.ad-navbar .notification .logout {
+  background-color: #060047;
+  color: #fff;
+  /* margin-left: -10px !important; */
+  /* padding: 2px; */
+  font-size: 2.3rem;
+  /* margin-top: 3px; */
+  transition: 0.8s all ease;
+  cursor: pointer;
+  border-radius: 2px;
+  position: absolute;
+  top: -8px;
+}
+.ad-navbar .notification .logout:hover {
+  background-color: red;
+  color: #fff;
+}
+.ad-navbar .notification .badge {
+  font-size: 0.5rem;
+  padding: 5px 6px;
+  top: -20px !important;
+  left: 25px;
+  position: relative;
+  background-color: red;
+  color: #fff;
+  border-radius: 5px;
+}
+
+@media only screen and (min-width: 992px) {
+  .ad-navbar {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+  .navbarCollapse {
+    display: flex !important;
+    flex-basis: auto;
+  }
+}
+@media only screen and (max-width: 980px) {
+  .ad-navbar {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+}
+.ad-main-wrapper {
+  margin: 0px 0 0 80px;
+}/*# sourceMappingURL=styles.css.map */

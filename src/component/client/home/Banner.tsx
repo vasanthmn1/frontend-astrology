@@ -2,7 +2,7 @@
 import { Col, Container, Row } from 'react-bootstrap'
 // import bannerimg from '/public/img/banner.png'
 import { Link } from 'react-router-dom'
-import bannerImg from '../../../../public/img/client/home/banner.png';
+import bannerImg from '../../../assets/img/client/home/banner.png';
 const Banner = () => {
 
 

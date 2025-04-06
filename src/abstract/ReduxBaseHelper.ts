@@ -1,6 +1,5 @@
-import { useNavigate } from "react-router-dom";
+
 import { RootState, store } from "../redux/store";
-import { Component } from "react";
 
 export abstract class ReduxBaseHelper<S, T> {
     // This will hold the passed-in component instance
@@ -10,8 +9,8 @@ export abstract class ReduxBaseHelper<S, T> {
     ctx: T;
 
 
-    getState = (): any => {
-        return store.getState()[this.sliceName]
+    getState = (): S => {
+        return store.getState()[this.sliceName] as S
     }
 
     constructor(sliceName: keyof RootState, changeStateAction: (state: S) => any, ctx: T) {
@@ -29,9 +28,29 @@ export abstract class ReduxBaseHelper<S, T> {
 
     onChangeInput(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
         const { name, value } = e.target;
+
+        if (!name) { return; }
+
         const update = { [name]: value } as Partial<S>;
 
-        console.log("Updated Input:", update);
         this.changeState(update);
     }
+
+
+
+    nestedChangeInput<K extends keyof S>(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, obj: K) {
+        const { name, value } = e.target;
+
+        // Ensure you're updating the form field while keeping other properties intact
+
+        const update = {
+            [obj]: {
+                ...this.getState()[obj],
+                [name]: value
+            }
+        } as Partial<S>;
+
+        this.changeState(update);
+    }
+
 }

@@ -1,5 +1,6 @@
+import { ILoginResponse } from "../../../interface/auth/ILoginResponce";
 import { ServiceResponse } from "../../../interface/response/ServiceResponse";
-import { store } from "../../../redux/store";
+import { localStorageAction } from "../../localStorage/localStorageAction";
 import { PageTostfication } from "../../page/PageNotification";
 import { PageResponse } from "../../page/PageResponse";
 import { HelperChild } from "./helper";
@@ -10,14 +11,15 @@ export class Submit extends HelperChild {
         this.triggerLoad(async () => {
             let state = this.p.getState()
 
+
             try {
                 const response = await this.p.apiClient.webApi.postJson<ServiceResponse>("/acc/login/", {
                     email: state.email,
                     password: state.password
                 });
 
-                if (PageResponse.validateResponse(response.data)) {
-                    this.updateSuccess(response.data.message)
+                if (PageResponse.validateResponse(response.data, this.p.ctx.props)) {
+                    this.updateSuccess(response.data.result)
                 } else {
                     this.updateError(response.data.result)
                 }
@@ -35,24 +37,25 @@ export class Submit extends HelperChild {
         let state = this.p.getState()
 
         if (!this.p.validate.validate(state)) {
-
-
             await callback()
-
         }
 
 
     }
 
-    updateSuccess = (message: string) => {
+    updateSuccess = (data: ILoginResponse) => {
 
-        PageTostfication.pageSuccess(message)
+        PageTostfication.pageSuccess("Login Success")
 
         this.p.changeState({
             isLoading: false,
             isSubmitting: false
         });
+        localStorageAction.setAuthUser(data)
+
         this.p.ctx.props.navigate('/')
+
+
 
     }
     updateError = (error: string) => {

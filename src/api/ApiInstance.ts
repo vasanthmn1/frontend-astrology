@@ -1,11 +1,8 @@
 import axios, { AxiosInstance } from "axios";
 import { TargetApiEnum } from "./ApiClient";
 import { AuthUser } from "../interface/auth/AuthUser";
-import { LocalStorageAction } from "../action/localStorage/LocalStorage";
+import { localStorageAction } from "../action/localStorage/localStorageAction";
 
-enum PointAccessEnum {
-    Public, Private
-}
 
 export class ApiInstance {
 
@@ -19,10 +16,12 @@ export class ApiInstance {
 
 
     private createInstance(): AxiosInstance {
+
         return axios.create({
             baseURL: this.endpoint,
             headers: {
-                Authorization: this.authorizationToken(),
+                Authenticate: this.authorizationToken(),
+                Tz: Intl.DateTimeFormat().resolvedOptions().timeZone
             },
         });
     }
@@ -44,12 +43,9 @@ export class ApiInstance {
         }
     }
     private authorizationToken = (): string => {
-
-        let localStorageAction = new LocalStorageAction()
-
         switch (localStorageAction.getAuthUser().user.access_permission) {
             case "user":
-                return "http://localhost:7000/"
+                return localStorageAction.getToken()
             case "admin":
                 return localStorageAction.getToken()
             default:

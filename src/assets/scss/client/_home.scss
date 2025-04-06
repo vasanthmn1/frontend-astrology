@@ -12,7 +12,7 @@
         align-items: center;
         animation: slideshow 10s linear infinite;
         background-position: center;
-        background: linear-gradient(#ffffff1e, #b713750a), url(/img/client/home/bannerbg.jpg);
+        background: linear-gradient(#ffffff1e, #b713750a), url("/src/assets/img//client//home/bannerbg.jpg");
 
         .box-1 {
             h1 {
@@ -115,7 +115,7 @@
             height: 100%;
             animation: slideshow 10s linear infinite;
             background-position: center;
-            background: linear-gradient(#ffffff1e, #b713750a), url(/img/client/home/bannerbg.jpg);
+            background: linear-gradient(#ffffff1e, #b713750a), url("/src/assets/img//client//home/bannerbg.jpg");
 
             .box-1 {
                 order: 2;

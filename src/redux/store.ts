@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from '../redux/features/counter/counterSlice'
+
 import zodiacListReducer from './features/zodiac/zodiacListSlice'
 import loginReducer from './features/auth/LoginSlice'
 import registerReducer from './features/auth/RegisterSlice'
+import AppointmentFormReducer from './features/appointment/AppointmentFormSlice'
+import adminZodiacListReducer from './features/admin/zodiac/zodiacListSlice'
 
 
 export const store = configureStore({
@@ -10,10 +12,9 @@ export const store = configureStore({
         //Auth
         login: loginReducer,
         register: registerReducer,
-
-
-        counter: counterReducer,
-        zodiacListSlice: zodiacListReducer
+        appointmentForm: AppointmentFormReducer,
+        zodiacListSlice: zodiacListReducer,
+        adminZodiacListSlice: adminZodiacListReducer
     }
 
 })

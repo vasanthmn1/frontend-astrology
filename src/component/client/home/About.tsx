@@ -1,6 +1,6 @@
 
 import { Col, Container, Row } from 'react-bootstrap'
-import img from '../../../../public/img/client/home/hand.png';
+import img from '../../../../src/assets/img/client/home/hand.png';
 
 import { Link } from 'react-router-dom'
 const About = () => {

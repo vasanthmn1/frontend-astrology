@@ -1,10 +1,10 @@
 import { Component } from "react";
 
-export abstract class CmdHelper<T> extends Component<{ parent: T }> {
-    parent: T;
+export abstract class CmpHelperChild<T> extends Component<{ parent: T }> {
+    p: T;
 
     constructor(props: { parent: T }) {
         super(props);
-        this.parent = props.parent;
+        this.p = props.parent;
     }
 }

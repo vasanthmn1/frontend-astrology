@@ -1,11 +1,12 @@
-import ClientRoutes from "../router/ClientRouter"
+import UserRoutes from "../router/UserRouter"
+import RouterMain from "../router/RouterMain"
 
 
 
 const Layout = () => {
     return (
         <>
-            <ClientRoutes />
+            <RouterMain />
         </>
     )
 }

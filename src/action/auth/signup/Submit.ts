@@ -13,10 +13,11 @@ export class Submit extends HelperChild {
             try {
                 const response = await this.p.apiClient.webApi.postJson<ServiceResponse>("/acc/signup/", {
                     email: currentState.email,
-                    password: currentState.password
+                    password: currentState.password,
+                    name: currentState.name
                 });
 
-                if (PageResponse.validateResponse(response.data)) {
+                if (PageResponse.validateResponse(response.data, this.p.ctx.props)) {
                     this.updateSuccess(response.data.message)
                 } else {
                     this.updateError(response.data.result)

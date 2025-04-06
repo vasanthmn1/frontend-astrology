@@ -1,0 +1,60 @@
+.ad-sidebar {
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 80px;
+    transition: width 0.3s ease-in-out;
+    background-color: #b71375;
+    padding: 15px;
+    z-index: 1;
+
+    svg {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 5px;
+    }
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        li {
+            margin-bottom: 10px;
+
+            a:hover {
+                background-color: #e9ecef;
+                color: #000 !important;
+            }
+            .title {
+                width: fit-content;
+                margin-left: 10px;
+                transition: 0.5s all ease-in-out;
+            }
+        }
+    }
+    .un-active {
+        color: #6e1515;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border-radius: 5px;
+
+        span {
+            font-size: 1.3rem;
+            margin-right: 2px;
+            /* color: #e9ecef; */
+        }
+    }
+    .active {
+        color: #343a40;
+        background-color: #e9ecef;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border-radius: 5px;
+    }
+}
